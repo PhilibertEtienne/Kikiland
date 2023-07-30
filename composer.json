@@ -1,0 +1,17 @@
+{
+    "name": "phili/kiki-site",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "philibertEtienne",
+            "email": "philibert.etienne4@orange.fr"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.7"
+    }
+}
