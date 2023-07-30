@@ -2,7 +2,7 @@
     "name": "phili/kiki-site",
     "autoload": {
         "psr-4": {
-            "Phili\\KikiSite\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
@@ -11,5 +11,7 @@
             "email": "philibert.etienne4@orange.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.7"
+    }
 }

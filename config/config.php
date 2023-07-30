@@ -9,3 +9,6 @@ define('DB_NAME', getenv('DB_NAME') ? getenv('DB_NAME') : APP_DB_NAME);
 define('APP_VIEW_PATH', __DIR__ . '/../src/View/');
 // database dump file path for automatic import
 define('DB_DUMP_PATH', __DIR__ . '/../database.sql');
+
+$loader = new Twig\Loader\FilesystemLoader(__DIR__ . '/../src/View');
+$twig = new Twig\Environment($loader, ['debug' => true]);
