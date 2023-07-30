@@ -1,0 +1,15 @@
+{
+    "name": "phili/kiki-site",
+    "autoload": {
+        "psr-4": {
+            "Phili\\KikiSite\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "philibertEtienne",
+            "email": "philibert.etienne4@orange.fr"
+        }
+    ],
+    "require": {}
+}
