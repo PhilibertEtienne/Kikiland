@@ -7,10 +7,9 @@
         {% endblock %}
     </head>
     <body>
-        <div id="content">{% block content %}{% endblock %}</div>
-        <div id="footer">
-            {% block footer %}
-                &copy; Copyright 2023 by <a href="http://philibertetienne.com/">Philibert Etienne</a>.
-            {% endblock %}
-        </div>
+        <div class="page-container">
+            {% include '_header.html.twig' %}    
+            <div id="content">{% block content %}{% endblock %}</div>
+            {% include '_footer.html.twig' %}  
+        </div>  
     </body>
