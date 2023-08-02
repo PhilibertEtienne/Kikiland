@@ -1,5 +1,10 @@
 <form method="post" enctype="multipart/form-data">
-    <label for="imageUpload">Upload an profile image</label>    
+    <label for="imageUpload">Ajouter une photo</label>    
     <input type="file" name="avatar" id="imageUpload" />
-    <button name="send">Send</button>
+    <label for="destination">J'enregistre :</label>
+    <select name="destination" id="destination">
+        <option value="flash">un flash</option>
+        <option value="tattoo">un tattoo</option>
+        <option value="objet">un objet</option>
+    </select>    <button name="send">Send</button>
 </form>
