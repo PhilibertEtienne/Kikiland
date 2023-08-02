@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html>
     <head>
         {% block head %}
-            <link rel="stylesheet" href="\assets\css\index.css/">
-            <title>{% block title %}Kikiland{% endblock %} </title>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Kikiland</title>
+            <link rel="stylesheet" type="text/css" href="/assets/css/kikiland.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link rel="icon" type="image/x-icon" href="/assets/Images/Favicon.png">
+            <link href="https://fonts.googleapis.com/css2?family=Modak&family=Nunito:wght@700&display=swap" rel="stylesheet">
         {% endblock %}
     </head>
+
     <body>
+    {% block body %}
         <div class="page-container">
             {% include '_header.html.twig' %}    
             <div id="content">{% block content %}{% endblock %}</div>
             {% include '_footer.html.twig' %}  
         </div>  
+    {% endblock %}
     </body>
