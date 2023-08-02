@@ -1,15 +1,25 @@
 <?php
 
 namespace App\Controller;
-
+use App\Model\UserManager;
 
 class LoginController extends AbstractController
 {
-    /**
-     * Display home page
-     */
-    public function index(): string
+    public function login()
     {
-        return $this->twig->render('Admin/login.html.twig');
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $credentials = array_map('trim', $_POST);
+            $userManager = new UserManager();
+            $user = $userManager->selectOneByUsername($credentials['username']);
+            if ($user && password_verify($credentials['password'], $user['password'])) {
+                $_SESSION['isLogin'] = true;
+                header('Location: /admin');
+                exit();
+            } else {
+                $errors[] = 'Wrong username or password';
+            }
+        }
+        return $this->twig->render('Admin/login.html.twig', ['errors' => $errors]);
     }
 }
