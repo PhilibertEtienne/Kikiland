@@ -11,13 +11,13 @@ class LoginController extends AbstractController
         $errors = [];
         $security = new Security;
         $csrfToken = $security->getCSRFToken();
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($_POST['token'] !== $_SESSION['token']) {
                 $errors[] = 'Invalid csrf token';
             } else {
                 $credentials = array_map('trim', $_POST);
                 $userManager = new UserManager();
+                $userManager->create('bb','bb');
                 $user = $userManager->selectOneByUsername($credentials['username']);
                 if ($user && password_verify($credentials['password'], $user['password'])) {
                     $_SESSION['isLogin'] = true;

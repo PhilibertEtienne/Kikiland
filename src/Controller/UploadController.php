@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-class AdminController extends AbstractController
+class UploadController extends AbstractController
 {
     /**
      * Display home page
@@ -11,7 +11,7 @@ class AdminController extends AbstractController
     public function index(): string
     {
             $this->checkLoginStatus();
-            return $this->twig->render('Admin/admin.html.twig');
+            return $this->twig->render('Admin/upload.html.twig');
     }
     
 }
