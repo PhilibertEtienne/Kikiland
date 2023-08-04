@@ -34,4 +34,16 @@ abstract class AbstractController
         }
         return true;
     }
+
+    protected function getImagesFromFolder(string $folder) {
+        $folderPath = "assets/Images/".$folder;
+        $files = scandir($folderPath);
+        $imageArray = [];
+
+        foreach ($files as $file) {
+            if (in_array($file, array(".", ".."))) continue;
+            $imageArray[] = $file;
+        }
+        return $imageArray;
+    }
 }

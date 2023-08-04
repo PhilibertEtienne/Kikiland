@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'Modules/layout.html.twig' %}
 
 {% block head %}
     {{parent()}}
@@ -6,10 +6,11 @@
 {% endblock %}
 
 {% block body %}
+{% include 'Modules/_admin_header.html.twig' %}
 <div class="admin-page">
     <div class="admin">
         <div class="upload-container">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" class ="admin-file-form">
                 <label for="imageUpload">Ajouter une photo</label>    
                 <input type="file" name="avatar" id="imageUpload" />
                 <label for="destination">J'enregistre :</label>
@@ -18,7 +19,7 @@
                     <option value="tattoo">un tattoo</option>
                     <option value="objet">un objet</option>
                 </select>    
-                <button name="send">Send</button>
+                <button name="send" class="cta">Send</button>
             </form>        
         </div>
     </div>

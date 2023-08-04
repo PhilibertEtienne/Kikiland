@@ -1,0 +1,23 @@
+{% extends 'Modules/layout.html.twig' %}
+
+{% block head %}
+    {{parent()}}
+    <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+{% endblock %}
+
+{% block body %}
+{% include 'Modules/_admin_header.html.twig' %}
+<div class ="masonry">
+    {% for image in images %}
+        <div class ="each-image-container">
+        <div class="overlay">
+            <img src="/assets/Images/tattoo/{{ image }}" alt="{{ image }}" class="admin-image">
+           <form action="" method="POST" class= "image-form">
+                <input type="hidden" name="filename" value="{{ image }}">
+                <button type="submit" name="delete" class ="cta-image">Delete</button>
+            </form>
+            </div>
+        </div>
+    {% endfor %}    
+</div>
+{% endblock %}

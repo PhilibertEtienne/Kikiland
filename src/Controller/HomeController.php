@@ -10,8 +10,6 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        $userManager = new UserManager();
-        $userManager->create('bb','bb');
         return $this->twig->render('Home/home.html.twig');
     }
 }

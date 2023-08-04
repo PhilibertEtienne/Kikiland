@@ -1,20 +1,93 @@
-/* .admin {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    align-items: center;
-} */
 
 .admin-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    width: 100vw;
+    margin : 10vw;
+    max-width: 100vw;
     height: 100vh;
 }
 
-.upload-container {
-    height: 80%;
-    width: 25%;
-    background-color: var(--backgroundColor);
+.admin-image {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.nav-option {
+    margin: 0 10px 0 10px;
+}
+
+.admin-file-form label {
+    margin-bottom: 100px;
+}
+
+.cta,.cta-image {
+    padding: 1em;
+    border-radius: 30%;
+    background-color: rgb(77, 248, 137);
+    box-shadow: 2px 2px 0px 1px rgba(0,0,0,0.89);
+    margin: 10px;
+}
+
+.cta-image {
+    opacity: 1;
+    transition: opacity .35s ease;
+    z-index: 1;
+}
+
+
+.each-image-container {
+    padding: 10px;
+    position: relative;
+}   
+
+.image-form .cta-image{
+    opacity: 0;
+    position: absolute;
+    top: 70%;
+    left: 60%;
+}
+
+.each-image-container:hover  .image-form {
+    opacity: 1;
+}
+.each-image-container:hover .cta-image {
+    opacity: 1;
+}
+
+@media screen and (max-width:800px) {
+    .admin-image {
+        height: 200px;
+    }
+}
+
+.masonry {
+    columns: 3;
+    column-gap: 16px;
+    margin-top: 16px;
+    @media (max-width: 1200px) {
+      columns: 3;
+    }
+    @media (max-width: 992px) {
+      columns: 2;
+    }
+    @media (max-width: 768px) {columns: 1;}
+
+    .grid {
+        display: inline-block;
+        margin-bottom: 16px;
+        position: relative;
+        &:before {
+          border-radius: 5px;
+          content:'';
+          position:absolute;
+          top:0;
+          right:0;
+          bottom:0;
+          left:0;
+          background-color:rgba(0,0,0,.2);
+        }
+    }
 }
