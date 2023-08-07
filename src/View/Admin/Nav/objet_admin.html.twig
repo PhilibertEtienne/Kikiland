@@ -7,6 +7,20 @@
 
 {% block body %}
 {% include 'Modules/_admin_header.html.twig' %}
+<div class="upload-container">
+    <ul>
+    {% for error in errors %}
+        <li> {{ error }}</li>
+    {% endfor %}
+    </ul>
+        <form method="post" enctype="multipart/form-data" class ="admin-file-form">
+            <label for="imageUpload">Ajouter une photo</label>    
+            <input type="file" name="avatar" id="imageUpload" />
+            <label for="destination">J'enregistre :</label>
+            <input type="hidden" name="destination" value="objets" />
+            <button name="send" class="cta">Send</button>
+        </form>        
+</div>
 <div class ="image-container">
     {% for image in images %}
         <div class ="each-image-container">

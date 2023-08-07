@@ -25,25 +25,4 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
     }
-
-    protected function checkLoginStatus(): bool
-    {
-        if (!isset($_SESSION['isLogin']) || $_SESSION['isLogin'] !== true) {
-            header('Location: /login');
-            exit();
-        }
-        return true;
-    }
-
-    protected function getImagesFromFolder(string $folder) {
-        $folderPath = "assets/Images/".$folder;
-        $files = scandir($folderPath);
-        $imageArray = [];
-
-        foreach ($files as $file) {
-            if (in_array($file, array(".", ".."))) continue;
-            $imageArray[] = $file;
-        }
-        return $imageArray;
-    }
 }
