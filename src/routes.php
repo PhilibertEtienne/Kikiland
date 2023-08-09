@@ -4,9 +4,9 @@
 return [
     //INDEX ROUTES
     '' => ['HomeController', 'index',],
-    'flash' => ['HomeController', 'flash',],
+    'illustration' => ['HomeController', 'illustration',],
     'tattoo' => ['HomeController', 'tattoo',],
-    'objets' => ['HomeController', 'objets',],
+    'objet' => ['HomeController', 'objets',],
     'admin' => ['AdminController', 'index',],
     'admin/flash' => ['AdminController', 'adminFlash',],
     'admin/tattoo' => ['AdminController', 'adminTattoo',],

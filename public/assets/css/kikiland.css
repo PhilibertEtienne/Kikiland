@@ -6,46 +6,47 @@
 
 :root {
   --baseColor: #ffffff;
-  --fontColor: #6708d3;
+  --fontColor: #000000;
   --backgroundColor: #f2413b;
 }
 
 body {
   display: flex;
-  height: 100vh;
   width: 100vw;
-  max-width:100%;
+  max-width: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-family: "Nunito", sans-serif;
   color: var(--fontColor);
   margin: 0 auto;
   background-color: var(--baseColor);
 }
 
-#kikiland {
-  padding: 50px;
-  max-width: 500px;
+#bienvenue-kikiland {
+  max-width: 560px;
+  /* min-width: 80vw; */
+  margin-bottom: 10px;
   transition: 1s;
+}
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .bouton {
-  width: 30vw;
-  height: 15vh;
+  max-height: 80px;
   transition: 1s;
-  min-width: 150px;
-  max-width: 200px;
+  margin-bottom: 10vh;
 }
 
-.bouton:hover {
-  transform: scale(0.5);
+.navbar {
+  max-width: 600px;
 }
-
-#kikiland:hover {
-  transform: rotate(15deg);
-}
-
 .header {
   display: flex;
   background-color: var(--baseColor);
@@ -62,14 +63,32 @@ a {
   text-decoration: none;
 }
 
-@media screen and (max-width: 600px) {
-  #navbar {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-  }
-  #kikiland {
-    margin: -90px;
-    max-height: 35vh;
-  }
+.bombe-icone img{
+  width: 15%;
+  display: flex;
 }
+
+.bombe-icone {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 2em 2em 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  align-items: center;
+  position: absolute;
+}
+
+

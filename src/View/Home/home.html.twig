@@ -1,14 +1,20 @@
 {% extends 'Modules/layout.html.twig' %}
 {% block body %}
-   <div>
-        <img src="/assets/Images/illus/icônePng.png" alt="Bienvenue à Kikiland" id="kikiland">
-    </div>
-<div id="navbar">
-    <a href="/tattoo"> <img class="bouton" src="/assets/Images/boutons/bout_tattoo.png"  id="tattoo"></a>
-    <a href="/flash"> <img class="bouton" src="/assets/Images/boutons/bout_illus.png" id="illustration" ></a>
-    <a href="/objets"> <img class="bouton" src="/assets/Images/boutons/bout_obj.png" id="objet"></a>
-</div>    
-<footer>
-    <div class="footer">Copyright Emma Chevassu</div>
-</footer> 
+	<div class="homepage">
+		<div>
+			<img src="/assets/Images/Home/accueil.png" alt="Bienvenue à Kikiland" id="bienvenue-kikiland">
+		</div>
+		<div id="navbar">
+			<img class="bouton" src="\assets\Images\boutons\tattoo\bouton.png" id="tattoo" onclick="changeImageAndRedirect('tattoo')">
+			<img class="bouton" src="\assets\Images\boutons\illustration\bouton.png" id="illustration" onclick="changeImageAndRedirect('illustration')">
+			<img class="bouton" src="\assets\Images\boutons\objet\bouton.png" id="objet" onclick="changeImageAndRedirect('objet')">
+		</div>
+
+		<a href="/bomberkiks" class="bombe-icone"><img src="\assets\Images\Home\anim_exempleclicbombe.gif"></a>
+
+		{% include 'Modules/_footer.html.twig' %}
+	</div>
+	{% block javascripts %}
+		<script src="\assets\scripts\button.js"></script>
+	{% endblock %}
 {% endblock %}
