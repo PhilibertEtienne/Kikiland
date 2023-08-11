@@ -1,8 +1,7 @@
-{% extends 'Modules/layout.html.twig' %}
-{% block head %}
-	{{parent()}}
-	<link rel="stylesheet" href="assets/css/tattoo.css" type="text/css">
-{% endblock %}
+{% extends 'Modules/_photoGallery.html.twig' %}
+
+{% set folder = 'tattoo' %}
+
 {% block content %}
-	<p>les tattoos</p>
+	{{ parent() }}
 {% endblock %}

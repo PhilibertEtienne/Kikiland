@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
 :root {
@@ -24,10 +25,8 @@ body {
 }
 
 #bienvenue-kikiland {
-  max-width: 560px;
-  /* min-width: 80vw; */
+  max-width: 50%;
   margin-bottom: 10px;
-  transition: 1s;
 }
 
 .homepage {
@@ -44,14 +43,21 @@ body {
   margin-bottom: 10vh;
 }
 
-.navbar {
-  max-width: 600px;
+#navbar {
+  display: flex;
+  flex-direction: row;
+  max-width: 50%;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 720px) {
+    flex-direction: column;
+  }
 }
+
 .header {
   display: flex;
   background-color: var(--baseColor);
-  width: 100%;
-  height: 10%;
+  width: 100vw;
   align-items: center;
   justify-content: space-between;
   padding: 20px 10px 20px 10px;
@@ -63,8 +69,8 @@ a {
   text-decoration: none;
 }
 
-.bombe-icone img{
-  width: 15%;
+.bombe-icone img {
+  width: 10%;
   display: flex;
 }
 
@@ -79,6 +85,27 @@ a {
   justify-content: flex-end;
 }
 
+.grid-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 35%));
+  grid-gap: 0.5rem;
+  justify-content: center;
+}
+
+.grid img:nth-child(2n + 1) {
+  aspect-ratio: 4/4;
+  grid-row: span 4;
+}
+.grid img:nth-child(2n + 2) {
+  aspect-ratio: 4/5;
+  grid-row: span 5;
+}
 
 .footer {
   display: flex;
@@ -89,6 +116,7 @@ a {
   width: 100%;
   align-items: center;
   position: absolute;
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
 }
-
-

@@ -97,19 +97,6 @@ class AdminController extends AbstractController
         return true;
     }
 
-    private function getImagesFromFolder(string $folder)
-    {
-        $folderPath = "assets/Images/" . $folder;
-        $files = scandir($folderPath);
-        $imageArray = [];
-
-        foreach ($files as $file) {
-            if (in_array($file, array(".", ".."))) continue;
-            $imageArray[] = $file;
-        }
-        return $imageArray;
-    }
-
     private function addImage()
     {
         // Directory where the uploaded files should be stored

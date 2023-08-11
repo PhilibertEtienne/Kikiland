@@ -14,10 +14,8 @@
 
     <body>
     {% block body %}
-        <div class="page-container">
             {% include 'Modules/_header.html.twig' %}    
             <div id="content">{% block content %}{% endblock %}</div>
             {% include 'Modules/_footer.html.twig' %}  
-        </div>  
     {% endblock %}
     </body>

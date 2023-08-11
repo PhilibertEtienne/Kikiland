@@ -21,7 +21,8 @@ class HomeController extends AbstractController
 
     public function tattoo(): string
     {
-        return $this->twig->render('Home/tattoo.html.twig');
+        $images = $this->getImagesFromFolder('tattoo');
+        return $this->twig->render('Home/tattoo.html.twig', ['images' => $images]);
     }
 
     public function objets(): string
