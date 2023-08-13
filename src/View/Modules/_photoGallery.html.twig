@@ -1,0 +1,14 @@
+{% extends 'Modules/layout.html.twig' %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+{% endblock %}
+
+{% block content %}
+	<div class="grid">
+		{% for image in images %}
+			<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image">
+		{% endfor %}
+	</div>
+{% endblock %}

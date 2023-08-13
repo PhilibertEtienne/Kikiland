@@ -1,0 +1,39 @@
+.grid-fixe {
+    display: grid;
+    max-width: 90vw;
+    gap: 20px;
+    margin-top: 20px;
+    grid-template-columns:  repeat( 12, minmax(250px, 1fr) );
+    grid-template-rows: repeat(12,15vh);
+}
+
+.grid-margin {
+    display: flex;
+    height: 20px;
+}
+
+.grid-fixe img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-fixe .grid-first {
+    grid-area: first;
+}
+
+.grid-fixe .grid-second {
+    grid-area: second;
+}
+
+.grid-fixe .grid-third {
+    grid-area: third;
+}
+
+.grid-fixe .grid-fourth {
+    grid-area: fourth;
+}
+
+.grid-fixe .grid-fifth {
+    grid-area: fifth;
+}

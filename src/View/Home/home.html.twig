@@ -1,1 +1,18 @@
-{% extends 'layout.html.twig' %}
+{% extends 'Modules/layout.html.twig' %}
+{% block body %}
+	<div class="homepage">
+		<img src="/assets/Images/Home/accueil.png" alt="Bienvenue à Kikiland" id="bienvenue-kikiland">
+		<div id="navbar">
+			<img class="bouton" src="\assets\Images\boutons\tattoo\bouton.png" id="tattoo" onclick="changeImageAndRedirect('tattoo')">
+			<img class="bouton" src="\assets\Images\boutons\illustration\bouton.png" id="illustration" onclick="changeImageAndRedirect('illustration')">
+			<img class="bouton" src="\assets\Images\boutons\objets\bouton.png" id="objets" onclick="changeImageAndRedirect('objets')">
+		</div>
+
+		<a href="/bomberkiks" class="bombe-icone"><img src="\assets\Images\Home\anim_exempleclicbombe.gif"></a>
+	</div>
+	{% include 'Modules/_footer.html.twig' %}
+
+	{% block javascripts %}
+		<script src="\assets\scripts\button.js"></script>
+	{% endblock %}
+{% endblock %}
