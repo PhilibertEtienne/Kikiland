@@ -14,9 +14,10 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/home.html.twig');
     }
 
-    public function flash(): string
+    public function illustration(): string
     {
-        return $this->twig->render('Home/flash.html.twig');
+        $images = $this->getImagesFromFolder('illustration');
+        return $this->twig->render('Home/illustration.html.twig', ['images' => $images]);
     }
 
     public function tattoo(): string

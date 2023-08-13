@@ -1,0 +1,19 @@
+{% extends 'Modules/layout.html.twig' %}
+
+{% block head %}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="grid">
+    {% for image in images %}
+    <div class="grid-item">
+        <img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image">
+        <form action="" method="POST" class="image-form">
+            <input type="hidden" name="filename" value="{{ image }}">
+            <button type="submit" name="delete" class="cta-image">Delete</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

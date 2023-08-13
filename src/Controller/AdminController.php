@@ -28,43 +28,16 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/cursor.html.twig');
     }
 
-    public function adminFlash(): string
-    {
-        $this->checkLoginStatus();
-        $errors = [];
-        $imageFirst = $this->getImagesFromFolder("grid-fixe/first");
-        $imageSecond = $this->getImagesFromFolder("grid-fixe/second");
-        $imageThird = $this->getImagesFromFolder("grid-fixe/third");
-        $imageFourth = $this->getImagesFromFolder("grid-fixe/fourth");
-        $imageFifth = $this->getImagesFromFolder("grid-fixe/fifth");
-        $grids = [];
-        for ($i = 0; $i < count($imageFirst); $i++) {
-            $grids[$i][] = $imageFirst[$i];
-            $grids[$i][] = $imageSecond[$i];
-            $grids[$i][] = $imageThird[$i];
-            $grids[$i][] = $imageFourth[$i];
-            $grids[$i][] = $imageFifth[$i];
-        }
 
-        // if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete"])) {
-        //     $this->deleteImage($folderName);
-        // }
-        // if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["destination"])) {
-        //     $this->addImage();
-        // }
-        // $template = 'Admin/Nav/' . $folderName . '_admin.html.twig';
-        return $this->twig->render(
-            'Admin/Nav/flash_admin.html.twig',
-            [
-                'grids' => $grids,
-                'errors' => $this->errors
-            ]
-        );
-    }
 
     public function adminTattoo(): string
     {
         return $this->handleAdminRequest('tattoo');
+    }
+
+    public function adminIllustration(): string
+    {
+        return $this->handleAdminRequest('illustration');
     }
 
     public function adminObjets(): string
