@@ -99,6 +99,9 @@ class AdminController extends AbstractController
         if (empty($this->errors)) {
             $uploadFile = $uploadDir . '/' . basename($uploadedFile['name']);
             move_uploaded_file($uploadedFile['tmp_name'], $uploadFile);
+            header("Location: /admin/" . $_POST['destination']);
+            exit;
+    
         }
     }
 

@@ -6,9 +6,11 @@
 {% endblock %}
 
 {% block content %}
-	<div class="grid">
-		{% for image in images %}
-			<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image">
-		{% endfor %}
+	<div class="front-gallery-container">
+		<div class="grid">
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image">
+			{% endfor %}
+		</div>
 	</div>
 {% endblock %}
