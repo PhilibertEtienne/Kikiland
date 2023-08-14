@@ -42,7 +42,7 @@ class AdminController extends AbstractController
 
     public function adminObjets(): string
     {
-        return $this->handleAdminRequest('objet');
+        return $this->handleAdminRequest('objets');
     }
 
     private function handleAdminRequest(string $folderName): string

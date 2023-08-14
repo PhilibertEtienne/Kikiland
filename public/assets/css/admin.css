@@ -1,3 +1,26 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4em;
+  background-color: rgba(189, 125, 249, 0.816);
+  border-radius: 20%;
+  padding: 2em;
+}
+
+.login-container .cta {
+  margin-left: 8em;
+}
+
+input[type="text"],input[type="password"]{
+  width: 100%;
+  padding: 1em 0.5em;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .admin-page {
   display: flex;
   align-items: center;

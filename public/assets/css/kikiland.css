@@ -23,6 +23,7 @@ body {
   color: var(--fontColor);
   margin: 0 auto;
   background-color: var(--baseColor);
+  min-height: 100vh;
 }
 .loading {
   position: fixed;
@@ -44,7 +45,7 @@ body {
 #bienvenue-kikiland {
   max-width: 70%;
   margin-bottom: 10px;
-  @media (min-width:720px){
+  @media (min-width: 720px) {
     max-width: 50%;
   }
 }
@@ -58,9 +59,9 @@ body {
 }
 
 .bouton {
-  max-height: 4em ;
+  max-height: 4em;
   transition: 1s;
-  @media (min-width:720px){
+  @media (min-width: 720px) {
     margin-bottom: 10vh;
     max-height: 6em;
   }
