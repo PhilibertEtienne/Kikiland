@@ -25,7 +25,7 @@
     {% for image in images %}
         <div class ="each-image-container">
         <div class="overlay">
-            <img src="/assets/Images/objet/{{ image }}" alt="{{ image }}" class="admin-image">
+            <img src="/assets/Images/objets/{{ image }}" alt="{{ image }}" class="admin-image">
             <form action="" method="POST" class= "image-form">
                 <input type="hidden" name="filename" value="{{ image }}">
                 <button type="submit" name="delete" class ="cta-image">Delete</button>
