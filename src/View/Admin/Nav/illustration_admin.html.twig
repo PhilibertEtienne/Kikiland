@@ -1,34 +1,3 @@
 {% extends 'Modules/_admin_photoGallery.html.twig' %}
-{% block head %}
-	{{parent()}}
-	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/grid-fixe.css">
-{% endblock %}
 {% set folder = 'illustration' %}
-
-{% block body %}
-	{% include 'Modules/_admin_header.html.twig' %}
-	<div class="upload-container">
-		<ul>
-			{% for error in errors %}
-				<li>
-					{{ error }}</li>
-			{% endfor %}
-		</ul>
-		<form method="post" enctype="multipart/form-data" class="admin-file-form">
-			<label for="imageUpload">Ajouter une photo</label>
-			<input type="file" name="avatar" id="imageUpload"/>
-			<label for="destination">J'enregistre :</label>
-			<input type="hidden" name="destination" value="flash"/>
-			<button name="send" class="cta">Send</button>
-		</form>
-	</div>
-	{% block content %}
-		{{parent()}}
-		<form action="" method="POST" class="image-form">
-			<input type="hidden" name="filename" value="{{ image }}">
-			<button type="submit" name="delete" class="cta-image">Delete</button>
-		</form>
-	{% endblock %}
-
-{% endblock %}
+ 
