@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Model\UserManager;
-
 class HomeController extends AbstractController
 {
     /**
