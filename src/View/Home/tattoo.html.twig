@@ -1,18 +1,3 @@
 {% extends 'Modules/_photoGallery.html.twig' %}
 
 {% set folder = 'tattoo' %}
-
-{% block scripts %}
-<script>
-// Get references to the div elements
-const grid = document.getElementByClassName("grid");
-const flashbook = document.getElementById("flashbook");
-
-// Get the width of div1
-const gridWidth = div1.offsetWidth;
-
-// Set the width of div2 to match the width of div1
-flashbook.style.width = gridWidth + "px";
-</script>
-
-{% endblock %}

@@ -6,14 +6,39 @@
 {% endblock %}
 
 {% block content %}
-	{# <div class="front-gallery-container"> #}
-	<div class="grid">
+	<div class="front-gallery-container" id='front-gallery-container'>
 		{% if folder is defined  and folder =='tattoo' %}
 			<img src="assets\Images\lienflashbook.png" alt="flashbook" class="flashbook" id="flashbook">
 		{% endif %}
-		{% for image in images %}
-			<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image fade-in" loading="lazy">
-		{% endfor %}
-		{# </div> #}
+		<div class="grid" id='grid'>
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image fade-in" loading="lazy">
+			{% endfor %}
+		</div>
 	</div>
+
+	{% if folder is defined  and folder =='tattoo' %}
+		{% block javascripts %}
+			<script>
+				const container = document.getElementById('front-gallery-container');
+				const flashbook = document.getElementById('flashbook');
+				const grid = document.getElementById('grid');
+					function changeCssOnScroll() {
+					if (window.scrollY > 100) {
+					container.style.flexDirection = 'row';
+					flashbook.style.alignSelf = 'start';
+					flashbook.style.position = 'sticky';
+					flashbook.style.top = '50%';
+					flashbook.style.maxWidth = '30%';
+					flashbook.style.marginLeft = '5%';
+					flashbook.style.aspectRatio = '5/1';
+					grid.style.gridTemplateColumns = ' repeat(2, minmax(120px, 45%))';
+					}
+					}
+					window.addEventListener('scroll', changeCssOnScroll);
+					console.log('pizza')
+			</script>
+		{% endblock %}
+	{% endif %}
+
 {% endblock %}
