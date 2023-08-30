@@ -6,11 +6,14 @@
 {% endblock %}
 
 {% block content %}
-	<div class="front-gallery-container">
-		<div class="grid">
-			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image" loading="lazy">
-			{% endfor %}
-		</div>
+	{# <div class="front-gallery-container"> #}
+	<div class="grid">
+		{% if folder is defined  and folder =='tattoo' %}
+			<img src="assets\Images\lienflashbook.png" alt="flashbook" class="flashbook" id="flashbook">
+		{% endif %}
+		{% for image in images %}
+			<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image fade-in" loading="lazy">
+		{% endfor %}
+		{# </div> #}
 	</div>
 {% endblock %}

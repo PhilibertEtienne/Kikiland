@@ -91,9 +91,13 @@ body {
   margin: 0 10px 0 10px;
 }
 
+
 .nav-end {
   display: flex;
   flex-direction: row;
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 }
 
 .header {
@@ -108,6 +112,9 @@ body {
   flex-direction: row;
   position: absolute;
   top: 0;
+  @media (max-width: 480px) {
+    margin-top: 1em;
+  }
 }
 
 a {
@@ -136,9 +143,26 @@ a {
 .front-gallery-container {
   margin: 5em;
   @media (min-height: 100vh) {
-    margin: 5em, 0;
+    margin: 5em 0;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#flashbook {
+  height: auto;
+  max-width: 70%;
+  display: block;
+  object-fit: contain;
+  grid-column: span 2; /* Make the container span both columns */
+  grid-row: span 1;
+  aspect-ratio: 3/1;
+  @media (max-width : 480px) {
+  max-width: 100%;
   }
 }
+
 .grid-image {
   display: block;
   width: 100%;
@@ -147,11 +171,15 @@ a {
 }
 
 .grid {
-  margin-top: 2em;
+  margin-top: 5em;
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 35%));
   grid-gap: 0.5rem;
   justify-content: center;
+  margin-bottom: 5em;
+  @media (max-width: 480px) {
+    margin-top: 10em;
+  }
 }
 
 .grid .grid-item:nth-child(2n + 1) img,
@@ -182,7 +210,24 @@ a {
   width: 100%;
   padding: 1em 0em;
   align-items: center;
-  @media (max-width: 420px) {
+  @media (max-width: 480px) {
     flex-direction: column;
+  }
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
