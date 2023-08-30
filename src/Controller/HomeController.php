@@ -15,17 +15,18 @@ class HomeController extends AbstractController
     public function illustration(): string
     {
         $images = $this->getImagesFromFolder('illustration');
-        return $this->twig->render('Home/illustration.html.twig', ['images' => $images]);
+        return $this->twig->render('Home/illustration.html.twig', ['images' => $images, 'url' => '/illustration']);
     }
 
     public function tattoo(): string
     {
         $images = $this->getImagesFromFolder('tattoo');
-        return $this->twig->render('Home/tattoo.html.twig', ['images' => $images]);
+        return $this->twig->render('Home/tattoo.html.twig', ['images' => $images, 'url' => '/tattoo']);
     }
 
     public function objets(): string
     {
-        return $this->twig->render('Home/objet.html.twig');
+        $images = $this->getImagesFromFolder('objets');
+        return $this->twig->render('Home/objet.html.twig', ['images' => $images, 'url' => '/objet']);
     }
 }

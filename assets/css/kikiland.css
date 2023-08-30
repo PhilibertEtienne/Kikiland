@@ -77,17 +77,35 @@ body {
   }
 }
 
+.nav-img {
+  object-fit: contain;
+  height: 2em;
+}
+
+.nav-logo {
+  object-fit: contain;
+  height: 4em;
+}
+
+.nav-option {
+  margin: 0 10px 0 10px;
+}
+
+.nav-end {
+  display: flex;
+  flex-direction: row;
+}
+
 .header {
   display: flex;
   background-color: var(--baseColor);
   max-width: 100%;
   width: 100vw;
-  height: 3em;
+  height: 5em;
   align-items: center;
   justify-content: space-between;
   padding: 1em;
   flex-direction: row;
-  border-bottom: 3px solid #000000;
   position: absolute;
   top: 0;
 }
@@ -117,8 +135,8 @@ a {
 
 .front-gallery-container {
   margin: 5em;
-  @media (min-height:100vh){
-    margin: 5em,0;
+  @media (min-height: 100vh) {
+    margin: 5em, 0;
   }
 }
 .grid-image {
