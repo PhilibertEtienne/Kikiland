@@ -15,7 +15,8 @@ body {
   margin-left: 8em;
 }
 
-input[type="text"],input[type="password"]{
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 1em 0.5em;
   margin: 8px 0;
@@ -24,26 +25,26 @@ input[type="text"],input[type="password"]{
   border-radius: 4px;
   box-sizing: border-box;
 }
- input[type="file"]{
-cursor: pointer;
+input[type="file"] {
+  cursor: pointer;
 }
 
 .upload-label {
   cursor: pointer;
-} 
+}
 
-select,input::file-selector-button{
+select,
+input::file-selector-button {
   padding: 0.5em 0.5em;
-  margin: 1em ;
+  margin: 1em;
   display: inline-block;
   border-radius: 4px;
   box-shadow: 2px 2px 0px black;
   cursor: pointer;
-
 }
 
-.admin-file-add-image{
-  @media (max-width:1020px) {
+.admin-file-add-image {
+  @media (max-width: 1020px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,9 +81,6 @@ select,input::file-selector-button{
   }
 }
 
-.nav-option {
-  margin: 0 10px 0 10px;
-}
 
 .admin-file-form {
   padding: 1em 2em;
@@ -92,7 +90,7 @@ select,input::file-selector-button{
   display: flex;
   flex-direction: row;
   align-items: center;
-  @media (max-width:1020px) {
+  @media (max-width: 1020px) {
     flex-direction: column;
   }
 }
@@ -127,7 +125,6 @@ select,input::file-selector-button{
     opacity: 0;
   }
 }
-
 
 @media (min-width: 768px) {
   .grid-item:hover .image-form .cta-image {

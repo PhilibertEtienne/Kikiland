@@ -1,6 +1,28 @@
+{% set baseImagePath = 'assets/Images/header-navbar-footer/' %}
+
 <div class="header">
-    <div class="site-branding"><a href="/"> Kikiland</a></div>
-    <div class="nav-option"><a href="/tattoo"> Tattoo</a></div>
-    <div class="nav-option"><a href="/illustration">Illustration</a></div>
-    <div class="nav-option"><a href="/objets">Objets</a></div>
+    <div class="header-start">
+        <div class="site-branding">
+            <a href="/">
+                <img src="{{ baseImagePath ~ 'potifleurnavbar.png' }}" alt="accueil" class="nav-logo">
+            </a>
+        </div>
+    </div>
+    <div class="nav-end">
+        <div class="nav-option">
+            <a href="/tattoo">
+                <img src="{{ baseImagePath ~ (url == '/tattoo' ? 'header_tattoo-selec.png' : 'header_tattoo.png') }}" alt="Tattoo" class="nav-img">
+            </a>
+        </div>
+        <div class="nav-option">
+            <a href="/illustration">
+                <img src="{{ baseImagePath ~ (url == '/illustration' ? 'header_illu-selec.png' : 'header_illu.png') }}" alt="illustration" class="nav-img">
+            </a>
+        </div>
+        <div class="nav-option">
+            <a href="/objets">
+                <img src="{{ baseImagePath ~ (url == '/objets' ? 'header_objet-selec.png' : 'header_objet.png') }}" alt="objet" class="nav-img">
+            </a>
+        </div>
+    </div>
 </div>

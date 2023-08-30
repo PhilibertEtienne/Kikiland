@@ -9,7 +9,7 @@
 	<div class="front-gallery-container">
 		<div class="grid">
 			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image">
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image" loading="lazy">
 			{% endfor %}
 		</div>
 	</div>
