@@ -12,7 +12,7 @@
 .carousel {
   display: inline-block;
   overflow: hidden;
-  animation: slide 12s steps(1, end) infinite;
+  animation: 12s slide infinite linear;
 }
 
 .carousel-image {
@@ -25,14 +25,12 @@
 
 
 
-  @keyframes slide {
-    0% {
-      transform: translateX(0%);
+@keyframes slide {
+    from {
+      transform: translateX(0);
     }
-    33% {
-      transform: translateX(0%);
+    to {
+      transform: translateX(-100%);
     }
-    100% {
-      transform: translateX(-100vw);
-    }
-}
+  }
+  
