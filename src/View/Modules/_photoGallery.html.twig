@@ -6,7 +6,11 @@
 {% endblock %}
 
 {% block content %}
+	{% if folder is defined  and folder =='tattoo' %}
 			<img src="assets\Images\lienflashbook.png" alt="flashbook" class="flashbook" id="flashbook">
+			{% else %}
+			<div class="flashbook-margin"></div>
+	{% endif %}
 	<div class="front-gallery-container" id='front-gallery-container'>
 		{% if folder is defined  and folder =='tattoo' %}
 			<img src="assets\Images\lienflashbook.png" alt="flashbook-side" class="flashbook" id="flashbookSide">
@@ -26,7 +30,6 @@
 				const grid = document.getElementById('grid');
 
 				function changeCssOnScroll() {
-					console.log(window.scrollY)
 				if (window.scrollY > window.innerHeight /3 ) {
 				container.style.flexDirection = 'row';
 				flashbookSide.style.alignSelf = 'start';

@@ -163,6 +163,10 @@ a {
   display: none;
 }
 
+.flashbook-margin {
+  margin-top: 8em;
+}
+
 .grid-image {
   display: block;
   width: 100%;

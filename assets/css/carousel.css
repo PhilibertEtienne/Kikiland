@@ -1,0 +1,38 @@
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100vw;
+}
+
+.carousel-container:hover .carousel {
+  animation-play-state: paused;
+}
+
+.carousel {
+  display: inline-block;
+  overflow: hidden;
+  animation: slide 12s steps(1, end) infinite;
+}
+
+.carousel-image {
+  object-fit: cover;
+  --carousel-image-width: 30vw;
+  width: var(--carousel-image-width);
+  max-height: 60vh;
+  margin: calc(10vw/6);
+}
+
+
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0%);
+    }
+    33% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100vw);
+    }
+}
