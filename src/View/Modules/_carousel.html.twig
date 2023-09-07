@@ -19,7 +19,7 @@
 			{% endfor %}
 		</div>
 	</div>
-{% block javascripts %}
+{# {% block javascripts %}
 <script>
 let container = document.querySelector(".carousel-container");
 let innerContainer = document.querySelector(".carousel");
@@ -30,7 +30,7 @@ let x;
 
 container.addEventListener("mousedown", (e) => {
     pressed = true;
-    startX = e.offsetX - innerContainer.offsetLeft;
+    startX = e.clientX - innerContainer.offsetLeft;
     container.style.cursor = "grabbing";
 });
 
@@ -47,7 +47,7 @@ container.addEventListener("mousemove", (e) => {
     if (!pressed) return;
     e.preventDefault();
 
-    x = e.offsetX;
+    x = e.clientX;
     innerContainer.style.left = `${x - startX}px`;
 });
 
@@ -56,11 +56,11 @@ let boundItems = () => {
     let inner = innerContainer.getBoundingClientRect();
 
     if (parseInt(innerContainer.style.left) > 0) {
-    innerContainer.style.left = "0px";
+        innerContainer.style.left = "0px";
     }
 
     if (inner.right < outer.right) {
-    innerContainer.style.left = `-${inner.width - outer.width}px`;
+        innerContainer.style.left = `-${inner.width - outer.width}px`;
     }
 };
 
@@ -68,10 +68,10 @@ container.addEventListener("mousemove", (e) => {
     if (!pressed) return;
     e.preventDefault();
 
-    x = e.offsetX;
+    x = e.clientX;
     innerContainer.style.left = `${x - startX}px`;
     boundItems();
 });
 </script>
-{% endblock %}
+{% endblock %} #}
 {% endblock %}

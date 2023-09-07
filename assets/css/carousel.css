@@ -12,18 +12,34 @@
 .carousel {
   display: inline-block;
   overflow: hidden;
-  animation: 12s slide infinite linear;
+  animation: 20s slide infinite linear;
 }
+
 
 .carousel-image {
   object-fit: cover;
   --carousel-image-width: 30vw;
   width: var(--carousel-image-width);
-  max-height: 60vh;
+  height: 60vh;
   margin: calc(10vw/6);
 }
 
+.carousel-image::after {
+    position:absolute   ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 9, 9, 0.956); 
+    opacity: 0;
+    z-index: 9999;
+}
 
+.carousel-image:hover::after {
+    opacity: 1; 
+  }
 
 @keyframes slide {
     from {
