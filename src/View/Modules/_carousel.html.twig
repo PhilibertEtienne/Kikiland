@@ -1,0 +1,77 @@
+{% extends 'Modules/layout.html.twig' %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/carousel.css">
+{% endblock %}
+
+{% block content %}
+	<div class="carousel-container">
+		<div class="carousel">
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image">
+			{% endfor %}
+		</div>
+		<div class="carousel">
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image">
+			{% endfor %}
+		</div>
+	</div>
+{# {% block javascripts %}
+<script>
+let container = document.querySelector(".carousel-container");
+let innerContainer = document.querySelector(".carousel");
+
+let pressed = false;
+let startX;
+let x;
+
+container.addEventListener("mousedown", (e) => {
+    pressed = true;
+    startX = e.clientX - innerContainer.offsetLeft;
+    container.style.cursor = "grabbing";
+});
+
+container.addEventListener("mouseenter", () => {
+    container.style.cursor = "grab";
+});
+
+container.addEventListener("mouseup", () => {
+    container.style.cursor = "grab";
+    pressed = false;
+});
+
+container.addEventListener("mousemove", (e) => {
+    if (!pressed) return;
+    e.preventDefault();
+
+    x = e.clientX;
+    innerContainer.style.left = `${x - startX}px`;
+});
+
+let boundItems = () => {
+    let outer = container.getBoundingClientRect();
+    let inner = innerContainer.getBoundingClientRect();
+
+    if (parseInt(innerContainer.style.left) > 0) {
+        innerContainer.style.left = "0px";
+    }
+
+    if (inner.right < outer.right) {
+        innerContainer.style.left = `-${inner.width - outer.width}px`;
+    }
+};
+
+container.addEventListener("mousemove", (e) => {
+    if (!pressed) return;
+    e.preventDefault();
+
+    x = e.clientX;
+    innerContainer.style.left = `${x - startX}px`;
+    boundItems();
+});
+</script>
+{% endblock %} #}
+{% endblock %}

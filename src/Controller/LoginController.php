@@ -17,7 +17,6 @@ class LoginController extends AbstractController
             } else {
                 $credentials = array_map('trim', $_POST);
                 $userManager = new UserManager();
-                $userManager->create('bb','bb');
                 $user = $userManager->selectOneByUsername($credentials['username']);
                 if ($user && password_verify($credentials['password'], $user['password'])) {
                     $_SESSION['isLogin'] = true;
