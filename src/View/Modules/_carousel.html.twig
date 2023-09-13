@@ -7,71 +7,69 @@
 {% endblock %}
 
 {% block content %}
-	<div class="carousel-container">
-		<div class="carousel">
-			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image">
-			{% endfor %}
-		</div>
-		<div class="carousel">
-			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image">
-			{% endfor %}
-		</div>
+	<div class="carousel" id="carousel" data-mouse-down-at="0" data-prev-percentage="0">
+		{% for image in images %}
+			<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image" id="carousel-image" draggable="false">
+		{% endfor %}
 	</div>
-{# {% block javascripts %}
-<script>
-let container = document.querySelector(".carousel-container");
-let innerContainer = document.querySelector(".carousel");
 
-let pressed = false;
-let startX;
-let x;
+	{% block javascripts %}
+		<script>
+			const track = document.getElementById("carousel");
 
-container.addEventListener("mousedown", (e) => {
-    pressed = true;
-    startX = e.clientX - innerContainer.offsetLeft;
-    container.style.cursor = "grabbing";
+const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+const handleOnUp = () => {
+track.dataset.mouseDownAt = "0";
+track.dataset.prevPercentage = track.dataset.percentage;
+}
+
+const handleOnMove = e => {
+if (track.dataset.mouseDownAt === "0") 
+return;
+
+
+const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+maxDelta = window.innerWidth / 2;
+
+const percentage = (mouseDelta / maxDelta) * -100,
+nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+track.dataset.percentage = nextPercentage;
+
+track.animate({
+transform: `translate(${nextPercentage}%, -50%)`
+}, {
+duration: 1200,
+fill: "forwards"
 });
 
-container.addEventListener("mouseenter", () => {
-    container.style.cursor = "grab";
+for (const image of track.getElementsByClassName("carousel-image")) {
+image.animate({
+objectPosition: `${
+100 + nextPercentage
+}% center`
+}, {
+duration: 1200,
+fill: "forwards"
 });
+}
+}
 
-container.addEventListener("mouseup", () => {
-    container.style.cursor = "grab";
-    pressed = false;
-});
+/* -- Had to add extra lines for touch events -- */
 
-container.addEventListener("mousemove", (e) => {
-    if (!pressed) return;
-    e.preventDefault();
+window.onmousedown = e => handleOnDown(e);
 
-    x = e.clientX;
-    innerContainer.style.left = `${x - startX}px`;
-});
+window.ontouchstart = e => handleOnDown(e.touches[0]);
 
-let boundItems = () => {
-    let outer = container.getBoundingClientRect();
-    let inner = innerContainer.getBoundingClientRect();
+window.onmouseup = e => handleOnUp(e);
 
-    if (parseInt(innerContainer.style.left) > 0) {
-        innerContainer.style.left = "0px";
-    }
+window.ontouchend = e => handleOnUp(e.touches[0]);
 
-    if (inner.right < outer.right) {
-        innerContainer.style.left = `-${inner.width - outer.width}px`;
-    }
-};
+window.onmousemove = e => handleOnMove(e);
 
-container.addEventListener("mousemove", (e) => {
-    if (!pressed) return;
-    e.preventDefault();
-
-    x = e.clientX;
-    innerContainer.style.left = `${x - startX}px`;
-    boundItems();
-});
-</script>
-{% endblock %} #}
+window.ontouchmove = e => handleOnMove(e.touches[0]);
+		</script>
+	{% endblock %}
 {% endblock %}
