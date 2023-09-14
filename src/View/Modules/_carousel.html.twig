@@ -8,70 +8,56 @@
 
 {% block content %}
 	<div class="carousel-container">
-		<div class="carousel">
+		<div class="carousel" id="carousel">
 			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image">
-			{% endfor %}
-		</div>
-		<div class="carousel">
-			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image">
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image" id="carousel-image" draggable="false">
 			{% endfor %}
 		</div>
 	</div>
-{# {% block javascripts %}
-<script>
-let container = document.querySelector(".carousel-container");
-let innerContainer = document.querySelector(".carousel");
+	{% block javascripts %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+		<script>
+			gsap.registerPlugin(ScrollTrigger);
+			let cont = document.querySelector(".carousel");
+			let scrollTween = gsap.to(cont.querySelectorAll("img"), {
+			ease: "none",
+			x: () => -(cont.scrollWidth - window.innerWidth + 2600),
+			scrollTrigger: {
+			trigger: cont,
+			pin: cont,
+			start: "center center",
+			end: () => "+=" + (
+			cont.scrollWidth - window.innerWidth
+			),
+			scrub: 6,
+			invalidateOnRefresh: true,
+			markers: true
+			}
+			});
 
-let pressed = false;
-let startX;
-let x;
-
-container.addEventListener("mousedown", (e) => {
-    pressed = true;
-    startX = e.clientX - innerContainer.offsetLeft;
-    container.style.cursor = "grabbing";
-});
-
-container.addEventListener("mouseenter", () => {
-    container.style.cursor = "grab";
-});
-
-container.addEventListener("mouseup", () => {
-    container.style.cursor = "grab";
-    pressed = false;
-});
-
-container.addEventListener("mousemove", (e) => {
-    if (!pressed) return;
-    e.preventDefault();
-
-    x = e.clientX;
-    innerContainer.style.left = `${x - startX}px`;
-});
-
-let boundItems = () => {
-    let outer = container.getBoundingClientRect();
-    let inner = innerContainer.getBoundingClientRect();
-
-    if (parseInt(innerContainer.style.left) > 0) {
-        innerContainer.style.left = "0px";
-    }
-
-    if (inner.right < outer.right) {
-        innerContainer.style.left = `-${inner.width - outer.width}px`;
-    }
-};
-
-container.addEventListener("mousemove", (e) => {
-    if (!pressed) return;
-    e.preventDefault();
-
-    x = e.clientX;
-    innerContainer.style.left = `${x - startX}px`;
-    boundItems();
-});
-</script>
-{% endblock %} #}
+			let targets = cont.querySelectorAll("img");
+			targets.forEach((img, index) => {
+			gsap.timeline({
+			ease: "none",
+			scrollTrigger: {
+			trigger: img,
+			containerAnimation: scrollTween,
+			start: "center center",
+			end: "center 20%",
+			scrub: true,
+			id: "2"
+			}
+			}).fromTo(img, {
+			rotate: 18 + 10 * index,
+			yPercent: 28 * index,
+			opacity: 0.6
+			}, {
+			rotate: 0,
+			yPercent: 0,
+			opacity: 1
+			});
+			});
+		</script>
+	{% endblock %}
 {% endblock %}

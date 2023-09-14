@@ -23,6 +23,7 @@ body {
   margin: 0 auto;
   background-color: var(--baseColor);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .loading {
   position: fixed;
@@ -110,8 +111,9 @@ body {
   justify-content: space-between;
   padding: 1em;
   flex-direction: row;
-  position: absolute;
+  position: sticky;
   top: 0;
+  z-index: 9999;
   @media (max-width: 480px) {
     margin-top: 1em;
   }
@@ -146,20 +148,24 @@ a {
   flex-direction: column;
 }
 
-#flashbook {
+#flashbook-link {
   height: auto;
-  margin-top: 5em;
+  margin : 5em 0 ;
   max-width: 50%;
   display: block;
   object-fit: contain;
-  aspect-ratio: 3/1;
   margin-left: calc((30%) / 2); 
   @media (max-width : 480px) {
   max-width: 100%;
   }
 }
 
-#flashbookSide {
+#flashbook, #flashbookSide {
+  width: 100%;
+  object-fit: contain;
+}
+
+#flashbookSide-link {
   display: none;
 }
 

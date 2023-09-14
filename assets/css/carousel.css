@@ -1,52 +1,25 @@
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100vw;
-}
-
-.carousel-container:hover .carousel {
-  animation-play-state: paused;
-}
-
 .carousel {
-  display: inline-block;
+  position: absolute;
+  width: 100%;
   overflow: hidden;
-  animation: 20s slide infinite linear;
+  user-select: none; 
+  display: flex;
+  flex-direction: row;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  gap: 2vmin;
+
 }
 
-
-.carousel-image {
-  object-fit: cover;
-  --carousel-image-width: 30vw;
-  width: var(--carousel-image-width);
-  height: 60vh;
-  margin: calc(10vw/6);
+.carousel > .carousel-image {
+    width: 35vw;
+    height: 46vmin;
+    object-fit: cover;
+    object-position: 100% center;
 }
 
-.carousel-image::after {
-    position:absolute   ;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    content: '';
-    height: 100%;
-    width: 100%;
-    background-color: rgba(255, 9, 9, 0.956); 
-    opacity: 0;
-    z-index: 9999;
+.drag-proxy {
+  visibility: hidden;
+  position: absolute;
 }
-
-.carousel-image:hover::after {
-    opacity: 1; 
-  }
-
-@keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  

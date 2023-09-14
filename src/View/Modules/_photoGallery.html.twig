@@ -7,13 +7,17 @@
 
 {% block content %}
 	{% if folder is defined  and folder =='tattoo' %}
+		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbook-link">
 			<img src="assets\Images\lienflashbook.png" alt="flashbook" class="flashbook" id="flashbook">
-			{% else %}
-			<div class="flashbook-margin"></div>
+		</a>
+	{% else %}
+		<div class="flashbook-margin"></div>
 	{% endif %}
 	<div class="front-gallery-container" id='front-gallery-container'>
 		{% if folder is defined  and folder =='tattoo' %}
-			<img src="assets\Images\lienflashbook.png" alt="flashbook-side" class="flashbook" id="flashbookSide">
+			<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbookSide-link">
+				<img src="assets\Images\lienflashbook.png" alt="flashbook-side" class="flashbook" id="flashbookSide">
+			</a>
 		{% endif %}
 		<div class="grid" id='grid'>
 			{% for image in images %}
@@ -22,35 +26,11 @@
 		</div>
 	</div>
 
-	{% if folder is defined  and folder =='tattoo' %}
-		{% block javascripts %}
-			<script>
-				const container = document.getElementById('front-gallery-container');
-				const flashbookSide = document.getElementById('flashbookSide');
-				const grid = document.getElementById('grid');
-
-				function changeCssOnScroll() {
-				if (window.scrollY > window.innerHeight /3 ) {
-				container.style.flexDirection = 'row';
-				flashbookSide.style.alignSelf = 'start';
-				flashbookSide.style.position = 'sticky';
-				flashbookSide.style.display = 'block';
-				flashbookSide.style.top = '50%';
-				flashbookSide.style.maxWidth = '30%';
-				flashbookSide.style.marginLeft = '5%';
-				flashbookSide.style.aspectRatio = '5/1';
-				grid.style.gridTemplateColumns = 'repeat(2, minmax(120px, 45%))';
-				} else {
-				container.removeAttribute('style');
-				flashbookSide.removeAttribute('style');
-				grid.removeAttribute('style');
-				flashbook.style.position = 'relative';
-				}
-				}
-
-				window.addEventListener('scroll', changeCssOnScroll);
-			</script>
-		{% endblock %}
-	{% endif %}
+	{% block javascripts %}
+		{{ parent() }}
+		{% if folder is defined  and folder =='tattoo' %}
+			<script src="assets/scripts/tattoo.js"></script>
+		{% endif %}
+	{% endblock %}
 
 {% endblock %}
