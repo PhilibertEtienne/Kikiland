@@ -7,69 +7,57 @@
 {% endblock %}
 
 {% block content %}
-	<div class="carousel" id="carousel" data-mouse-down-at="0" data-prev-percentage="0">
-		{% for image in images %}
-			<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image" id="carousel-image" draggable="false">
-		{% endfor %}
+	<div class="carousel-container">
+		<div class="carousel" id="carousel">
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image" id="carousel-image" draggable="false">
+			{% endfor %}
+		</div>
 	</div>
-
 	{% block javascripts %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 		<script>
-			const track = document.getElementById("carousel");
+			gsap.registerPlugin(ScrollTrigger);
+			let cont = document.querySelector(".carousel");
+			let scrollTween = gsap.to(cont.querySelectorAll("img"), {
+			ease: "none",
+			x: () => -(cont.scrollWidth - window.innerWidth + 2600),
+			scrollTrigger: {
+			trigger: cont,
+			pin: cont,
+			start: "center center",
+			end: () => "+=" + (
+			cont.scrollWidth - window.innerWidth
+			),
+			scrub: 6,
+			invalidateOnRefresh: true,
+			markers: true
+			}
+			});
 
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
-
-const handleOnUp = () => {
-track.dataset.mouseDownAt = "0";
-track.dataset.prevPercentage = track.dataset.percentage;
-}
-
-const handleOnMove = e => {
-if (track.dataset.mouseDownAt === "0") 
-return;
-
-
-const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-maxDelta = window.innerWidth / 2;
-
-const percentage = (mouseDelta / maxDelta) * -100,
-nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-
-track.dataset.percentage = nextPercentage;
-
-track.animate({
-transform: `translate(${nextPercentage}%, -50%)`
-}, {
-duration: 1200,
-fill: "forwards"
-});
-
-for (const image of track.getElementsByClassName("carousel-image")) {
-image.animate({
-objectPosition: `${
-100 + nextPercentage
-}% center`
-}, {
-duration: 1200,
-fill: "forwards"
-});
-}
-}
-
-/* -- Had to add extra lines for touch events -- */
-
-window.onmousedown = e => handleOnDown(e);
-
-window.ontouchstart = e => handleOnDown(e.touches[0]);
-
-window.onmouseup = e => handleOnUp(e);
-
-window.ontouchend = e => handleOnUp(e.touches[0]);
-
-window.onmousemove = e => handleOnMove(e);
-
-window.ontouchmove = e => handleOnMove(e.touches[0]);
+			let targets = cont.querySelectorAll("img");
+			targets.forEach((img, index) => {
+			gsap.timeline({
+			ease: "none",
+			scrollTrigger: {
+			trigger: img,
+			containerAnimation: scrollTween,
+			start: "center center",
+			end: "center 20%",
+			scrub: true,
+			id: "2"
+			}
+			}).fromTo(img, {
+			rotate: 18 + 10 * index,
+			yPercent: 28 * index,
+			opacity: 0.6
+			}, {
+			rotate: 0,
+			yPercent: 0,
+			opacity: 1
+			});
+			});
 		</script>
 	{% endblock %}
 {% endblock %}

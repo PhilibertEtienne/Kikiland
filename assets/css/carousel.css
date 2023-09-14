@@ -1,16 +1,25 @@
 .carousel {
-  display: flex;
-  gap: 4vmin;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(0%, -50%); 
+  width: 100%;
+  overflow: hidden;
   user-select: none; 
+  display: flex;
+  flex-direction: row;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  gap: 2vmin;
+
 }
 
 .carousel > .carousel-image {
-    width: 35vmin;
+    width: 35vw;
     height: 46vmin;
     object-fit: cover;
     object-position: 100% center;
+}
+
+.drag-proxy {
+  visibility: hidden;
+  position: absolute;
 }
