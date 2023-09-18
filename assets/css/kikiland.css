@@ -92,7 +92,6 @@ body {
   margin: 0 10px 0 10px;
 }
 
-
 .nav-end {
   display: flex;
   flex-direction: row;
@@ -106,7 +105,6 @@ body {
   background-color: var(--baseColor);
   max-width: 100%;
   width: 100vw;
-  height: 5em;
   align-items: center;
   justify-content: space-between;
   padding: 1em;
@@ -150,17 +148,18 @@ a {
 
 #flashbook-link {
   height: auto;
-  margin : 5em 0 ;
+  margin: 5em 0;
   max-width: 50%;
   display: block;
   object-fit: contain;
-  margin-left: calc((30%) / 2); 
-  @media (max-width : 480px) {
-  max-width: 100%;
+  margin-left: calc((30%) / 2);
+  @media (max-width: 480px) {
+    max-width: 100%;
   }
 }
 
-#flashbook, #flashbookSide {
+#flashbook,
+#flashbookSide {
   width: 100%;
   object-fit: contain;
 }
@@ -223,7 +222,6 @@ a {
     flex-direction: column;
   }
 }
-
 
 .fade-in {
   opacity: 0;

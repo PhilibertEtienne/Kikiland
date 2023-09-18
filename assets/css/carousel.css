@@ -1,25 +1,32 @@
-.carousel {
-  position: absolute;
-  width: 100%;
-  overflow: hidden;
-  user-select: none; 
-  display: flex;
-  flex-direction: row;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  gap: 2vmin;
 
+#sticky {
+  position: sticky;
 }
 
-.carousel > .carousel-image {
-    width: 35vw;
-    height: 46vmin;
-    object-fit: cover;
-    object-position: 100% center;
+.slider {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-.drag-proxy {
-  visibility: hidden;
-  position: absolute;
+.slider-container {
+  height:100% ;
+  width:100%;
+  overflow:hidden;
+}
+
+.slider > .slider-image {
+	padding: 0;
+	margin: 0;
+	width: 
+  20rem;
+	height: 18rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+  object-position: 100% center;
+  object-fit: cover;
 }

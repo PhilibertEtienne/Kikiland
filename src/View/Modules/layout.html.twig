@@ -14,12 +14,12 @@
 
 {% block body %}
 	{% include 'Modules/_header.html.twig' %}
-	<div id="content">
-		{% block content %}
+	{% block content %}
+		<div id="content">
 			{% block javascripts %}
 				{# <script src="assets/scripts/header.js"></script> #}
 			{% endblock %}
-		{% endblock %}
-	</div>
+		</div>
+	{% endblock %}
 {% endblock %}
 {% include 'Modules/_footer.html.twig' %}
