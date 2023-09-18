@@ -12,9 +12,14 @@
 			{% for image in images %}
 				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image">
 			{% endfor %}
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image">
+			{% endfor %}
 		</div>
-		<button class="prev">Prev</button>
-		<button class="next">Next</button>
+		<div class="button-container">
+			<button class="prev">Prev</button>
+			<button class="next">Next</button>
+		</div>
 	</div>
 	{% block javascripts %}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
