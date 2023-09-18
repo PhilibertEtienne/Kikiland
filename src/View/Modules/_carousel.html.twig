@@ -7,56 +7,30 @@
 {% endblock %}
 
 {% block content %}
-	<div class="carousel-container">
-		<div class="carousel" id="carousel">
+	<div class="slider-container" id="slider-container">
+		<div class="slider" id="slider">
 			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="carousel-image" id="carousel-image" draggable="false">
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image">
 			{% endfor %}
+			{% for image in images %}
+				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image">
+			{% endfor %}
+		</div>
+		<div class="button-container">
+			<button class="prev">Prev</button>
+			<button class="next">Next</button>
 		</div>
 	</div>
 	{% block javascripts %}
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+		<script src="assets/scripts/objets.js"></script>
 		<script>
-			gsap.registerPlugin(ScrollTrigger);
-			let cont = document.querySelector(".carousel");
-			let scrollTween = gsap.to(cont.querySelectorAll("img"), {
-			ease: "none",
-			x: () => -(cont.scrollWidth - window.innerWidth + 2600),
-			scrollTrigger: {
-			trigger: cont,
-			pin: cont,
-			start: "center center",
-			end: () => "+=" + (
-			cont.scrollWidth - window.innerWidth
-			),
-			scrub: 6,
-			invalidateOnRefresh: true,
-			markers: true
+			document.addEventListener("DOMContentLoaded", function () {
+			let footer = document.querySelector('.footer');
+			if (footer) {
+			footer.style.position = 'sticky';
 			}
-			});
-
-			let targets = cont.querySelectorAll("img");
-			targets.forEach((img, index) => {
-			gsap.timeline({
-			ease: "none",
-			scrollTrigger: {
-			trigger: img,
-			containerAnimation: scrollTween,
-			start: "center center",
-			end: "center 20%",
-			scrub: true,
-			id: "2"
-			}
-			}).fromTo(img, {
-			rotate: 18 + 10 * index,
-			yPercent: 28 * index,
-			opacity: 0.6
-			}, {
-			rotate: 0,
-			yPercent: 0,
-			opacity: 1
-			});
 			});
 		</script>
 	{% endblock %}
