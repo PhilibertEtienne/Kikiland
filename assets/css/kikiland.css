@@ -112,7 +112,7 @@ body {
   justify-content: space-between;
   padding: 1em;
   flex-direction: row;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 9999;
   @media (max-width: 480px) {

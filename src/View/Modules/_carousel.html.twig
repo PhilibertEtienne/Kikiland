@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="carousel-page">
 	<div class="slider-container" id="slider-container">
 		<div class="slider" id="slider">
 			{% for image in images %}
@@ -19,6 +20,7 @@
 		<div class="button-container">
 			<button class="prev">Prev</button>
 			<button class="next">Next</button>
+		</div>
 		</div>
 	</div>
 	{% block javascripts %}
