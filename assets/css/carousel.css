@@ -46,28 +46,30 @@ body {
 }
 
 .button-container {
-  display: flex;
   position: absolute;
-  bottom: calc(100vh / 10);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  @media (max-width: 720px) {
-    flex-direction: row;
-  }
+  width: 34vh;
+  height: 50vh;
+  opacity: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.button-container:hover {
+	opacity: 1;
+  transition: 0.5s opacity;
+}
+
 .next,
 .prev {
   padding: 0.5rem 1rem;
   border-radius: 30%;
   background-color: rgb(77, 248, 137);
   box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.89);
-  margin: 2rem;
   cursor: pointer;
-}
-
-.next:hover,
-.prev:hover {
-  padding: 1rem;
 }
 
 .slider > .slider-image:-webkit-full-screen {
