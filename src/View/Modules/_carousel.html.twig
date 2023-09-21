@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="carousel-page">
+<div class="slider-page">
 	<div class="slider-container" id="slider-container">
 		<div class="slider" id="slider">
 			{% for image in images %}
@@ -31,7 +31,24 @@
 			if (footer) {
 			footer.style.position = 'sticky';
 			}
+			
+			let buttonContainer = document.querySelector(".button-container");
+let buttons = document.querySelectorAll(".next, .prev");
+
+buttonContainer.addEventListener("mouseover", showButtons);
+
+function showButtons(event) {
+	console.log('pizza');
+  buttons.forEach(button => {
+    button.style.opacity = 1;
+  });
+}
 			});
+
+
+
+
+
 		</script>
 	{% endblock %}
 {% endblock %}

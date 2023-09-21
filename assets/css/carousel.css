@@ -11,7 +11,7 @@ body {
   position: sticky;
 }
 
-.carousel-page {
+.slider-page {
   height: calc(100vh+3000px);
   width: 100%;
 }
@@ -52,15 +52,11 @@ body {
   transform: translate(-50%, -50%);
   width: 34vh;
   height: 50vh;
-  opacity: 0;
+  opacity: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.button-container:hover {
-	opacity: 1;
-  transition: 0.5s opacity;
+  pointer-events: none;
 }
 
 .next,
@@ -70,6 +66,8 @@ body {
   background-color: rgb(77, 248, 137);
   box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.89);
   cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
 }
 
 .slider > .slider-image:-webkit-full-screen {
