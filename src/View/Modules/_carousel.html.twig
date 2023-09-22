@@ -1,37 +1,57 @@
 {% extends 'Modules/layout.html.twig' %}
 
 {% block head %}
-	{{ parent() }}
-	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/carousel.css">
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/carousel.css" />
 {% endblock %}
 
 {% block content %}
-<div class="carousel-page">
-	<div class="slider-container" id="slider-container">
-		<div class="slider" id="slider">
-			{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image">
-			{% endfor %}
-		</div>
-		<div class="button-container">
-			<button class="prev">Prev</button>
-			<button class="next">Next</button>
-		</div>
-	</div>
-</div>
-	{% block javascripts %}
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-		<script src="assets/scripts/objets.js"></script>
-		<script src="assets/scripts/imageClick.js"></script>
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-			let footer = document.querySelector('.footer');
-			if (footer) {
-			footer.style.position = 'sticky';
-			}
-			});
-		</script>
-	{% endblock %}
+  <div class="slider-page">
+    <div class="slider-container" id="slider-container">
+      <div class="slider" id="slider">
+        {% for image in images %}
+          <img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image" />
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+      <div class="button-container">
+        <button class="prev">Prev</button>
+        <button class="next">Next</button>
+      </div>
+  {% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/scripts/objets.js"></script>
+    <script src="assets/scripts/imageClick.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        let footer = document.querySelector('.footer')
+        if (footer) {
+          footer.style.position = 'sticky'
+        }
+      
+        {# let buttonContainer = document.querySelector('.button-container')
+        let buttons = document.querySelectorAll('.next, .prev')
+        buttonContainer.addEventListener('click',function () { buttonContainer.style.pointerEvents = "none"})
+
+        buttonContainer.addEventListener('mouseenter', showButtons)
+        buttonContainer.addEventListener('mouseleave', hideButtons)
+      
+        function showButtons(event) {
+          console.log('pizza')
+          buttons.forEach((button) => {
+            button.style.opacity = 1
+          })
+        }
+        function hideButtons(event) {
+                    console.log('guigui')
+                    buttons.forEach((button) => {
+            button.style.opacity = 0
+          })
+        }  #}
+      })
+    </script>
+  {% endblock %}
 {% endblock %}

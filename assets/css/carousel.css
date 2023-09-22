@@ -11,7 +11,7 @@ body {
   position: sticky;
 }
 
-.carousel-page {
+.slider-page {
   height: calc(100vh+3000px);
   width: 100%;
 }
@@ -46,21 +46,25 @@ body {
 }
 
 .button-container {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 34vh;
-  height: 50vh;
-  opacity: 0;
+  height: 100vh;
+  opacity: 1;
   display: flex;
+  width: calc(30vh + 4rem);
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 }
 
-.button-container:hover {
-	opacity: 1;
-  transition: 0.5s opacity;
+.slider:hover {
+  .next,
+  .prev {
+    opacity: 1;
+    z-index: 9999999999;
+  }
 }
 
 .next,
@@ -70,6 +74,9 @@ body {
   background-color: rgb(77, 248, 137);
   box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.89);
   cursor: pointer;
+  pointer-events: auto;
+  opacity: 1;
+  position: sticky;
 }
 
 .slider > .slider-image:-webkit-full-screen {
