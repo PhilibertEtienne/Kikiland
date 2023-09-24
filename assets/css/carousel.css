@@ -59,11 +59,9 @@ body {
   pointer-events: none;
 }
 
-.slider:hover {
-  .next,
-  .prev {
-    opacity: 1;
-    z-index: 9999999999;
+.button-container:hover {
+  .button-container {
+    visibility: visible;
   }
 }
 
@@ -77,6 +75,7 @@ body {
   pointer-events: auto;
   opacity: 1;
   position: sticky;
+  z-index: 99999999999999999999;
 }
 
 .slider > .slider-image:-webkit-full-screen {
