@@ -19,7 +19,11 @@
 				<img src="assets\Images\lienflashbook.png" alt="flashbook-side" class="flashbook" id="flashbookSide">
 			</a>
 		{% endif %}
+		{% if folder is defined  and folder =='tattoo' %}
 		<div class="grid" id='grid'>
+		{% else %}
+		<div class="grid-illustration" id='grid-illustration'>
+		{% endif %}
 			{% for image in images %}
 				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image fade-in" loading="lazy">
 			{% endfor %}

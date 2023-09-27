@@ -10,11 +10,10 @@
   <div class="slider-page">
     <div class="slider-container" id="slider-container">
       <div class="slider" id="slider">
-        {# {% for i in 0..2 %} #}
           {% for image in images %}
             <img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image" />
           {% endfor %}
-        {# {% endfor %} #}
+
       </div>
     </div>
   </div>

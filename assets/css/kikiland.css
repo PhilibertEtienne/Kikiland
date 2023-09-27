@@ -195,6 +195,16 @@ a {
     margin-top: 10em;
   }
 }
+.grid-illustration {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 35%));
+  grid-gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 5em;
+  @media (max-width: 480px) {
+    margin-top: 10em;
+  }
+}
 
 .grid .grid-item:nth-child(2n + 1) img,
 .grid .grid-item:nth-child(2n + 1),
