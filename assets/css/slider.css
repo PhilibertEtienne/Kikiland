@@ -5,11 +5,7 @@
 .slider-page {
   height: 80vh;
   width: 100vw;
-  /* overflow: hidden; */
   position: absolute;
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 }
 
 .slider-container {
@@ -30,16 +26,22 @@
   position: relative;
   top: 0px;
   left: 0px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .slider-image {
   width: 20vw;
   padding: 20px;
   border-radius: 40px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   @media (max-width: 768px) {
     width: 33vw;
     padding: 20px;
   }
+}
+.slide-transition {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .button-container {
@@ -56,5 +58,4 @@
 .prev {
   padding: 10px;
   border-radius: 10px;
-  background-color: aqua;
 }
