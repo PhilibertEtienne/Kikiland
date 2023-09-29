@@ -32,7 +32,7 @@
 
 	{% block javascripts %}
 		{{ parent() }}
-		{% if folder is defined  and folder =='tattoo' %}
+		{% if folder is defined  and folder =='tattoo'%}
 			<script src="assets/scripts/tattoo.js"></script>
 		{% endif %}
 	{% endblock %}
