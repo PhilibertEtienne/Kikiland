@@ -29,6 +29,7 @@ function updateSlides() {
   let fullWidth = window.innerWidth / 2;
   slides.forEach((slide, index) => {
     let imagePosition = slide.getBoundingClientRect().x;
+    rotationAnimation(slide);
     if (
       (imagePosition >= smallWidth && imagePosition < mediumWidth) ||
       (imagePosition > fullWidth && imagePosition <= 5 * smallWidth)
@@ -38,7 +39,6 @@ function updateSlides() {
     } else if (imagePosition >= mediumWidth && imagePosition <= fullWidth) {
       slide.style.transform = "scale(1)";
       slide.style.opacity = "1";
-      // currentSlideIndex = index + slideOnEachSide;
     } else {
       slide.style.transform = "scale(0.3)";
       slide.style.opacity = "0.3";
@@ -47,7 +47,6 @@ function updateSlides() {
 }
 
 // Button sliding logic
-
 let slidercontainer = document.getElementById("slider-container");
 let nextbutton = document.querySelector(".next");
 let prevbutton = document.querySelector(".prev");
@@ -69,12 +68,9 @@ prevbutton.onclick = () => {
   updateSlides();
 };
 
-// scrollSlides();
-
+// scrolling logic;
 slider.addEventListener("wheel", (evt) => {
   evt.preventDefault();
-  console.log(currentSlideIndex);
-  console.log(lastSlideIndex);
   const scrollDirection = evt.deltaY > 0 ? 1 : -1;
   slider.style.left =
     parseInt(slider.style.left || 0) +
@@ -92,22 +88,28 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", () => {
     updateSlides();
   });
-  window.addEventListener("scroll", () => {
-    updateSlides();
-  });
 });
 
+
+// slider reset logic
 function resetSlider() {
   if (currentSlideIndex - 1 > lastSlideIndex + slideOnEachSide) {
     slider.style.left = "0px";
     currentSlideIndex = slideOnEachSide + 1;
-    console.log("reset1");
   }
-  if (currentSlideIndex <= slideOnEachSide ) {
+  if (currentSlideIndex <= slideOnEachSide) {
     const maxLeftPosition = lastSlideIndex * scrollAmountVW;
     slider.style.left = -(maxLeftPosition * window.innerWidth) / 100 + "px";
-    currentSlideIndex = lastSlideIndex + slideOnEachSide  + 1; 
-    console.log("breakpoint");
-    console.log(maxLeftPosition);
+    currentSlideIndex = lastSlideIndex + slideOnEachSide + 1;
   }
+}
+
+
+//rotation animation logic
+
+function rotationAnimation(element) {
+  element.classList.remove('animate');
+  setTimeout(() => {
+    element.classList.add('animate');
+  }, 0);
 }

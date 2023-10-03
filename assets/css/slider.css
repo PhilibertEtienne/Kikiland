@@ -29,14 +29,12 @@
   padding: 20px;
   border-radius: 40px;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,rotate 0.3s ease-in-out;
   @media (max-width: 768px) {
     width: 33vw;
     padding: 20px;
   }
-}
-.slide-transition {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
 }
 
 .button-container {
@@ -56,8 +54,30 @@
 }
 
 
+.animate {
+  -webkit-animation: rotation 0.3s 1;
+  animation: rotation 0.3s 1;
+  -webkit-animation-fill-mode: ease-out;
+  animation-fill-mode: ease-out;
+}
+@keyframes rotation {
+  from {
+    rotate: -45deg;
+  }
+  to {
+    rotate: 0;
+  }
+}
+@keyframes translateSlide {
+  from {
+    rotate: -45deg;
+  }
+  to {
+    rotate: 0;
+  }
+}
 
- /* CSS SVG */
+/* CSS SVG */
 /* .fleur {
   height: 200vh;
   position: fixed;
