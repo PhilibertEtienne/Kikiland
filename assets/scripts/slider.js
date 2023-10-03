@@ -103,11 +103,11 @@ function resetSlider() {
     currentSlideIndex = slideOnEachSide + 1;
     console.log("reset1");
   }
-  // if (currentSlideIndex <= slideOnEachSide + 1) {
-  //   const maxLeftPosition = lastSlideIndex * scrollAmountVW;
-  //   slider.style.left = -(maxLeftPosition * window.innerWidth) / 100 + "px";
-  //   currentSlideIndex = lastSlideIndex;
-  //   console.log("breakpoint");
-  //   console.log(maxLeftPosition);
-  // }
+  if (currentSlideIndex <= slideOnEachSide ) {
+    const maxLeftPosition = lastSlideIndex * scrollAmountVW;
+    slider.style.left = -(maxLeftPosition * window.innerWidth) / 100 + "px";
+    currentSlideIndex = lastSlideIndex + slideOnEachSide  + 1; 
+    console.log("breakpoint");
+    console.log(maxLeftPosition);
+  }
 }
