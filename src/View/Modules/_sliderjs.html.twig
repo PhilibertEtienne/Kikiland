@@ -1,0 +1,26 @@
+{% extends 'Modules/layout.html.twig' %}
+
+{% block head %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/assets/css/admin.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/slider.css" />
+{% endblock %}
+
+{% block content %}
+  <div class="slider-page" id="slider-page">
+    <div class="slider-container" id="slider-container">
+      <div class="slider" id="slider">
+        {% for image in images %}
+          <img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="slider-image" id="slider-image" />
+        {% endfor %}
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="prev">Prev</button>
+      <button class="next">Next</button>
+    </div>
+  </div>
+  {% block javascripts %}
+    <script src="assets\scripts\slider.js"></script>
+  {% endblock %}
+{% endblock %}

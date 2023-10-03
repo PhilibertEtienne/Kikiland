@@ -1,0 +1,76 @@
+.slider-page {
+  height: 80vh;
+  width: 100vw;
+  position: absolute;
+}
+
+.slider-container {
+  height: 100%;
+  width: 100%;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.slider-image {
+  width: 20vw;
+  padding: 20px;
+  border-radius: 40px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  @media (max-width: 768px) {
+    width: 33vw;
+    padding: 20px;
+  }
+}
+.slide-transition {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  width: 20vw;
+}
+
+.next,
+.prev {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+
+ /* CSS SVG */
+/* .fleur {
+  height: 200vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg path {
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  stroke-width: 1;
+  stroke: #000;
+  fill: none;
+  transition: stroke-dashoffset 0.5s;
+} */
