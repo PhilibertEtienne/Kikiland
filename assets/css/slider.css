@@ -22,9 +22,6 @@
   position: relative;
   top: 0px;
   left: 0px;
-  overflow: hidden;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
 .slider-image {
