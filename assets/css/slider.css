@@ -7,10 +7,6 @@
 .slider-container {
   height: 100%;
   width: 100%;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +18,16 @@
   position: relative;
   top: 0px;
   left: 0px;
+  transition: transform 0.3s ease-in-out;
+  /* z-index: 2; */
+}
+.slider2 {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 
 .slider-image {
@@ -29,12 +35,11 @@
   padding: 20px;
   border-radius: 40px;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,rotate 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   @media (max-width: 768px) {
     width: 33vw;
     padding: 20px;
   }
-
 }
 
 .button-container {
@@ -45,6 +50,7 @@
   display: flex;
   justify-content: space-between;
   width: 20vw;
+  z-index: 3;
 }
 
 .next,
@@ -53,13 +59,17 @@
   border-radius: 10px;
 }
 
-
 .animate {
   -webkit-animation: rotation 0.3s 1;
   animation: rotation 0.3s 1;
-  -webkit-animation-fill-mode: ease-out;
-  animation-fill-mode: ease-out;
+  -webkit-animation-fill-mode: ease-in-out;
+  animation-fill-mode: ease-in-out;
 }
+
+.no-transition {
+  transition: none;
+}
+
 @keyframes rotation {
   from {
     rotate: -45deg;
