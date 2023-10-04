@@ -3,7 +3,6 @@ const slider2 = document.getElementById("slider2");
 let slides = document.querySelectorAll(".slider-image");
 const sliderPage = document.getElementById("slider-page");
 let translateX = 0;
-let translateX2 = "-100%";
 
 //Slides cloning
 let slideOnEachSide = 2;

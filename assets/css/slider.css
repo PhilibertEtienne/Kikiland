@@ -19,15 +19,6 @@
   top: 0px;
   left: 0px;
   transition: transform 0.3s ease-in-out;
-  /* z-index: 2; */
-}
-.slider2 {
-  display: flex;
-  width: 100%;
-  position: absolute;
-  top: 0px;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
 }
 
 .slider-image {
