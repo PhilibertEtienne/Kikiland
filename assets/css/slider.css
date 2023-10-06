@@ -1,12 +1,14 @@
+:root {
+  --slideWidth: 20vw;
+  --slideHeight: 80vh;
+  --sideSlideNumber: 2;
+}
+
 .slider-page {
   height: 80vh;
   width: 100vw;
-  position: absolute;
-}
-
-.slider-container {
-  height: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,24 +17,37 @@
 .slider {
   display: flex;
   width: 100%;
+  height: var(--slideHeight);
   position: relative;
   top: 0px;
   left: 0px;
-  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
 }
 
 .slider-image {
-  width: 20vw;
+  width: var(--slideWidth);
+  height: 100%;
+  display: inline-block;
   padding: 20px;
   border-radius: 40px;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  display: none;
+}
+
+.slider-image-dissapear {
+  width: var(--slideWidth);
+  height: 100%;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 40px;
+  object-fit: cover;
+  z-index: 99999;
   @media (max-width: 768px) {
     width: 33vw;
     padding: 20px;
   }
 }
-
 .button-container {
   position: absolute;
   top: 50%;
@@ -41,7 +56,6 @@
   display: flex;
   justify-content: space-between;
   width: 20vw;
-  z-index: 3;
 }
 
 .next,
@@ -50,31 +64,79 @@
   border-radius: 10px;
 }
 
-.animate {
-  -webkit-animation: rotation 0.3s 1;
-  animation: rotation 0.3s 1;
-  -webkit-animation-fill-mode: ease-in-out;
-  animation-fill-mode: ease-in-out;
+@media (max-width: 768px) {
+  :root{
+    --slideWidth: 33vw;
+    --sideSlideNumber: 1;
+  }
+}
+@media (max-height: 768px) {
+  :root{
+    --slideWidth: 33vw;
+    --sideSlideNumber: 1;
+  }
 }
 
-.no-transition {
-  transition: none;
-}
-
-@keyframes rotation {
+@keyframes imageSlideRightToMid {
   from {
-    rotate: -45deg;
+    transform: translateX(20vw) scale(0.6);
+    opacity: (0.6);
   }
   to {
-    rotate: 0;
+    transform: translateX(0) scale(1);
+    opacity: (1);
   }
 }
-@keyframes translateSlide {
+@keyframes imageSlideRightToFirstRight {
   from {
-    rotate: -45deg;
+    transform: translateX(20vw) scale(0.3);
+    opacity: 0.3;
   }
   to {
-    rotate: 0;
+    transform: translateX(0) scale(0.6);
+    opacity: (0.6);
+  }
+}
+@keyframes imageSlideRightToRight {
+  from {
+    transform: translateX(20vw) scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideMidToLeft {
+  from {
+    transform: translateX(20vw) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: 0.6;
+  }
+}
+@keyframes imageSlideLeftToLeft {
+  from {
+    transform: translateX(20vw) scale(0.6);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideLeftToNone {
+  from {
+    transform: translateX(calc(var(--sideSlideNumber) * var(--slideWidth) * -1))
+      scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(calc(-2 * var(--slideWidth) * var(--sideSlideNumber)))
+      scale(0.3);
+    opacity: 0;
   }
 }
 
