@@ -43,10 +43,6 @@
   border-radius: 40px;
   object-fit: cover;
   z-index: 99999;
-  @media (max-width: 768px) {
-    width: 33vw;
-    padding: 20px;
-  }
 }
 .button-container {
   position: absolute;
@@ -65,13 +61,13 @@
 }
 
 @media (max-width: 768px) {
-  :root{
+  :root {
     --slideWidth: 33vw;
     --sideSlideNumber: 1;
   }
 }
 @media (max-height: 768px) {
-  :root{
+  :root {
     --slideWidth: 33vw;
     --sideSlideNumber: 1;
   }
@@ -87,10 +83,31 @@
     opacity: (1);
   }
 }
+@keyframes imageSlideLeftToMid {
+  from {
+    transform: translateX(-20vw) scale(0.6);
+    opacity: (0.6);
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: (1);
+  }
+}
+
 @keyframes imageSlideRightToFirstRight {
   from {
     transform: translateX(20vw) scale(0.3);
     opacity: 0.3;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: (0.6);
+  }
+}
+@keyframes imageSlideMidToFirstRight {
+  from {
+    transform: translateX(-20vw) scale(1);
+    opacity: 1;
   }
   to {
     transform: translateX(0) scale(0.6);
@@ -107,6 +124,16 @@
     opacity: 0.3;
   }
 }
+@keyframes imageSlideMidRightToRight {
+  from {
+    transform: translateX(-20vw) scale(0.6);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
 @keyframes imageSlideMidToLeft {
   from {
     transform: translateX(20vw) scale(1);
@@ -117,10 +144,30 @@
     opacity: 0.6;
   }
 }
-@keyframes imageSlideLeftToLeft {
+@keyframes imageSlideMidLeftToLeft {
   from {
     transform: translateX(20vw) scale(0.6);
     opacity: 0.6;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideLeftToLeftMid {
+  from {
+    transform: translateX(-20vw) scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: 0.6;
+  }
+}
+@keyframes imageSlideNoneToLeft {
+  from {
+    transform: translateX(-20vw) scale(0);
+    opacity: 0;
   }
   to {
     transform: translateX(0) scale(0.3);
@@ -135,6 +182,18 @@
   }
   to {
     transform: translateX(calc(-2 * var(--slideWidth) * var(--sideSlideNumber)))
+      scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes imageSlideRightToNone {
+  from {
+    transform: translateX(calc(var(--sideSlideNumber) * var(--slideWidth)))
+      scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(calc(2 * var(--slideWidth) * var(--sideSlideNumber)))
       scale(0.3);
     opacity: 0;
   }
