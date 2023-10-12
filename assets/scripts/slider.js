@@ -1,113 +1,149 @@
 const slider = document.getElementById("slider");
-let slides = document.querySelectorAll(".slider-image");
+const slider2 = document.getElementById("slider2");
+const slides = document.querySelectorAll(".slider-image");
 const sliderPage = document.getElementById("slider-page");
+let cssVariables = window.getComputedStyle(document.documentElement);
+let slideDirection = 1;
 
-//Slides cloning
+//Fetch img path from Twig
+var jsonData = document.getElementById("images").getAttribute("data-images");
+let imageArray = JSON.parse(jsonData);
+
+// Reset imageArray function
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+//Slider media queries logic
 let slideOnEachSide = 2;
-let currentSlideIndex = slideOnEachSide + 1;
-let lastSlideIndex = slides.length - 1;
+function getSlideOnEachSideNumber() {
+  slideOnEachSide = parseInt(
+    cssVariables.getPropertyValue("--sideSlideNumber")
+  );
+}
+getSlideOnEachSideNumber();
 
-const firstSlideClone = slides[0].cloneNode(true);
-const secondSlideClone = slides[1].cloneNode(true);
-const thirdSlideClone = slides[2].cloneNode(true);
-const lastSlideClone = slides[slides.length - 1].cloneNode(true);
-const secondLastSlideClone = slides[slides.length - 2].cloneNode(true);
-const thirdLastSlideClone = slides[slides.length - 3].cloneNode(true);
+let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
 
-slider.appendChild(firstSlideClone);
-slider.appendChild(secondSlideClone);
-slider.appendChild(thirdSlideClone);
-slider.insertBefore(thirdLastSlideClone, slides[0]);
-slider.insertBefore(secondLastSlideClone, slides[0]);
-slider.insertBefore(lastSlideClone, slides[0]);
-slides = document.querySelectorAll(".slider-image");
+function displayImages() {
+  removeAllChildNodes(slider);
+  for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
+    var imgFromArray = document.createElement("img");
+    imgFromArray.src = "/assets/Images/objets/" + imageArray[i];
+    imgFromArray.classList.add("slider-image");
+    imgFromArray.style.margin = `${scrollAmountVW}vw`;
+    imgFromArray.style.display = "inline-block";
+    slider.appendChild(imgFromArray);
+    slider.offsetHeight;
 
-// Slides sizing logic
-function updateSlides() {
-  let smallWidth = window.innerWidth / 6;
-  let mediumWidth = window.innerWidth / 3;
-  let fullWidth = window.innerWidth / 2;
-  slides.forEach((slide, index) => {
-    let imagePosition = slide.getBoundingClientRect().x;
-    if (
-      (imagePosition >= smallWidth && imagePosition < mediumWidth) ||
-      (imagePosition > fullWidth && imagePosition <= 5 * smallWidth)
-    ) {
-      slide.style.transform = "scale(0.6)";
-      slide.style.opacity = "0.6";
-    } else if (imagePosition >= mediumWidth && imagePosition <= fullWidth) {
-      slide.style.transform = "scale(1)";
-      slide.style.opacity = "1";
-      // currentSlideIndex = index + slideOnEachSide;
-    } else {
-      slide.style.transform = "scale(0.3)";
-      slide.style.opacity = "0.3";
+    //apply sizing and animation logic
+    //Mid slide
+    if (i === slideOnEachSide) {
+      if (slideDirection === 1) {
+        imgFromArray.style.animation =
+          "imageSlideRightToMid 0.3s ease-in forwards";
+      } else {
+        imgFromArray.style.animation =
+          "imageSlideLeftToMid 0.3s ease-in forwards";
+      }
+      //Left Mid slide
+    } else if (i - slideOnEachSide === -1) {
+      if (slideDirection === 1) {
+        imgFromArray.style.animation =
+          "imageSlideMidToLeft 0.3s ease-in forwards";
+      } else {
+        imgFromArray.style.animation =
+          "imageSlideLeftToLeftMid 0.3s ease-in forwards";
+      }
+    } else if (i - slideOnEachSide === 1) {
+      if (slideDirection === 1) {
+        imgFromArray.style.animation =
+          "imageSlideRightToFirstRight 0.3s ease-in forwards";
+      } else {
+        imgFromArray.style.animation =
+          "imageSlideMidToFirstRight 0.3s ease-in forwards";
+      }
     }
-  });
+    // Far right slides
+    else if (i - slideOnEachSide > 1) {
+      if (slideDirection === 1) {
+        imgFromArray.style.animation =
+          "imageSlideRightToRight 0.3s ease-in forwards";
+      } else {
+        imgFromArray.style.animation =
+          "imageSlideMidRightToRight 0.3s ease-in forwards";
+      }
+    }
+
+    // Far left slides
+    else if (i < slideOnEachSide) {
+      if (slideDirection === 1) {
+        imgFromArray.style.animation =
+          "imageSlideMidLeftToLeft 0.3s ease-in forwards";
+      } else {
+        imgFromArray.style.animation =
+          "imageSlideNoneToLeft 0.3s ease-in forwards";
+      }
+    }
+  }
+
+  // animate first and last slide getting out
+  var imgGoingOut = document.createElement("img");
+  slider.appendChild(imgGoingOut);
+
+  if (slideDirection === 1) {
+    imgGoingOut.src =
+      "/assets/images/objets/" + imageArray[imageArray.length - 1];
+    imgGoingOut.style.position = "absolute";
+    imgGoingOut.classList.add("slider-image-dissapear");
+    imgGoingOut.style.animation = "imageSlideLeftToNone 0.3s ease-in forwards";
+  } else {
+    imgGoingOut.src =
+      "/assets/images/objets/" + imageArray[2 * slideOnEachSide + 1];
+    imgGoingOut.style.position = "absolute";
+    imgGoingOut.classList.add("slider-image-dissapear");
+    imgGoingOut.style.animation = "imageSlideRightToNone 0.3s ease-in forwards";
+  }
 }
 
 // Button sliding logic
-
-let slidercontainer = document.getElementById("slider-container");
 let nextbutton = document.querySelector(".next");
 let prevbutton = document.querySelector(".prev");
-let scrollAmountVW = 20;
 
 nextbutton.onclick = () => {
-  slider.style.left =
-    parseInt(slider.style.left || 0) - (20 * window.innerWidth) / 100 + "px";
-  currentSlideIndex += 1;
-  resetSlider();
-  updateSlides();
+  imageArray.push(imageArray.shift());
+  slideDirection = 1;
+  displayImages();
 };
 
 prevbutton.onclick = () => {
-  slider.style.left =
-    parseInt(slider.style.left || 0) + (20 * window.innerWidth) / 100 + "px";
-  currentSlideIndex -= 1;
-  resetSlider();
-  updateSlides();
+  imageArray.unshift(imageArray.pop());
+  slideDirection = -1;
+  displayImages();
 };
-
-// scrollSlides();
-
-slider.addEventListener("wheel", (evt) => {
-  evt.preventDefault();
-  console.log(currentSlideIndex);
-  console.log(lastSlideIndex);
-  const scrollDirection = evt.deltaY > 0 ? 1 : -1;
-  slider.style.left =
-    parseInt(slider.style.left || 0) +
-    (20 * window.innerWidth * scrollDirection) / 100 +
-    "px";
-  currentSlideIndex -= scrollDirection;
-  resetSlider();
-  updateSlides();
-});
 
 // Script launch order
 document.addEventListener("DOMContentLoaded", function () {
-  updateSlides();
-
-  window.addEventListener("resize", () => {
-    updateSlides();
-  });
-  window.addEventListener("scroll", () => {
-    updateSlides();
-  });
+  displayImages();
 });
 
-function resetSlider() {
-  if (currentSlideIndex - 1 > lastSlideIndex + slideOnEachSide) {
-    slider.style.left = "0px";
-    currentSlideIndex = slideOnEachSide + 1;
-    console.log("reset1");
+//Event listeners
+window.addEventListener("wheel", function (e) {
+  if (e.deltaY < 0) {
+    imageArray.push(imageArray.shift());
+    getSlideOnEachSideNumber();
+    slideDirection = 1;
+    displayImages();
+  } else {
+    imageArray.unshift(imageArray.pop());
+    getSlideOnEachSideNumber();
+    slideDirection = -1;
+    displayImages();
   }
-  // if (currentSlideIndex <= slideOnEachSide + 1) {
-  //   const maxLeftPosition = lastSlideIndex * scrollAmountVW;
-  //   slider.style.left = -(maxLeftPosition * window.innerWidth) / 100 + "px";
-  //   currentSlideIndex = lastSlideIndex;
-  //   console.log("breakpoint");
-  //   console.log(maxLeftPosition);
-  // }
-}
+});
+
+window.addEventListener("resize", function () {
+  slideOnEachSide = getSlideOnEachSideNumber();
+});

@@ -1,16 +1,14 @@
+:root {
+  --slideWidth: 20vw;
+  --slideHeight: 80vh;
+  --sideSlideNumber: 2;
+}
+
 .slider-page {
   height: 80vh;
   width: 100vw;
-  position: absolute;
-}
-
-.slider-container {
-  height: 100%;
-  width: 100%;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+  display: flex;
+  flex-direction: row;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,26 +17,33 @@
 .slider {
   display: flex;
   width: 100%;
+  height: var(--slideHeight);
   position: relative;
   top: 0px;
   left: 0px;
+  align-items: center;
+  justify-content: center;
 }
 
 .slider-image {
-  width: 20vw;
+  width: var(--slideWidth);
+  height: 100%;
+  display: inline-block;
   padding: 20px;
   border-radius: 40px;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  @media (max-width: 768px) {
-    width: 33vw;
-    padding: 20px;
-  }
-}
-.slide-transition {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  display: none;
 }
 
+.slider-image-dissapear {
+  width: var(--slideWidth);
+  height: 100%;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 40px;
+  object-fit: cover;
+  z-index: 99999;
+}
 .button-container {
   position: absolute;
   top: 50%;
@@ -46,7 +51,7 @@
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: space-between;
-  width: 20vw;
+  width: var(--slideWidth);
 }
 
 .next,
@@ -55,9 +60,146 @@
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --slideWidth: 33vw;
+    --sideSlideNumber: 1;
+  }
+}
+@media (max-height: 768px) {
+  :root {
+    --slideWidth: 33vw;
+    --sideSlideNumber: 1;
+  }
+}
 
+@keyframes imageSlideRightToMid {
+  from {
+    transform: translateX(20vw) scale(0.6);
+    opacity: (0.6);
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: (1);
+  }
+}
+@keyframes imageSlideLeftToMid {
+  from {
+    transform: translateX(-20vw) scale(0.6);
+    opacity: (0.6);
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: (1);
+  }
+}
 
- /* CSS SVG */
+@keyframes imageSlideRightToFirstRight {
+  from {
+    transform: translateX(20vw) scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: (0.6);
+  }
+}
+@keyframes imageSlideMidToFirstRight {
+  from {
+    transform: translateX(-20vw) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: (0.6);
+  }
+}
+@keyframes imageSlideRightToRight {
+  from {
+    transform: translateX(20vw) scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideMidRightToRight {
+  from {
+    transform: translateX(-20vw) scale(0.6);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideMidToLeft {
+  from {
+    transform: translateX(20vw) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: 0.6;
+  }
+}
+@keyframes imageSlideMidLeftToLeft {
+  from {
+    transform: translateX(20vw) scale(0.6);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideLeftToLeftMid {
+  from {
+    transform: translateX(-20vw) scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(0) scale(0.6);
+    opacity: 0.6;
+  }
+}
+@keyframes imageSlideNoneToLeft {
+  from {
+    transform: translateX(-20vw) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(0.3);
+    opacity: 0.3;
+  }
+}
+@keyframes imageSlideLeftToNone {
+  from {
+    transform: translateX(calc(var(--sideSlideNumber) * var(--slideWidth) * -1))
+      scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(calc(-2 * var(--slideWidth) * var(--sideSlideNumber)))
+      scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes imageSlideRightToNone {
+  from {
+    transform: translateX(calc(var(--sideSlideNumber) * var(--slideWidth)))
+      scale(0.3);
+    opacity: 0.3;
+  }
+  to {
+    transform: translateX(calc(2 * var(--slideWidth) * var(--sideSlideNumber)))
+      scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* CSS SVG */
 /* .fleur {
   height: 200vh;
   position: fixed;
