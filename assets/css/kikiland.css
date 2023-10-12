@@ -108,6 +108,7 @@ body {
   background-color: var(--baseColor);
   max-width: 100%;
   width: 100vw;
+  height: 10vh;
   align-items: center;
   justify-content: space-between;
   padding: 1em;

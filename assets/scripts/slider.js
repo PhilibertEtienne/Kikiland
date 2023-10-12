@@ -9,6 +9,7 @@ let slideDirection = 1;
 var jsonData = document.getElementById("images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
 
+// Reset imageArray function
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
@@ -16,13 +17,17 @@ function removeAllChildNodes(parent) {
 }
 
 //Slider media queries logic
-let slideOnEachSide = parseInt(
-  cssVariables.getPropertyValue("--sideSlideNumber")
-);
+let slideOnEachSide = 2;
+function getSlideOnEachSideNumber() {
+  slideOnEachSide = parseInt(
+    cssVariables.getPropertyValue("--sideSlideNumber")
+  );
+}
+getSlideOnEachSideNumber();
+
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
 
 function displayImages() {
-  //reset slider
   removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("img");
@@ -123,4 +128,23 @@ prevbutton.onclick = () => {
 // Script launch order
 document.addEventListener("DOMContentLoaded", function () {
   displayImages();
+});
+
+//Event listeners
+window.addEventListener("wheel", function (e) {
+  if (e.deltaY < 0) {
+    imageArray.push(imageArray.shift());
+    getSlideOnEachSideNumber();
+    slideDirection = 1;
+    displayImages();
+  } else {
+    imageArray.unshift(imageArray.pop());
+    getSlideOnEachSideNumber();
+    slideDirection = -1;
+    displayImages();
+  }
+});
+
+window.addEventListener("resize", function () {
+  slideOnEachSide = getSlideOnEachSideNumber();
 });
