@@ -31,7 +31,7 @@ function displayImages() {
   removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("img");
-    imgFromArray.src = "/assets/images/objets/" + imageArray[i];
+    imgFromArray.src = "/assets/Images/objets/" + imageArray[i];
     imgFromArray.classList.add("slider-image");
     imgFromArray.style.margin = `${scrollAmountVW}vw`;
     imgFromArray.style.display = "inline-block";
@@ -39,7 +39,6 @@ function displayImages() {
     slider.offsetHeight;
 
     //apply sizing and animation logic
-
     //Mid slide
     if (i === slideOnEachSide) {
       if (slideDirection === 1) {
