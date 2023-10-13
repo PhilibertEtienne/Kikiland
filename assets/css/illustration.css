@@ -23,6 +23,11 @@
   }
   .item > img {
     width: 100%;
+    border-radius: 60%;
+    transition: border-radius 0.3s ease-in-out;
+  }
+  .item:hover > img {
+    border-radius: 0;
   }
 }
 
@@ -32,8 +37,4 @@
     --cols: 2;
   }
 }
-@media (min-width: 1440px) {
-  :root {
-    --cols: 4;
-  }
-}
+

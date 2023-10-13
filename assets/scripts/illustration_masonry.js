@@ -32,6 +32,7 @@ function generateMasonry() {
     itemContainer.classList.add("item");
     const item = document.createElement("img");
     item.src = "/assets/Images/illustration/" + imageArray[i];
+    item.setAttribute("loading", "lazy");
     itemContainer.appendChild(item);
     colsCollection[`col${i + 1}`].appendChild(itemContainer);
 
