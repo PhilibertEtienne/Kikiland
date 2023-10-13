@@ -22,7 +22,7 @@
 				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image fade-in" loading="lazy">
 			{% endfor %}
 		{% else %}
-		<div class="masonryContainer">
+		<div class="masonryContainer" id="masonryContainer">
 		<div class="row" id="row-illustration">
 			</div>
 			</div>
@@ -32,10 +32,13 @@
 
 	{% block javascripts %}
 		{{ parent() }}
+			{# <script type="module" >
+				import * as util from "../assets/scripts/util.js"
+			</script> #}
 		{% if folder is defined  and folder =='tattoo'%}
 			<script src="assets/scripts/tattoo.js"></script>
 {% elseif folder is defined and folder == 'illustration' %}
-			<script src="assets/scripts/illustration_masonry.js"></script>
+			<script src="assets/scripts/illustration_masonry.js" type="module"></script>
 
 		{% endif %}
 	{% endblock %}
