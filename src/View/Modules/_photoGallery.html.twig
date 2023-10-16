@@ -9,13 +9,13 @@
 {% block content %}
 	{% if folder is defined  and folder =='tattoo' %}
 		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbook-link">
-			<img src="assets\Images\lienflashbook.png" alt="flashbook" class="flashbook" id="flashbook">
+			<img src="assets\Images\lienflashbook.avif" alt="flashbook" class="flashbook" id="flashbook">
 		</a>
 	{% endif %}
 	<div class="front-gallery-container" id="front-gallery-container">
 		{% if folder is defined  and folder =="tattoo" %}
 			<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbookSide-link">
-				<img src="assets\Images\lienflashbook.png" alt="flashbook-side" class="flashbook" id="flashbookSide">
+				<img src="assets\Images\lienflashbook.avif" alt="flashbook-side" class="flashbook" id="flashbookSide">
 			</a>
 		<div class="grid" id="grid">
 						{% for image in images %}

@@ -1,6 +1,6 @@
+import * as util from "./util.js";
 var jsonData = document.getElementById("images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
-let cssVariables = window.getComputedStyle(document.documentElement);
 const masonry = document.getElementById("masonryContainer");
 const row = document.querySelector(".row");
 
@@ -9,16 +9,10 @@ let cols = 3;
 // Map to store all the columns
 let colsCollection = {};
 
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
-
 function generateMasonry() {
-    removeAllChildNodes(row);
+    util.removeAllChildNodes(row);
     imageArray = JSON.parse(jsonData)
-  getColsNumber();
+  util.getCSSValue(cols);
   colsCollection = {};
   // Create number of columns
   for (let i = 1; i <= cols; i++) {
@@ -47,15 +41,8 @@ function generateMasonry() {
   });
 }
 
-// Slider media queries logic
-function getColsNumber() {
-  cols = parseInt(cssVariables.getPropertyValue("--cols"));
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   generateMasonry();
 });
 
-window.addEventListener("resize", function () {
-  generateMasonry();
-});
+window.addEventListener("resize", util.throttle(generateMasonry, 250));

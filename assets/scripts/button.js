@@ -4,7 +4,7 @@ function changeImageAndRedirect(folder) {
     var image = document.getElementById(folder);
     var originalSrc = image.src; 
 
-    image.src = `/assets/Images/boutons/${folder}/bouton_clic.png`;
+    image.src = `/assets/Images/boutons/${folder}/bouton_clic.avif`;
     
     setTimeout(function() {
         image.src = originalSrc;
