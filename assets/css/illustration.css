@@ -1,28 +1,21 @@
-.grid-illustration {
-  width: 90vw;
-}
-
-
-.illu-image {
-  width: 30%;
+:root {
+  --cols: 3;
 }
 
 .masonryContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  & .row {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-}
-.row {
-    display: flex;
-    width:90%;
-    margin:15vh 0 15vh 0;
+    width: 90%;
+    margin: 15vh 0 15vh 0;
   }
-
- .column {
-   display: flex;
-   flex-direction: column;
-   margin: 1rem;
+  .column {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
   }
   .item {
     margin-bottom: 1rem;
@@ -31,3 +24,12 @@
   .item > img {
     width: 100%;
   }
+}
+
+
+@media (max-width: 768px) {
+  :root {
+    --cols: 2;
+  }
+}
+

@@ -27,6 +27,6 @@ class HomeController extends AbstractController
     public function objets(): string
     {
         $images = $this->getImagesFromFolder('objets');
-        return $this->twig->render('Home/objet.html.twig', ['images' => $images, 'url' => '/objets']);
+        return $this->twig->render('Home/objet.html.twig', ['images' => $images, 'url' => '/objets/avif']);
     }
 }

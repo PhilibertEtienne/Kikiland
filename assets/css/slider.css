@@ -1,7 +1,7 @@
 :root {
   --slideWidth: 20vw;
   --slideHeight: 80vh;
-  --sideSlideNumber: 2;
+  --slideOnEachSide: 2;
 }
 
 .slider-page {
@@ -43,6 +43,9 @@
   border-radius: 40px;
   object-fit: cover;
   z-index: 99999;
+  @media (max-width: 640px){
+    display: none;
+  }
 }
 .button-container {
   position: absolute;
@@ -60,18 +63,6 @@
   border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-  :root {
-    --slideWidth: 33vw;
-    --sideSlideNumber: 1;
-  }
-}
-@media (max-height: 768px) {
-  :root {
-    --slideWidth: 33vw;
-    --sideSlideNumber: 1;
-  }
-}
 
 @keyframes imageSlideRightToMid {
   from {
@@ -176,28 +167,65 @@
 }
 @keyframes imageSlideLeftToNone {
   from {
-    transform: translateX(calc(var(--sideSlideNumber) * var(--slideWidth) * -1))
+    transform: translateX(calc(var(--slideOnEachSide) * var(--slideWidth) * -1))
       scale(0.3);
     opacity: 0.3;
   }
   to {
-    transform: translateX(calc(-2 * var(--slideWidth) * var(--sideSlideNumber)))
+    transform: translateX(calc(-2 * var(--slideWidth) * var(--slideOnEachSide)))
       scale(0.3);
     opacity: 0;
   }
 }
 @keyframes imageSlideRightToNone {
   from {
-    transform: translateX(calc(var(--sideSlideNumber) * var(--slideWidth)))
+    transform: translateX(calc(var(--slideOnEachSide) * var(--slideWidth)))
       scale(0.3);
     opacity: 0.3;
   }
   to {
-    transform: translateX(calc(2 * var(--slideWidth) * var(--sideSlideNumber)))
+    transform: translateX(calc(2 * var(--slideWidth) * var(--slideOnEachSide)))
       scale(0.3);
     opacity: 0;
   }
 }
+
+
+
+@media (max-width: 1200px) {
+  :root {
+    --slideWidth: 33vw;
+    --slideOnEachSide: 1;
+  }
+
+}
+@media (max-width: 640px) {
+  :root {
+    --slideWidth: 66vw;
+    --slideOnEachSide: 0;
+    @keyframes imageSlideRightToMid {
+      from {
+        transform:  scale(0);
+        opacity: (0);
+      }
+      to {
+        transform: translateX(0) scale(1);
+        opacity: (1);
+      }
+    }
+    @keyframes imageSlideLeftToMid {
+      from {
+        transform:  scale(0);
+        opacity: (0);
+      }
+      to {
+        transform:  scale(1);
+        opacity: (1);
+      }
+    }
+  }
+}
+
 
 /* CSS SVG */
 /* .fleur {

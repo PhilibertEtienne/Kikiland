@@ -1,34 +1,28 @@
+import * as util from "./util.js";
 const slider = document.getElementById("slider");
 const slider2 = document.getElementById("slider2");
 const slides = document.querySelectorAll(".slider-image");
 const sliderPage = document.getElementById("slider-page");
-let cssVariables = window.getComputedStyle(document.documentElement);
+// let cssVariables = window.getComputedStyle(document.documentElement);
 let slideDirection = 1;
-
 //Fetch img path from Twig
 var jsonData = document.getElementById("images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
 
-// Reset imageArray function
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
 
 //Slider media queries logic
 let slideOnEachSide = 2;
-function getSlideOnEachSideNumber() {
-  slideOnEachSide = parseInt(
-    cssVariables.getPropertyValue("--sideSlideNumber")
-  );
-}
-getSlideOnEachSideNumber();
+// function getSlideOnEachSideNumber() {
+//   slideOnEachSide = parseInt(
+//     util.cssVariables.getPropertyValue("--sideSlideNumber")
+//   );
+// }
 
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
 
 function displayImages() {
-  removeAllChildNodes(slider);
+  util.getCSSValue(slideOnEachSide);
+  util.removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("img");
     imgFromArray.src = "/assets/Images/objets/" + imageArray[i];
@@ -133,17 +127,15 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("wheel", function (e) {
   if (e.deltaY < 0) {
     imageArray.push(imageArray.shift());
-    getSlideOnEachSideNumber();
+    util.getCSSValue(slideOnEachSide);
     slideDirection = 1;
     displayImages();
   } else {
     imageArray.unshift(imageArray.pop());
-    getSlideOnEachSideNumber();
+    util.getCSSValue(slideOnEachSide);
     slideDirection = -1;
     displayImages();
   }
 });
 
-window.addEventListener("resize", function () {
-  slideOnEachSide = getSlideOnEachSideNumber();
-});
+window.addEventListener("resize", util.throttle(displayImages, 500));
