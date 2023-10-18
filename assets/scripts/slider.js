@@ -3,25 +3,17 @@ const slider = document.getElementById("slider");
 const slider2 = document.getElementById("slider2");
 const slides = document.querySelectorAll(".slider-image");
 const sliderPage = document.getElementById("slider-page");
-// let cssVariables = window.getComputedStyle(document.documentElement);
 let slideDirection = 1;
 //Fetch img path from Twig
 var jsonData = document.getElementById("images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
 
-
 //Slider media queries logic
-let slideOnEachSide = 2;
-// function getSlideOnEachSideNumber() {
-//   slideOnEachSide = parseInt(
-//     util.cssVariables.getPropertyValue("--sideSlideNumber")
-//   );
-// }
-
+let slideOnEachSide = util.getCSSValue("slideOnEachSide");
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
 
 function displayImages() {
-  util.getCSSValue(slideOnEachSide);
+  slideOnEachSide =util.getCSSValue("slideOnEachSide");
   util.removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("img");
@@ -87,13 +79,13 @@ function displayImages() {
   var imgGoingOut = document.createElement("img");
   slider.appendChild(imgGoingOut);
 
-  if (slideDirection === 1) {
+  if (slideDirection === 1 && slideOnEachSide > 0) {
     imgGoingOut.src =
       "/assets/images/objets/" + imageArray[imageArray.length - 1];
     imgGoingOut.style.position = "absolute";
     imgGoingOut.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideLeftToNone 0.3s ease-in forwards";
-  } else {
+  } else if (slideDirection === 1 && slideOnEachSide > 0) {
     imgGoingOut.src =
       "/assets/images/objets/" + imageArray[2 * slideOnEachSide + 1];
     imgGoingOut.style.position = "absolute";
@@ -101,6 +93,15 @@ function displayImages() {
     imgGoingOut.style.animation = "imageSlideRightToNone 0.3s ease-in forwards";
   }
 }
+
+function giveSlide() {
+  if (slideOnEachSide) {
+    console.log(slideOnEachSide);
+  } else {
+    console.log("slideOnEachSide not found");
+  }
+}
+giveSlide();
 
 // Button sliding logic
 let nextbutton = document.querySelector(".next");
@@ -127,15 +128,18 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("wheel", function (e) {
   if (e.deltaY < 0) {
     imageArray.push(imageArray.shift());
-    util.getCSSValue(slideOnEachSide);
+    slideOnEachSide = util.getCSSValue("slideOnEachSide");
     slideDirection = 1;
     displayImages();
   } else {
     imageArray.unshift(imageArray.pop());
-    util.getCSSValue(slideOnEachSide);
+    slideOnEachSide =util.getCSSValue("slideOnEachSide");
     slideDirection = -1;
     displayImages();
   }
 });
 
-window.addEventListener("resize", util.throttle(displayImages, 500));
+window.addEventListener("resize", function () {
+  displayImages();
+});
+

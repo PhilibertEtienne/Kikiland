@@ -37,7 +37,7 @@ export function removeAllChildNodes(parent) {
 export let cssVariables = window.getComputedStyle(document.documentElement);
 
 export function getCSSValue(value){
-    value = parseInt(
+    return value = parseInt(
         cssVariables.getPropertyValue(`--${value}`)
       );
 }

@@ -10,11 +10,11 @@ let cols = 3;
 let colsCollection = {};
 
 function generateMasonry() {
-    util.removeAllChildNodes(row);
-    imageArray = JSON.parse(jsonData)
-  util.getCSSValue(cols);
+  util.removeAllChildNodes(row);
+  imageArray = JSON.parse(jsonData);
+  cols = util.getCSSValue("cols");
   colsCollection = {};
-  // Create number of columns
+  // Create number of columns  
   for (let i = 1; i <= cols; i++) {
     colsCollection[`col${i}`] = document.createElement("div");
     colsCollection[`col${i}`].classList.add("column");

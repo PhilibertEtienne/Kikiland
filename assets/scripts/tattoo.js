@@ -1,9 +1,11 @@
 const container = document.getElementById("front-gallery-container");
+const flashbook = document.getElementById("flashbook-link");
 const flashbookSide = document.getElementById("flashbookSide-link");
 const grid = document.getElementById("grid");
 
 function changeCssOnScroll() {
-  if (window.scrollY > window.innerHeight / 3) {
+  if (window.scrollY > window.innerHeight / 3 && window.innerWidth >= 1000 ) {
+    flashbook.style.display = "none";
     container.style.flexDirection = "row";
     flashbookSide.style.alignSelf = "start";
     flashbookSide.style.position = "sticky";
@@ -17,9 +19,10 @@ function changeCssOnScroll() {
   } else {
     container.removeAttribute("style");
     flashbookSide.removeAttribute("style");
+    flashbook.removeAttribute("style");
     grid.removeAttribute("style");
-    flashbook.style.position = "relative";
   }
 }
 
 window.addEventListener("scroll", changeCssOnScroll);
+window.addEventListener("resize", changeCssOnScroll);
