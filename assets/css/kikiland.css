@@ -22,7 +22,6 @@ body {
   color: var(--fontColor);
   margin: 0 auto;
   background-color: var(--baseColor);
-  min-height: 100vh;
   overflow-x: hidden;
 }
 

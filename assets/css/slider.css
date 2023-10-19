@@ -5,7 +5,7 @@
 }
 
 .slider-page {
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -28,7 +28,7 @@
 
 .slider-image {
   width: var(--slideWidth);
-  height: 100%;
+  height: 90%;
   display: inline-block;
   padding: 20px;
   border-radius: 40px;
@@ -38,13 +38,13 @@
 
 .slider-image-dissapear {
   width: var(--slideWidth);
-  height: 100%;
+  height: 90%;
   display: inline-block;
   padding: 20px;
   border-radius: 40px;
   object-fit: cover;
   z-index: 99999;
-  @media (max-width: 640px){
+  @media (max-width: 640px) {
     display: none;
   }
 }
@@ -63,7 +63,6 @@
   padding: 10px;
   border-radius: 10px;
 }
-
 
 @keyframes imageSlideRightToMid {
   from {
@@ -191,14 +190,11 @@
   }
 }
 
-
-
 @media (max-width: 1200px) {
   :root {
     --slideWidth: 33vw;
     --slideOnEachSide: 1;
   }
-
 }
 @media (max-width: 640px) {
   :root {
@@ -206,7 +202,7 @@
     --slideOnEachSide: 0;
     @keyframes imageSlideRightToMid {
       from {
-        transform:  scale(0);
+        transform: scale(0);
         opacity: (0);
       }
       to {
@@ -216,17 +212,16 @@
     }
     @keyframes imageSlideLeftToMid {
       from {
-        transform:  scale(0);
+        transform: scale(0);
         opacity: (0);
       }
       to {
-        transform:  scale(1);
+        transform: scale(1);
         opacity: (1);
       }
     }
   }
 }
-
 
 /* CSS SVG */
 /* .fleur {

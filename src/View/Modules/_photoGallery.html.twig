@@ -4,6 +4,7 @@
 	{{ parent() }}
 	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/illustration.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/fullScreen.css">
 {% endblock %}
 
 {% block content %}
@@ -30,6 +31,7 @@
 
 	{% block javascripts %}
 		{{ parent() }}
+			<script src="assets/scripts/imageClick.js"></script>
 		{% if folder is defined  and folder =='tattoo'%}
 			<script src="assets/scripts/tattoo.js"></script>
 {% elseif folder is defined and folder == 'illustration' %}
