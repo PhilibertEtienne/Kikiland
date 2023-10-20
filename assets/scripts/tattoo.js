@@ -2,7 +2,9 @@ const container = document.getElementById("front-gallery-container");
 const flashbook = document.getElementById("flashbook-link");
 const flashbookSide = document.getElementById("flashbookSide-link");
 const grid = document.getElementById("grid");
-getImages("grid");
+
+//Handle image Fullscreen on click
+getImages("grid-image");
 handleImageClick();
 
 function changeCssOnScroll() {

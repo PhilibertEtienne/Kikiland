@@ -7,6 +7,7 @@ return [
     'illustration' => ['HomeController', 'illustration',],
     'tattoo' => ['HomeController', 'tattoo',],
     'objets' => ['HomeController', 'objets',],
+    'contact' => ['HomeController', 'contact',],
     'admin' => ['AdminController', 'index',],
     'admin/illustration' => ['AdminController', 'adminIllustration',],
     'admin/tattoo' => ['AdminController', 'adminTattoo',],

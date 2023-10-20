@@ -1,0 +1,39 @@
+.contact-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 100%;
+}
+
+.contact-form__contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+  width: 100%;
+}
+
+.contact-form__widget {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+.contact-form__widget:last-child {
+  align-items: flex-end;
+}
+
+input {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+input[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+}

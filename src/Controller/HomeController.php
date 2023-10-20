@@ -2,31 +2,52 @@
 
 namespace App\Controller;
 
+use App\Service\contactForm;
+
 class HomeController extends AbstractController
 {
-    /**
-     * Display home page
-     */
+
+    // Properties
+    protected contactForm $contactForm;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $contactForm = new ContactForm();
+        $this->contactForm = $contactForm;
+    }
+
+
+    // Methods
     public function index(): string
     {
         return $this->twig->render('Home/home.html.twig');
     }
 
+    public function contact(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->contactForm->handleFormInput();
+        }
+        return $this->twig->render('Home/contact.html.twig');
+    }
+
     public function illustration(): string
     {
-        $images = $this->getImagesFromFolder('illustration');
+        $images = $this->imageService->getImagesFromFolder('illustration');
         return $this->twig->render('Home/illustration.html.twig', ['images' => $images, 'url' => '/illustration']);
     }
 
     public function tattoo(): string
     {
-        $images = $this->getImagesFromFolder('tattoo');
+        $images = $this->imageService->getImagesFromFolder('tattoo');
         return $this->twig->render('Home/tattoo.html.twig', ['images' => $images, 'url' => '/tattoo']);
     }
 
     public function objets(): string
     {
-        $images = $this->getImagesFromFolder('objets');
+        $images = $this->imageService->getImagesFromFolder('objets');
         return $this->twig->render('Home/objet.html.twig', ['images' => $images, 'url' => '/objets']);
     }
 }
