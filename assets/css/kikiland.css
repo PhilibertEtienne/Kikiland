@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
   font-size: 1rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -21,12 +22,11 @@ body {
   color: var(--fontColor);
   margin: 0 auto;
   background-color: var(--baseColor);
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
 #bienvenue-kikiland {
-  max-width: 50%;
+  max-width: 90%;
   margin-bottom: 10px;
   @media (min-width: 720px) {
     max-width: 50%;
@@ -39,12 +39,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .bouton {
-  width: 33vw;
-  transition: 1s;
+  height: 10vh;
   @media (min-width: 720px) {
     margin-bottom: 10vh;
     max-height: 6em;
@@ -92,7 +91,7 @@ body {
   background-color: var(--baseColor);
   max-width: 100%;
   width: 100vw;
-  height: 10vh;
+  max-height: 15vh;
   align-items: center;
   justify-content: space-between;
   padding: 1em;
@@ -104,6 +103,7 @@ body {
 
 .header > img {
   cursor: pointer;
+  object-fit: contain;
 }
 
 .footer > img {
@@ -112,6 +112,8 @@ body {
 
 a {
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: transparent;
 }
 
 .bombe-icone img {
@@ -139,11 +141,17 @@ a {
   display: flex;
   justify-items: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    margin-top: 5vh;
+  }
+  @media (max-width: 768px) and (min-height: 600px) {
+    margin-top: 8vh;
+  }
 }
 
 #flashbook-link {
   height: auto;
-  margin: 10vh 0 5vh 0;
+  margin: 15vh 0 5vh 0;
   max-width: 50%;
   display: block;
   object-fit: contain;
@@ -180,9 +188,6 @@ a {
   grid-gap: 0.5rem;
   justify-content: center;
   margin-bottom: 5em;
-  @media (max-width: 480px) {
-    margin-top: 10em;
-  }
 }
 
 .grid .grid-item:nth-child(2n + 1) img,
@@ -231,4 +236,8 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.no-scroll {
+  overflow: hidden;
 }

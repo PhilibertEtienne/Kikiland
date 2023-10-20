@@ -10,9 +10,9 @@ let cols = 3;
 let colsCollection = {};
 
 function generateMasonry() {
-    util.removeAllChildNodes(row);
-    imageArray = JSON.parse(jsonData)
-  util.getCSSValue(cols);
+  util.removeAllChildNodes(row);
+  imageArray = JSON.parse(jsonData);
+  cols = util.getCSSValue("cols");
   colsCollection = {};
   // Create number of columns
   for (let i = 1; i <= cols; i++) {
@@ -39,6 +39,8 @@ function generateMasonry() {
   Object.values(colsCollection).forEach((column) => {
     row.appendChild(column);
   });
+  getImages("item");
+  handleImageClick();
 }
 
 document.addEventListener("DOMContentLoaded", function () {

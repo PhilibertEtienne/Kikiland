@@ -4,16 +4,15 @@
 	{{ parent() }}
 	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/illustration.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/fullScreen.css">
 {% endblock %}
 
 {% block content %}
+	<div class="front-gallery-container" id="front-gallery-container">
 	{% if folder is defined  and folder =='tattoo' %}
 		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbook-link">
 			<img src="assets\Images\lienflashbook.avif" alt="flashbook" class="flashbook" id="flashbook">
 		</a>
-	{% endif %}
-	<div class="front-gallery-container" id="front-gallery-container">
-		{% if folder is defined  and folder =="tattoo" %}
 			<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbookSide-link">
 				<img src="assets\Images\lienflashbook.avif" alt="flashbook-side" class="flashbook" id="flashbookSide">
 			</a>
@@ -32,9 +31,7 @@
 
 	{% block javascripts %}
 		{{ parent() }}
-			{# <script type="module" >
-				import * as util from "../assets/scripts/util.js"
-			</script> #}
+			<script src="assets/scripts/imageClick.js"></script>
 		{% if folder is defined  and folder =='tattoo'%}
 			<script src="assets/scripts/tattoo.js"></script>
 {% elseif folder is defined and folder == 'illustration' %}

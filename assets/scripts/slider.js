@@ -1,27 +1,20 @@
 import * as util from "./util.js";
 const slider = document.getElementById("slider");
-const slider2 = document.getElementById("slider2");
-const slides = document.querySelectorAll(".slider-image");
 const sliderPage = document.getElementById("slider-page");
-// let cssVariables = window.getComputedStyle(document.documentElement);
 let slideDirection = 1;
+let firstLoad = true;
+
 //Fetch img path from Twig
 var jsonData = document.getElementById("images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
 
-
 //Slider media queries logic
-let slideOnEachSide = 2;
-// function getSlideOnEachSideNumber() {
-//   slideOnEachSide = parseInt(
-//     util.cssVariables.getPropertyValue("--sideSlideNumber")
-//   );
-// }
-
+let slideOnEachSide = util.getCSSValue("slideOnEachSide");
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
 
+// SLider display
 function displayImages() {
-  util.getCSSValue(slideOnEachSide);
+  slideOnEachSide = util.getCSSValue("slideOnEachSide");
   util.removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("img");
@@ -36,49 +29,72 @@ function displayImages() {
     //Mid slide
     if (i === slideOnEachSide) {
       if (slideDirection === 1) {
-        imgFromArray.style.animation =
-          "imageSlideRightToMid 0.3s ease-in forwards";
+        if (firstLoad) {
+        } else {
+          imgFromArray.style.animation =
+            "imageSlideRightToMid 0.3s ease-in forwards";
+        }
       } else {
         imgFromArray.style.animation =
           "imageSlideLeftToMid 0.3s ease-in forwards";
       }
       //Left Mid slide
     } else if (i - slideOnEachSide === -1) {
-      if (slideDirection === 1) {
-        imgFromArray.style.animation =
-          "imageSlideMidToLeft 0.3s ease-in forwards";
+      if (firstLoad) {
+        imgFromArray.style.scale = "0.6";
+        imgFromArray.style.opacity = "0.6";
       } else {
-        imgFromArray.style.animation =
-          "imageSlideLeftToLeftMid 0.3s ease-in forwards";
+        if (slideDirection === 1) {
+          imgFromArray.style.animation =
+            "imageSlideMidToLeft 0.3s ease-in forwards";
+        } else {
+          imgFromArray.style.animation =
+            "imageSlideLeftToLeftMid 0.3s ease-in forwards";
+        }
       }
     } else if (i - slideOnEachSide === 1) {
-      if (slideDirection === 1) {
-        imgFromArray.style.animation =
-          "imageSlideRightToFirstRight 0.3s ease-in forwards";
+      if (firstLoad) {
+        imgFromArray.style.scale = "0.6";
+        imgFromArray.style.opacity = "0.6";
       } else {
-        imgFromArray.style.animation =
-          "imageSlideMidToFirstRight 0.3s ease-in forwards";
+        if (slideDirection === 1) {
+          imgFromArray.style.animation =
+            "imageSlideRightToFirstRight 0.3s ease-in forwards";
+        } else {
+          imgFromArray.style.animation =
+            "imageSlideMidToFirstRight 0.3s ease-in forwards";
+        }
       }
     }
     // Far right slides
     else if (i - slideOnEachSide > 1) {
-      if (slideDirection === 1) {
-        imgFromArray.style.animation =
-          "imageSlideRightToRight 0.3s ease-in forwards";
+      if (firstLoad) {
+        imgFromArray.style.scale = "0.3";
+        imgFromArray.style.opacity = "0.3";
       } else {
-        imgFromArray.style.animation =
-          "imageSlideMidRightToRight 0.3s ease-in forwards";
+        if (slideDirection === 1) {
+          imgFromArray.style.animation =
+            "imageSlideRightToRight 0.3s ease-in forwards";
+        } else {
+          imgFromArray.style.animation =
+            "imageSlideMidRightToRight 0.3s ease-in forwards";
+        }
       }
     }
 
     // Far left slides
     else if (i < slideOnEachSide) {
-      if (slideDirection === 1) {
-        imgFromArray.style.animation =
-          "imageSlideMidLeftToLeft 0.3s ease-in forwards";
+      if (firstLoad) {
+        imgFromArray.style.scale = "0.3";
+        imgFromArray.style.opacity = "0.3";
       } else {
-        imgFromArray.style.animation =
-          "imageSlideNoneToLeft 0.3s ease-in forwards";
+        if (slideDirection === 1) {
+          imgFromArray.style.animation =
+            "imageSlideMidLeftToLeft 0.3s ease-in forwards";
+        } else {
+          imgFromArray.style.animation =
+            "imageSlideNoneToLeft 0.3s ease-in forwards";
+        }
       }
     }
   }
@@ -87,19 +103,21 @@ function displayImages() {
   var imgGoingOut = document.createElement("img");
   slider.appendChild(imgGoingOut);
 
-  if (slideDirection === 1) {
+  if (slideDirection === 1 && slideOnEachSide > 0) {
     imgGoingOut.src =
       "/assets/images/objets/" + imageArray[imageArray.length - 1];
     imgGoingOut.style.position = "absolute";
     imgGoingOut.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideLeftToNone 0.3s ease-in forwards";
-  } else {
+  } else if (slideDirection === 1 && slideOnEachSide > 0) {
     imgGoingOut.src =
       "/assets/images/objets/" + imageArray[2 * slideOnEachSide + 1];
     imgGoingOut.style.position = "absolute";
     imgGoingOut.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideRightToNone 0.3s ease-in forwards";
   }
+  getImages("slider-image");
+  handleImageClick();
 }
 
 // Button sliding logic
@@ -107,12 +125,14 @@ let nextbutton = document.querySelector(".next");
 let prevbutton = document.querySelector(".prev");
 
 nextbutton.onclick = () => {
+  firstLoad = false;
   imageArray.push(imageArray.shift());
   slideDirection = 1;
   displayImages();
 };
 
 prevbutton.onclick = () => {
+  firstLoad = false;
   imageArray.unshift(imageArray.pop());
   slideDirection = -1;
   displayImages();
@@ -125,17 +145,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Event listeners
 window.addEventListener("wheel", function (e) {
-  if (e.deltaY < 0) {
-    imageArray.push(imageArray.shift());
-    util.getCSSValue(slideOnEachSide);
-    slideDirection = 1;
-    displayImages();
-  } else {
-    imageArray.unshift(imageArray.pop());
-    util.getCSSValue(slideOnEachSide);
-    slideDirection = -1;
-    displayImages();
+  if (!fullscreen) {
+    firstLoad = false;
+    if (e.deltaY < 0) {
+      imageArray.push(imageArray.shift());
+      slideOnEachSide = util.getCSSValue("slideOnEachSide");
+      slideDirection = 1;
+      displayImages();
+    } else {
+      imageArray.unshift(imageArray.pop());
+      slideOnEachSide = util.getCSSValue("slideOnEachSide");
+      slideDirection = -1;
+      displayImages();
+    }
   }
 });
 
-window.addEventListener("resize", util.throttle(displayImages, 500));
+window.addEventListener("resize", function () {
+  firstLoad = true;
+  displayImages();
+});
+
+// Touch Events
+let touchStartX = 0;
+let touchEndX = 0;
+
+slider.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const deltaX = touchEndX - touchStartX;
+  if (deltaX > 0) {
+    prevbutton.click();
+  } else if (deltaX < 0) {
+    nextbutton.click();
+  }
+}
