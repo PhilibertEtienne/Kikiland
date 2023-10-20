@@ -187,3 +187,4 @@ function handleSwipe() {
     nextbutton.click();
   }
 }
+   

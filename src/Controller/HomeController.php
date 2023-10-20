@@ -2,11 +2,24 @@
 
 namespace App\Controller;
 
+use App\Service\contactForm;
 
 class HomeController extends AbstractController
 {
 
+    // Properties
+    protected contactForm $contactForm;
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $contactForm = new ContactForm();
+        $this->contactForm = $contactForm;
+    }
+
+
+    // Methods
     public function index(): string
     {
         return $this->twig->render('Home/home.html.twig');
@@ -14,6 +27,9 @@ class HomeController extends AbstractController
 
     public function contact(): string
     {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->contactForm->handleFormInput();
+        }
         return $this->twig->render('Home/contact.html.twig');
     }
 
