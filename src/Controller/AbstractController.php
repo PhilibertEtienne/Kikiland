@@ -5,13 +5,12 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
+use App\Service\ImageService;
 
-/**
- * Initialized some Controller common features (Twig...)
- */
 abstract class AbstractController
 {
     protected Environment $twig;
+    protected $imageService;
 
     public function __construct()
     {
@@ -24,18 +23,8 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
-    }
 
-    protected function getImagesFromFolder(string $folder)
-    {
-        $folderPath = "assets/Images/" . $folder;
-        $files = scandir($folderPath);
-        $imageArray = [];
-
-        foreach ($files as $file) {
-            if (in_array($file, array(".", ".."))) continue;
-            $imageArray[] = $file;
-        }
-        return $imageArray;
+        $imageService = new ImageService();
+        $this->imageService = $imageService;
     }
 }
