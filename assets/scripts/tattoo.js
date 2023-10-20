@@ -2,6 +2,8 @@ const container = document.getElementById("front-gallery-container");
 const flashbook = document.getElementById("flashbook-link");
 const flashbookSide = document.getElementById("flashbookSide-link");
 const grid = document.getElementById("grid");
+getImages("grid");
+handleImageClick();
 
 function changeCssOnScroll() {
   if (window.scrollY > window.innerHeight / 3 && window.innerWidth >= 1000 ) {

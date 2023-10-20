@@ -39,7 +39,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .bouton {
@@ -236,4 +236,8 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.no-scroll {
+  overflow: hidden;
 }

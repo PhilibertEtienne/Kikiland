@@ -8,6 +8,7 @@ function getImages(className) {
 function handleImageClick() {
   images.forEach((image) => {
     image.addEventListener("click", openFullscreen);
+    image.addEventListener("touch", openFullscreen);
   });
 }
 
@@ -29,11 +30,15 @@ function openFullscreen(event) {
 
   // Toggle fullscreen class on click to exit fullscreen
   fullscreenContainer.addEventListener("click", closeFullscreen);
+  fullscreenContainer.addEventListener("touch", closeFullscreen);
+  document.querySelector("body").classList.add("no-scroll");
+
   fullscreen = true;
 }
 
 function closeFullscreen() {
   const fullscreenContainer = document.querySelector(".fullscreen-container");
   fullscreenContainer.remove();
+  document.querySelector("body").classList.remove("no-scroll");
   fullscreen = false;
 }
