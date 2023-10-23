@@ -1,3 +1,11 @@
+:root {
+  --unselected: #7676ed;
+  --selected: #6ff460;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .contact-form {
   display: flex;
   align-items: center;
@@ -19,8 +27,13 @@
   flex-direction: column;
   margin-bottom: 0.5rem;
 }
-.contact-form__widget:last-child {
-  align-items: flex-end;
+
+.contact-form__rowBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 input {
@@ -36,4 +49,95 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
   width: 8rem;
+}
+
+/* Display checkbox as button */
+
+.cbx-button {
+  margin: 4px;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  overflow: auto;
+  float: left;
+}
+
+.cbx-button label {
+  float: left;
+  padding: 1rem;
+}
+
+.cbx-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+  color: white;
+}
+
+.cbx-button label input {
+  position: absolute;
+  display: none;
+}
+
+.cbx-button:hover {
+  background: var(--selected);
+}
+
+.selected {
+  background-color: var(--selected);
+}
+
+.unselected {
+  background-color: var(--unselected);
+}
+
+.inactive {
+  display: none;
+}
+
+.rdv-form,
+.coucou-form {
+  height: 60vh;
+  /* animation: buttonUp 1s ease-in-out; */
+}
+
+#instagram {
+  height: 4rem;
+}
+
+.moveUp {
+  animation: buttonUp 1s ease-in-out;
+}
+
+@keyframes buttonUp {
+  from {
+    transform: translateY(33vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    transform: translateX(50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.slideFromRight {
+  animation: slideFromRight 1s ease-in-out;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slideFromLeft {
+  animation: slideFromLeft 1s ease-in-out;
 }

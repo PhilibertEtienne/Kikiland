@@ -27,10 +27,11 @@ class HomeController extends AbstractController
 
     public function contact(): string
     {
+        $errors=[];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->contactForm->handleFormInput();
+            $errors = $this->contactForm->handleFormInput();
         }
-        return $this->twig->render('Home/contact.html.twig');
+        return $this->twig->render('Home/contact.html.twig', ['errors' => $errors]);
     }
 
     public function illustration(): string

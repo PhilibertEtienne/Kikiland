@@ -4,33 +4,85 @@
   <link rel="stylesheet" type="text/css" href="/assets/css/contact.css" />
 {% endblock %}
 {% block content %}
-  <div class="contact-form">
+  {% if errors is not empty %}
+    <div class="alert alert-danger">
+      <ul>
+        {% for error in errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {# <div class="contact-form">
     <form class="contact-form__contenu" method="post">
       <div class="contact-form__widget">
-        <label for="lastname">Nom:</label>
+        <label for="lastname">Nom: <span>(obligatoire)</span></label>
         <input type="text" id="lastname" name="lastname" required />
       </div>
       <div class="contact-form__widget">
-        <label for="firstname">Prénom:</label>
+        <label for="firstname">Prénom: <span>(obligatoire)</span></label>
         <input type="text" id="firstname" name="firstname" required />
       </div>
       <div class="contact-form__widget">
-        <label for="email">Email:</label>
+        <label for="email">Email: <span>(obligatoire)</span></label>
         <input type="email" id="email" name="email" required />
-      </div> 
-      <div class="contact-form__widget">
-        <label for="email">Téléphone:</label>
-        <input type="text" id="tel" name="tel" required />
       </div>
       <div class="contact-form__widget">
-        <label for="objet">Objet:</label>
-        <input type="text" id="objet" name="objet" required />
+        <label for="phone">Téléphone: <span>(obligatoire)</span></label>
+        <input type="text" id="phone" name="phone" required />
       </div>
       <div class="contact-form__widget">
-        <label for="message">Message:</label>
+        <label for="subject">Objet: <span>(obligatoire)</span></label>
+        <input type="text" id="subject" name="subject" required />
+      </div>
+      <div class="contact-form__widget">
+        <label for="message">Message: <span>(obligatoire)</span></label>
         <textarea id="message" name="message" rows="4" required></textarea>
       </div>
       <div class="contact-form__widget">
+        <input type="submit" value="submit" />
+      </div>
+    </form>
+  </div> #}
+  <div class="contact-form">
+    <form class="contact-form__contenu" method="post">
+      <div class="contact-form__rowBox">
+        {# Selection buttons #}
+        <div class="cbx-button unselected" id="coucou">
+          <label><input type="radio" /> <span>CC je souhaite faire coucou</span></label>
+        </div>
+        <div class="cbx-button unselected" id="rdv">
+          <label><input type="radio" /><span>Bjr c pour prendre un RDV</span></label>
+        </div>
+      </div>
+      {# coucouform #}
+      <div class="coucou-form inactive moveUp" id="coucou-form">
+        <div class="contact-form__widget">
+          <label for="prenom">Prénom(s):</label>
+          <input type="text" id="prenom" name="prenom" required />
+        </div>
+        <div class="contact-form__widget">
+          <label for="pronom">Pronom(s):</label>
+          <input type="text" id="pronom" name="pronom" required />
+        </div>
+        <div class="contact-form__widget">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required />
+        </div>
+        <div class="contact-form__widget">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+      </div>
+      {# rdv form #}
+      <div class="rdv-form inactive moveUp" id="rdv-form">
+        <div class="contact-form__widget">
+          <h3>Pour l'instant la prise de rdv se passe via Instagram ! Viens m'envoyer un dm <a href="https://www.instagram.com/leventquirale/"><img src="assets\Images\Instagram_simple_icon.svg.png" alt="Instagram" id="instagram"></a></h3>
+        </div>
+      </div>
+      {# Submit #}
+      <div class="contact-form__widget inactive">
         <input type="submit" value="submit" />
       </div>
     </form>
@@ -38,6 +90,6 @@
   {% include 'Modules/_footer.html.twig' %}
 
   {% block javascripts %}
-
+    <script src="assets\scripts\form.js"></script>
   {% endblock %}
 {% endblock %}
