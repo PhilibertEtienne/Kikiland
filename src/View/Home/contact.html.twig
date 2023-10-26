@@ -46,44 +46,14 @@
     </form>
   </div> #}
   <div class="contact-form">
-    <form class="contact-form__contenu" method="post">
-      <div class="contact-form__rowBox">
         {# Selection buttons #}
-        <div class="cbx-button unselected" id="coucou">
-          <label><input type="radio" /> <span>CC je souhaite faire coucou</span></label>
-        </div>
-        <div class="cbx-button unselected" id="rdv">
-          <label><input type="radio" /><span>Bjr c pour prendre un RDV</span></label>
-        </div>
-      </div>
+        {% include "Modules/_form_selection_button.html.twig" %}
       {# coucouform #}
-      <div class="coucou-form inactive moveUp" id="coucou-form">
-        <div class="contact-form__widget">
-          <label for="prenom">Prénom(s):</label>
-          <input type="text" id="prenom" name="prenom" required />
-        </div>
-        <div class="contact-form__widget">
-          <label for="pronom">Pronom(s):</label>
-          <input type="text" id="pronom" name="pronom" required />
-        </div>
-        <div class="contact-form__widget">
-          <label for="email">Email:</label>
-          <input type="text" id="email" name="email" required />
-        </div>
-        <div class="contact-form__widget">
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-      </div>
+      {% include 'Modules/_form_coucou.html.twig' %}
       {# rdv form #}
-      <div class="rdv-form inactive moveUp" id="rdv-form">
-        <div class="contact-form__widget">
-          <h3>Pour l'instant la prise de rdv se passe via Instagram ! Viens m'envoyer un dm <a href="https://www.instagram.com/leventquirale/"><img src="assets\Images\Instagram_simple_icon.svg.png" alt="Instagram" id="instagram"></a></h3>
-        </div>
-      </div>
-      {# Submit #}
-      <div class="contact-form__widget inactive">
-        <input type="submit" value="submit" />
+      {% include 'Modules/_animation_rdv-form.html.twig' %}
+      <div class="rdv-form__form halfSDelay inactive">
+        {% include 'Modules/_form_contact.html.twig' %}
       </div>
     </form>
   </div>

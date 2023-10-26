@@ -27,7 +27,7 @@ class HomeController extends AbstractController
 
     public function contact(): string
     {
-        $errors=[];
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors = $this->contactForm->handleFormInput();
         }
