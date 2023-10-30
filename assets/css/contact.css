@@ -85,6 +85,12 @@ textarea {
   background: var(--selected);
 }
 
+/* Errors handling */
+.errors {
+  display: flex;
+}
+
+/* Complementary classes */
 .selected {
   background-color: var(--selected);
 }
@@ -238,4 +244,14 @@ h3 {
 
 .disappearup {
   animation: disappearUp 1s 2s forwards ease-in-out;
+}
+
+@media (width < 768px) {
+  .contact-form__rowBox {
+    flex-direction: column;
+  }
+
+  .cbx-button label {
+    padding: 0.5rem;
+  }
 }

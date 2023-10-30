@@ -53,8 +53,6 @@ class contactForm
             }
         }
 
-
-
         if (empty(trim($_POST["message"]))) {
             $errors[] = "Subject needed";
         }

@@ -1,28 +1,18 @@
 {% set baseImagePath = 'assets/Images/header-navbar-footer/' %}
-{# 
+
 <div class="header" id="header">
-    <div class="header-start">
-        <div class="site-branding">
-            <a href="/">
-                <img src="{{ baseImagePath ~ 'potifleurnavbar.avif' }}" alt="accueil" class="nav-logo">
-            </a>
-        </div>
+  <div class="header-logo">
+    <a href="/"><img src="{{ baseImagePath ~ 'potifleurnavbar.avif' }}" alt="accueil" class="header-logo_img" /></a>
+  </div>
+  <div class="header-menu">
+    <div class="header-menu_option">
+      <a href="/tattoo"><img src="{{ baseImagePath ~ (url == '/tattoo' ? '/tattoo/header_tattoo-selec.avif' : '/tattoo/header_tattoo.avif') }}" alt="Tattoo" class="header-menu_img" /></a>
     </div>
-    <div class="nav-end">
-        <div class="nav-option">
-            <a href="/tattoo">
-                <img src="{{ baseImagePath ~ (url == '/tattoo' ? 'header_tattoo-selec.avif' : 'header_tattoo.avif') }}" alt="Tattoo" class="nav-img">
-            </a>
-        </div>
-        <div class="nav-option">
-            <a href="/illustration">
-                <img src="{{ baseImagePath ~ (url == '/illustration' ? 'header_illu-selec.avif' : 'header_illu.avif') }}" alt="illustration" class="nav-img">
-            </a>
-        </div>
-        <div class="nav-option">
-            <a href="/objets">
-                <img src="{{ baseImagePath ~ (url == '/objets' ? 'header_objet-selec.avif' : 'header_objet.avif') }}" alt="objet" class="nav-img">
-            </a>
-        </div>
+    <div class="header-menu_option">
+      <a href="/illustration"><img src="{{ baseImagePath ~ (url == '/illustration' ? '/illustration/header_illu-selec.avif' : '/illustration/header_illu.avif') }}" alt="illustration" class="header-menu_img" /></a>
     </div>
-</div> #}
+    <div class="header-menu_option">
+      <a href="/objets"><img src="{{ baseImagePath ~ (url == '/objets' ? '/objets/header_objet-selec.avif' : '/objets/header_objet.avif') }}" alt="objet" class="header-menu_img" /></a>
+    </div>
+  </div>
+</div>

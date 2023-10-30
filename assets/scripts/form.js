@@ -3,8 +3,9 @@ let cbxButtons = document.querySelectorAll(".cbx-button");
 let buttonsBox = document.querySelector(".contact-form__rowBox");
 let currentForm;
 let otherForm;
-let rdvFormNoInsta = document.querySelector(".rdv-form__form")
+let rdvFormNoInsta = document.querySelector(".rdv-form__form");
 let firstOpening = true;
+let firstWrap = true;
 
 // Form selection logic : select form to display
 cbxButtons.forEach((button) => {
@@ -21,6 +22,7 @@ cbxButtons.forEach((button) => {
           if (otherForm == "rdv") {
             step2.classList.add("inactive");
             step3.classList.add("inactive");
+            rdvFormNoInsta.classList.add("inactive");
           }
           otherButton.classList.add("unselected");
           otherButton.classList.remove("selected");
@@ -29,7 +31,6 @@ cbxButtons.forEach((button) => {
       });
     }
     displayForm();
-    firstOpening = false;
   });
 });
 
@@ -46,16 +47,26 @@ let rdvWrapper = document.querySelector(".rdv-form__wrapper");
 function displayForm() {
   let openedForm = document.querySelector(`.${currentForm}-form`);
   let closedForm = document.querySelector(`.${otherForm}-form`);
-  openedForm.classList.remove("inactive");
-  if (!firstOpening) {
+  if (firstOpening) {
+    openedForm.classList.remove("inactive");
+  } else {
     openedForm.classList.remove("moveUp");
     if (openedForm.id === "coucou-form") {
+      openedForm.classList.remove("inactive");
       openedForm.classList.add("slideFromLeft");
     } else {
-      openedForm.classList.add("slideFromRight");
+      if (!firstWrap) {
+        rdvFormNoInsta.style.opacity ="1";
+        rdvFormNoInsta.style.animation ="slideFromRight  1s ease-in-out";
+        rdvFormNoInsta.classList.remove("inactive");
+      } else {
+        openedForm.classList.remove("inactive");
+        openedForm.classList.add("slideFromRight");
+      }
     }
   }
   closedForm.classList.add("inactive");
+  firstOpening = false;
 }
 
 step1.addEventListener("click", () => {
@@ -63,6 +74,7 @@ step1.addEventListener("click", () => {
   step3.classList.remove("inactive");
 });
 
+// handle click on rdv transition animation wrapper
 rdvWrapper.addEventListener("click", () => {
   let delay = 0.1;
   let duration = 1;
@@ -80,16 +92,12 @@ rdvWrapper.addEventListener("click", () => {
     }
   });
   rdvForm.addEventListener("animationend", handleAnimationEnd);
-
 });
 
-
+//handle rdv form trnaistion page animation
 function handleAnimationEnd() {
-  // rdvForm.removeEventListener("animationend", handleAnimationEnd);
-  rdvForm.style.position = 'absolute';
+  firstWrap = false;
+  rdvForm.style.position = "absolute";
+  rdvForm.classList.add("inactive");
   rdvFormNoInsta.classList.remove("inactive");
-}
-
-function handleCoucou(){
-
 }

@@ -4,61 +4,27 @@
   <link rel="stylesheet" type="text/css" href="/assets/css/contact.css" />
 {% endblock %}
 {% block content %}
-  {% if errors is not empty %}
-    <div class="alert alert-danger">
-      <ul>
-        {% for error in errors %}
-          <li>{{ error }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
-
-  {# <div class="contact-form">
-    <form class="contact-form__contenu" method="post">
-      <div class="contact-form__widget">
-        <label for="lastname">Nom: <span>(obligatoire)</span></label>
-        <input type="text" id="lastname" name="lastname" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="firstname">Prénom: <span>(obligatoire)</span></label>
-        <input type="text" id="firstname" name="firstname" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="email">Email: <span>(obligatoire)</span></label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="phone">Téléphone: <span>(obligatoire)</span></label>
-        <input type="text" id="phone" name="phone" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="subject">Objet: <span>(obligatoire)</span></label>
-        <input type="text" id="subject" name="subject" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="message">Message: <span>(obligatoire)</span></label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-      <div class="contact-form__widget">
-        <input type="submit" value="submit" />
-      </div>
-    </form>
-  </div> #}
   <div class="contact-form">
-        {# Selection buttons #}
-        {% include "Modules/_form_selection_button.html.twig" %}
-      {# coucouform #}
-      {% include 'Modules/_form_coucou.html.twig' %}
-      {# rdv form #}
-      {% include 'Modules/_animation_rdv-form.html.twig' %}
-      <div class="rdv-form__form halfSDelay inactive">
-        {% include 'Modules/_form_contact.html.twig' %}
+    {# Selection buttons #}
+    {% include 'Modules/_form_selection_button.html.twig' %}
+    {# Errors handling #}
+    {% if errors is not empty %}
+      <div class="errors">
+        <ul>
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
       </div>
-    </form>
+    {% endif %}
+    {# coucouform #}
+    {% include 'Modules/_form_coucou.html.twig' %}
+    {# rdv form #}
+    {% include 'Modules/_animation_rdv-form.html.twig' %}
+    <div class="rdv-form__form halfSDelay inactive">
+      {% include 'Modules/_form_contact.html.twig' %}
+    </div>
   </div>
-  {% include 'Modules/_footer.html.twig' %}
-
   {% block javascripts %}
     <script src="assets\scripts\form.js"></script>
   {% endblock %}

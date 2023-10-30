@@ -3,11 +3,9 @@ const slider = document.getElementById("slider");
 const sliderPage = document.getElementById("slider-page");
 let slideDirection = 1;
 let firstLoad = true;
-
 //Fetch img path from Twig
-var jsonData = document.getElementById("images").getAttribute("data-images");
+var jsonData = document.getElementById("Images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
-
 //Slider media queries logic
 let slideOnEachSide = util.getCSSValue("slideOnEachSide");
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
@@ -29,14 +27,25 @@ function displayImages() {
     //Mid slide
     if (i === slideOnEachSide) {
       if (slideDirection === 1) {
-        if (firstLoad) {
-        } else {
-          imgFromArray.style.animation =
-            "imageSlideRightToMid 0.3s ease-in forwards";
+        if (!firstLoad) {
+          if (slideOnEachSide != 0) {
+            imgFromArray.style.animation =
+              "imageSlideRightToMid 0.3s ease-in forwards";
+          } else {
+            imgFromArray.style.animation =
+              "imageSlideAloneLeftToMid 0.3s ease-in forwards";
+          }
         }
       } else {
-        imgFromArray.style.animation =
-          "imageSlideLeftToMid 0.3s ease-in forwards";
+        if (!firstLoad) {
+          if (slideOnEachSide != 0) {
+            imgFromArray.style.animation =
+              "imageSlideLeftToMid 0.3s ease-in forwards";
+          } else {
+            imgFromArray.style.animation =
+              "imageSlideAloneRightToMid 0.3s ease-in forwards";
+          }
+        }
       }
       //Left Mid slide
     } else if (i - slideOnEachSide === -1) {
@@ -187,4 +196,3 @@ function handleSwipe() {
     nextbutton.click();
   }
 }
-   

@@ -31,7 +31,7 @@ class HomeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors = $this->contactForm->handleFormInput();
         }
-        return $this->twig->render('Home/contact.html.twig', ['errors' => $errors]);
+        return $this->twig->render('Home/contact.html.twig', ['url' => '/contact', 'errors' => $errors]);
     }
 
     public function illustration(): string
@@ -50,5 +50,10 @@ class HomeController extends AbstractController
     {
         $images = $this->imageService->getImagesFromFolder('objets');
         return $this->twig->render('Home/objet.html.twig', ['images' => $images, 'url' => '/objets']);
+    }
+
+    public function mentions(): string
+    {
+        return $this->twig->render('Home/mentions-legales.html.twig', ['url' => '/mentions-legales']);
     }
 }

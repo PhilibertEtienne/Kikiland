@@ -23,7 +23,7 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
 
-        $imageService = new ImageService();
+        $imageService = new ImageService;
         $this->imageService = $imageService;
     }
 }
