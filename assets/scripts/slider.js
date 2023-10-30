@@ -47,6 +47,7 @@ function displayImages() {
           }
         }
       }
+
       //Left Mid slide
     } else if (i - slideOnEachSide === -1) {
       if (firstLoad) {
@@ -191,8 +192,14 @@ slider.addEventListener("touchend", (e) => {
 function handleSwipe() {
   const deltaX = touchEndX - touchStartX;
   if (deltaX > 0) {
-    prevbutton.click();
+    firstLoad = false;
+    imageArray.unshift(imageArray.pop());
+    slideDirection = 1;
+    displayImages();
   } else if (deltaX < 0) {
-    nextbutton.click();
+    firstLoad = false;
+    imageArray.push(imageArray.shift());
+    slideDirection = -1;
+    displayImages();
   }
 }
