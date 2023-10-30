@@ -1,4 +1,4 @@
-let contactForm = document.querySelector(".contact-form");
+let ContactForm = document.querySelector(".contact-form");
 let cbxButtons = document.querySelectorAll(".cbx-button");
 let buttonsBox = document.querySelector(".contact-form__rowBox");
 let currentForm;
@@ -11,7 +11,7 @@ let firstWrap = true;
 cbxButtons.forEach((button) => {
   let checkbox = button.querySelector("input[type='radio']");
   button.addEventListener("change", () => {
-    contactForm.classList.add("moveUp");
+    ContactForm.classList.add("moveUp");
     if (checkbox.checked) {
       currentForm = button.id;
       button.classList.add("selected");

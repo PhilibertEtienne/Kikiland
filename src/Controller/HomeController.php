@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
-use App\Service\contactForm;
+use App\Service\ContactForm;
 
 class HomeController extends AbstractController
 {
 
     // Properties
-    protected contactForm $contactForm;
+    protected ContactForm $ContactForm;
 
     public function __construct()
     {
         parent::__construct();
 
-        $contactForm = new ContactForm();
-        $this->contactForm = $contactForm;
+        $ContactForm = new ContactForm();
+        $this->ContactForm = $ContactForm;
     }
 
 
@@ -29,7 +29,7 @@ class HomeController extends AbstractController
     {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $errors = $this->contactForm->handleFormInput();
+            $errors = $this->ContactForm->handleFormInput();
         }
         return $this->twig->render('Home/contact.html.twig', ['url' => '/contact', 'errors' => $errors]);
     }
