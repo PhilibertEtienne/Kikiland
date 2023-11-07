@@ -3,7 +3,7 @@ var jsonData = document.getElementById("images").getAttribute("data-images");
 let imageArray = JSON.parse(jsonData);
 const masonry = document.getElementById("masonryContainer");
 const row = document.querySelector(".row");
-
+const imagePath = "/assets/Images/illustration/";
 // Number of columns
 let cols = 3;
 // Map to store all the columns
@@ -15,7 +15,7 @@ function generateMasonry() {
   cols = util.getCSSValue("cols");
   colsCollection = {};
   // Create number of columns
-  for (let i = 1; i <= cols; i++) {
+  for (let i = 1; i <= cols ; i++) {
     colsCollection[`col${i}`] = document.createElement("div");
     colsCollection[`col${i}`].classList.add("column");
   }
@@ -25,8 +25,7 @@ function generateMasonry() {
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("item");
     const item = document.createElement("img");
-    item.src = "/assets/Images/illustration/" + imageArray[i];
-    item.setAttribute("loading", "lazy");
+    item.srcset = imagePath + imageArray[i] +" 1800w,"+ imagePath + "half/" + imageArray[i] +" 1000w,"+ imagePath + "half/fourth/" + imageArray[i] +" 600w";
     itemContainer.appendChild(item);
     colsCollection[`col${i + 1}`].appendChild(itemContainer);
 
