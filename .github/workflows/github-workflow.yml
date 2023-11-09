@@ -2,5 +2,47 @@ name: CI
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test
+        run: |
+          ls ${{ github.workspace }}
+      - name: Validate CSS
+        run: |
+          response=$(http -f POST https://jigsaw.w3.org/css-validator/validator?output=json < styles.css)
+          if [[ $(echo "$response" | jq -r .result.validity) != "true" ]]; then
+            echo "CSS validation failed!"
+            echo "$response" | jq .errors
+            exit 1
+          fi
+      - name: Push content
+        run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+  css-validation-on-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Validate CSS
+        run: |
+          response=$(http -f POST https://jigsaw.w3.org/css-validator/validator?output=json < styles.css)
+          if [[ $(echo "$response" | jq -r .result.validity) != "true" ]]; then
+            echo "CSS validation failed!"
+            echo "$response" | jq .errors
+            exit 1
+          fi
+
+  merge-to-main:
+    needs: css-validation-on-pr
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge to main
+        run: |
+          # Your merge commands here
