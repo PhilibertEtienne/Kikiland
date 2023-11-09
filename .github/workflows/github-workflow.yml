@@ -1,6 +1,6 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: [push, pull_request]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -20,17 +20,8 @@ jobs:
         run: echo "🍏 This job's status is ${{ job.status }}."
 
 
-name: CSS Validation on PR
-
-on:
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  validate-css:
+  css-validation-on-pr:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -45,7 +36,7 @@ jobs:
           fi
 
   merge-to-main:
-    needs: validate-css
+    needs: css-validation-on-pr
     runs-on: ubuntu-latest
 
     steps:
