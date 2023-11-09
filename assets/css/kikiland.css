@@ -26,7 +26,7 @@ body {
 }
 
 #bienvenue-kikiland {
-  max-width: 90%;
+  max-width: 60%;
   margin-bottom: 10px;
   @media (min-width: 720px) {
     max-width: 50%;
@@ -63,42 +63,57 @@ body {
   }
 }
 
-.nav-img {
-  object-fit: contain;
-  height: 2em;
+.header-logo {
+  height: 100%;
+  max-width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-logo {
-  object-fit: contain;
-  height: 4em;
+.header-menu_img {
+  height: 100%;
+  padding: 0.5em;
+  max-width: 100%;
 }
 
-.nav-option {
-  margin: 0 10px 0 10px;
+.header-logo_img {
+  height: 80%;
+  margin-left: 1rem;
+  object-fit: contain;
+  @media (width < 768px) {
+    margin-left: 0;
+  }
+}
+
+.header-menu_option {
+  max-width: 70%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
-.nav-end {
+.header-menu {
   display: flex;
   flex-direction: row;
-  @media (max-width: 480px) {
-    flex-direction: column;
-  }
+  height: 100%;
+  align-items: center;
 }
 
 .header {
   display: flex;
-  background-color: var(--baseColor);
-  max-width: 100%;
-  width: 100vw;
-  max-height: 15vh;
   align-items: center;
   justify-content: space-between;
-  padding: 1em;
   flex-direction: row;
   position: fixed;
+  width: 100vw;
+  height: 12vh;
+  padding: 0.5em;
   top: 0;
   z-index: 9999;
+  background-color: #ffffff;
 }
 
 .header > img {
@@ -106,9 +121,45 @@ body {
   object-fit: contain;
 }
 
-.footer > img {
-  cursor: pointer;
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 12vh;
+  grid-row: 12vh;
+  @media (max-width: 900px) {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    height: 16vh;
+  }
 }
+
+
+.footer_option {
+  min-height: 0;
+  min-width: 0;
+  align-self: center;
+  justify-self: center;
+  & img {
+    height: 60%;
+    padding: 0.5rem;
+    @media (max-width: 900px) {
+      height: 100%;
+      padding: 0;
+    }
+  }
+}
+
+#contact {
+  height: 50%;
+  @media (max-width: 900px) {
+    height: 80%;
+  }
+}
+
 
 a {
   text-decoration: none;
@@ -141,6 +192,7 @@ a {
   display: flex;
   justify-items: center;
   flex-direction: column;
+  margin-bottom: 3rem;
   @media (max-width: 768px) {
     margin-top: 5vh;
   }
@@ -206,20 +258,6 @@ a {
 .grid-item {
   display: block;
   position: relative;
-}
-
-.footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 1em 0em;
-  align-items: center;
-  @media (max-width: 480px) {
-    flex-direction: column;
-  }
 }
 
 .fade-in {

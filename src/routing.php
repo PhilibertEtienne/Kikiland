@@ -1,5 +1,4 @@
 <?php
-use App\Service\ImageService;
 
 $route = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
 

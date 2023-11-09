@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
-use App\Service\contactForm;
+use App\Service\ContactForm;
 
 class HomeController extends AbstractController
 {
 
     // Properties
-    protected contactForm $contactForm;
+    protected ContactForm $ContactForm;
 
     public function __construct()
     {
         parent::__construct();
 
-        $contactForm = new ContactForm();
-        $this->contactForm = $contactForm;
+        $ContactForm = new ContactForm();
+        $this->ContactForm = $ContactForm;
     }
 
 
@@ -27,10 +27,11 @@ class HomeController extends AbstractController
 
     public function contact(): string
     {
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->contactForm->handleFormInput();
+            $errors = $this->ContactForm->handleFormInput();
         }
-        return $this->twig->render('Home/contact.html.twig');
+        return $this->twig->render('Home/contact.html.twig', ['url' => '/contact', 'errors' => $errors]);
     }
 
     public function illustration(): string
@@ -49,5 +50,10 @@ class HomeController extends AbstractController
     {
         $images = $this->imageService->getImagesFromFolder('objets');
         return $this->twig->render('Home/objet.html.twig', ['images' => $images, 'url' => '/objets']);
+    }
+
+    public function mentions(): string
+    {
+        return $this->twig->render('Home/mentions-legales.html.twig', ['url' => '/mentions-legales']);
     }
 }

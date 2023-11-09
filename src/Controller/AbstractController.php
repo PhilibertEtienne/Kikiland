@@ -11,7 +11,6 @@ abstract class AbstractController
 {
     protected Environment $twig;
     protected $imageService;
-
     public function __construct()
     {
         $loader = new FilesystemLoader(APP_VIEW_PATH);
@@ -24,7 +23,7 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
 
-        $imageService = new ImageService();
+        $imageService = new ImageService;
         $this->imageService = $imageService;
     }
 }

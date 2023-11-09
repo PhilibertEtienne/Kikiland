@@ -1,5 +1,15 @@
+:root {
+  --unselected: #7676ed;
+  --selected: #6ff460;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .contact-form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 60%;
@@ -19,21 +29,229 @@
   flex-direction: column;
   margin-bottom: 0.5rem;
 }
-.contact-form__widget:last-child {
-  align-items: flex-end;
-}
 
-input {
-  width: 100%;
+.contact-form__rowBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 textarea {
   width: 100%;
 }
 
-input[type="submit"] {
+.contact-form__submit {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 8rem;
+  justify-content: flex-end;
+
+  & input[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+  }
+}
+
+/* Display checkbox as button */
+
+.cbx-button {
+  margin: 4px;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  overflow: auto;
+  float: left;
+}
+
+.cbx-button label {
+  float: left;
+  padding: 1rem;
+}
+
+.cbx-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+  color: white;
+}
+
+.cbx-button label input {
+  position: absolute;
+  display: none;
+}
+
+.cbx-button:hover {
+  background: var(--selected);
+}
+
+/* Errors handling */
+.errors {
+  display: flex;
+}
+
+/* Complementary classes */
+.selected {
+  background-color: var(--selected);
+}
+
+.unselected {
+  background-color: var(--unselected);
+}
+
+.inactive {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* Both forms template */
+
+.rdv-form,
+.coucou-form,
+.rdv-form__form {
+  height: 60vh;
+}
+
+.rdv-step1,
+.rdv-step2,
+.rdv-step3 {
+  opacity: 0;
+}
+
+h3 {
+  background-color: #7676ed;
+  padding: 2rem;
+}
+
+/* Rdv form */
+
+#instagram {
+  height: 4rem;
+}
+
+.rdv-form__wrapper {
+  width: 5vw;
+  height: auto;
+  background-color: var(--selected);
+  opacity: 0;
+}
+
+.rdv-form__form {
+  opacity: 0;
+  width: 100%;
+}
+
+/* animations  */
+
+@keyframes moveUp {
+  from {
+    transform: translateY(33vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.moveUp {
+  animation: moveUp 1s ease-in-out;
+}
+
+@keyframes slideFromRight {
+  from {
+    transform: translateX(50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slideFromRight {
+  animation: slideFromRight 1s ease-in-out;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-50vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slideFromLeft {
+  animation: slideFromLeft 1s ease-in-out;
+}
+
+@keyframes appearDelay {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.halfSDelay {
+  animation: appearDelay 0.2s 0.2s forwards ease-in-out;
+}
+
+.OneSDelay {
+  animation: appearDelay 0.7s 0.7s forwards ease-in-out;
+}
+
+.deuxSDelay {
+  animation: appearDelay 1s 1s forwards ease-in-out;
+}
+
+@keyframes disappearUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+}
+
+@keyframes disappearLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100vw);
+    opacity: 1;
+  }
+}
+
+@keyframes disappearRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+}
+
+.disappearup {
+  animation: disappearUp 1s 2s forwards ease-in-out;
+}
+
+@media (width < 768px) {
+  .contact-form__rowBox {
+    flex-direction: column;
+  }
+
+  .cbx-button label {
+    padding: 0.5rem;
+  }
 }

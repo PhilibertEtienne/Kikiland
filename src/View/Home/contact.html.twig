@@ -5,39 +5,27 @@
 {% endblock %}
 {% block content %}
   <div class="contact-form">
-    <form class="contact-form__contenu" method="post">
-      <div class="contact-form__widget">
-        <label for="lastname">Nom:</label>
-        <input type="text" id="lastname" name="lastname" required />
+    {# Selection buttons #}
+    {% include 'Modules/_form_selection_button.html.twig' %}
+    {# Errors handling #}
+    {% if errors is not empty %}
+      <div class="errors">
+        <ul>
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
       </div>
-      <div class="contact-form__widget">
-        <label for="firstname">Prénom:</label>
-        <input type="text" id="firstname" name="firstname" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-      </div> 
-      <div class="contact-form__widget">
-        <label for="email">Téléphone:</label>
-        <input type="text" id="tel" name="tel" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="objet">Objet:</label>
-        <input type="text" id="objet" name="objet" required />
-      </div>
-      <div class="contact-form__widget">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-      <div class="contact-form__widget">
-        <input type="submit" value="submit" />
-      </div>
-    </form>
+    {% endif %}
+    {# coucouform #}
+    {% include 'Modules/_form_coucou.html.twig' %}
+    {# rdv form #}
+    {% include 'Modules/_animation_rdv-form.html.twig' %}
+    <div class="rdv-form__form halfSDelay inactive">
+      {% include 'Modules/_form_contact.html.twig' %}
+    </div>
   </div>
-  {% include 'Modules/_footer.html.twig' %}
-
   {% block javascripts %}
-
+    <script src="assets\scripts\form.js"></script>
   {% endblock %}
 {% endblock %}

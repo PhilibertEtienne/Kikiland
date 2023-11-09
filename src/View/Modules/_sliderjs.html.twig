@@ -11,12 +11,11 @@
   <div class="slider-page" id="slider-page">
     <div class="slider" id="slider"></div>
     <div class="button-container">
-      <button class="prev">Prev</button>
-      <button class="next">Next</button>
+      <button class="prev"><img src="assets/Images/boutons/fleches/flechegauche.avif" class="slider-button_img" alt="prev" /></button>
+      <button class="next"><img src="assets/Images/boutons/fleches/flechedroite.avif" class="slider-button_img" alt="next" /></button>
     </div>
-    <div id="images" data-images="{{ images|json_encode }}"></div>
   </div>
-
+  <div id="Images" data-images="{{ images|json_encode }}"></div>
   {% block javascripts %}
     <script src="assets\scripts\slider.js" type="module"></script>
     <script src="assets\scripts\imageClick.js"></script>

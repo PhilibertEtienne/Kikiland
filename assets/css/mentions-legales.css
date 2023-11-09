@@ -1,0 +1,27 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+}
+
+.mentions-legales-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 12vh;
+  width: 70vh;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+
+.footer {
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+}

@@ -22,7 +22,7 @@ function openFullscreen(event) {
   // Create an image element inside the fullscreen container
   const fullscreenImage = document.createElement("img");
   fullscreenImage.classList.add("fullscreen-image");
-  fullscreenImage.src = image.src;
+  fullscreenImage.srcset = image.srcset;
   fullscreenContainer.appendChild(fullscreenImage);
 
   // Append the fullscreen container to the body

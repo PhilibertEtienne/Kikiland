@@ -1,5 +1,4 @@
 {% extends 'Modules/layout.html.twig' %}
-
 {% block head %}
 	{{ parent() }}
 	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
@@ -8,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+
 	<div class="front-gallery-container" id="front-gallery-container">
 	{% if folder is defined  and folder =='tattoo' %}
 		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbook-link">
@@ -17,9 +17,13 @@
 				<img src="assets\Images\lienflashbook.avif" alt="flashbook-side" class="flashbook" id="flashbookSide">
 			</a>
 		<div class="grid" id="grid">
-						{% for image in images %}
-				<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image fade-in" loading="lazy">
-			{% endfor %}
+{% for image in images %}
+    {% set imagePathBig = "/assets/Images/" ~ folder ~ "/" ~ image %}
+    {% set imagePathMedium = "/assets/Images/" ~ folder ~ "/half/" ~ image %}
+    {% set imagePathSmall = "/assets/Images/" ~ folder ~ "/half/fourth/" ~ image %}
+
+    <img srcset="{{ imagePathBig }} 1800w, {{ imagePathMedium }} 800w, {{ imagePathSmall }} 600w" alt="{{ image }}" class="grid-image fade-in" >
+{% endfor %}
 		{% else %}
 		<div class="masonryContainer" id="masonryContainer">
 		<div class="row" id="row-illustration">

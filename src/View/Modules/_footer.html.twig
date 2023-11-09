@@ -1,11 +1,13 @@
+{% set baseImagePath = 'assets/Images/header-navbar-footer/' %}
+
 {% block footer %}
-	<div class="footer" >
-		<a class="nav-option" href="/contact"><img src="assets\Images\header-navbar-footer\footer_contact.avif" alt="contact" class="nav-img"></a>
-		<div class="nav-option">
-			<a href="https://www.instagram.com/leventquirale/">INSTA</a>
-		</div>
-		<div>
-			Copyright 2023 by
-			<a href="http://philibertetienne.com/">Philibert Etienne</a>.</div>
-	</div>
+  <div class="footer" id="footer">
+    <a class="footer_option" href="/contact"><img src="{{ baseImagePath }}{{ url == '/contact' ? '/contact/footer_contact-selec.avif' : '/contact/footer_contact.avif' }} " alt="contact" id="contact"/></a>
+    <div class="footer_option">
+      <a href="https://www.instagram.com/leventquirale/"><img src="{{ baseImagePath ~ 'footer_icone_instagram.png' }}" alt="logo Instagram" class="footer_img" /></a>
+    </div>
+    <div class="footer_option">
+      <a href="/mentions-legales"><img src="{{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/mentions_legales-soul.avif' : '/mentions-legales/mentions_legales.avif') }}" alt="mentions légales" alt="" /></a>
+    </div>
+  </div>
 {% endblock %}

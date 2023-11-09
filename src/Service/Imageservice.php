@@ -12,9 +12,18 @@ class ImageService
         $imageArray = [];
 
         foreach ($files as $file) {
-            if (in_array($file, array(".", ".."))) continue;
-            $imageArray[] = $file;
+            if (in_array($file, [".", ".."])) continue;
+            $fileInfo = pathinfo($file);
+
+            if (array_key_exists('extension', $fileInfo)) {
+                $extension = $fileInfo['extension'];
+
+                if (strtolower($extension) === 'avif' || strtolower($extension) === 'gif'){
+                    $imageArray[] = $file;
+                }
+            }
         }
+
         return $imageArray;
     }
 }
