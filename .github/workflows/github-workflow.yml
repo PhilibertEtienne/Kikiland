@@ -18,3 +18,40 @@ jobs:
           fi
       - name: Push content
         run: echo "🍏 This job's status is ${{ job.status }}."
+
+
+name: CSS Validation on PR
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Validate CSS
+        run: |
+          response=$(http -f POST https://jigsaw.w3.org/css-validator/validator?output=json < styles.css)
+          if [[ $(echo "$response" | jq -r .result.validity) != "true" ]]; then
+            echo "CSS validation failed!"
+            echo "$response" | jq .errors
+            exit 1
+          fi
+
+  merge-to-main:
+    needs: validate-css
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge to main
+        run: |
+          # Your merge commands here
