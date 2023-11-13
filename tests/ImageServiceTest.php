@@ -21,4 +21,6 @@ class ImageServiceTest extends TestCase
             $this->assertMatchesRegularExpression('/\.(avif|gif)$/i', $file);
         }
     }
+
+    //TODO : other tests
 }
