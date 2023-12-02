@@ -1,18 +1,26 @@
 {% set baseImagePath = 'assets/Images/header-navbar-footer/' %}
 
-<div class="header" id="header">
+<nav class="header" id="header">
   <div class="header-logo">
-    <a href="/"><img src="{{ baseImagePath ~ 'potifleurnavbar.avif' }}" alt="accueil" class="header-logo_img" /></a>
+    <a href="/"><img srcset="{{ baseImagePath }}potifleurnavbar.avif 1800w, {{ baseImagePath ~ '/half/potifleurnavbar.avif' }} 1000w, {{ baseImagePath ~ '/fourth/potifleurnavbar.avif' }} 600w" sizes="10vw" alt="accueil" class="header-logo_img" /></a>
   </div>
   <div class="header-menu">
     <div class="header-menu_option">
-      <a href="/tattoo"><img src="{{ baseImagePath ~ (url == '/tattoo' ? '/tattoo/header_tattoo-selec.avif' : '/tattoo/header_tattoo.avif') }}" alt="Tattoo" class="header-menu_img" /></a>
+      <a href="/tattoo"><img srcset="
+      {{ baseImagePath ~ (url == '/tattoo' ? '/tattoo/header_tattoo-selec.avif' : '/tattoo/header_tattoo.avif') }} 1800w,
+      {{ baseImagePath ~ (url == '/tattoo' ? '/tattoo/half/header_tattoo-selec.avif' : '/tattoo/half/header_tattoo.avif') }} 1000w,
+      {{ baseImagePath ~ (url == '/tattoo' ? '/tattoo/fourth/header_tattoo-selec.avif' : '/tattoo/fourth/header_tattoo.avif') }} 600w" alt="Tattoo" class="header-menu_img" sizes="25vw" /></a>
     </div>
     <div class="header-menu_option">
-      <a href="/illustration"><img src="{{ baseImagePath ~ (url == '/illustration' ? '/illustration/header_illu-selec.avif' : '/illustration/header_illu.avif') }}" alt="illustration" class="header-menu_img" /></a>
+      <a href="/illustration"><img srcset="
+      {{ baseImagePath ~ (url == '/illustration' ? '/illustration/header_illu-selec.avif' : '/illustration/header_illu.avif') }} 1800w,
+      {{ baseImagePath ~ (url == '/illustration' ? '/illustration/half/header_illu-selec.avif' : '/illustration/half/header_illu.avif') }} 1000w,
+      {{ baseImagePath ~ (url == '/illustration' ? '/illustration/fourth/header_illu-selec.avif' : '/illustration/fourth/header_illu.avif') }} 600w" alt="illustration" class="header-menu_img" sizes="25vw" /></a>
     </div>
     <div class="header-menu_option">
-      <a href="/objets"><img src="{{ baseImagePath ~ (url == '/objets' ? '/objets/header_objet-selec.avif' : '/objets/header_objet.avif') }}" alt="objet" class="header-menu_img" /></a>
+      <a href="/objets"><img srcset="{{ baseImagePath }}{{ url == '/objets' ? '/objets/header_objet-selec.avif' : '/objets/header_objet.avif' }} 1800w,
+      {{ baseImagePath ~ (url == '/objets' ? '/objets/half/header_objet-selec.avif' : '/objets/half/header_objet.avif') }} 1000w,
+      {{ baseImagePath ~ (url == '/objets' ? '/objets/fourth/header_objet-selec.avif' : '/objets/fourth/header_objet.avif') }} 600w" alt="objet" class="header-menu_img" sizes="25vw" /></a>
     </div>
   </div>
-</div>
+</nav>
