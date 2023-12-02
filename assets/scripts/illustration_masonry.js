@@ -25,7 +25,13 @@ function generateMasonry() {
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("item");
     const item = document.createElement("img");
-    item.srcset = imagePath + imageArray[i] +" 1800w,"+ imagePath + "half/" + imageArray[i] +" 1000w,"+ imagePath + "half/fourth/" + imageArray[i] +" 600w";
+    item.classList.add("fade-in");
+    item.classList.add("pointer");
+    item.srcset = imagePath + imageArray[i] +" 2400w,"+ imagePath + "half/" + imageArray[i] +" 1200w,"+ imagePath + "fourth/" + imageArray[i] +" 800w";
+    item.sizes = "(max-width:768px)30vw,50vw"
+    let fileName = imageArray[i].split('/').pop();
+    fileName = fileName.split('.')[0]; 
+    item.alt = fileName
     itemContainer.appendChild(item);
     colsCollection[`col${i + 1}`].appendChild(itemContainer);
 

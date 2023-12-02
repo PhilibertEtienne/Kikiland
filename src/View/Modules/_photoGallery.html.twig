@@ -8,21 +8,23 @@
 
 {% block content %}
 
-	<div class="front-gallery-container" id="front-gallery-container">
+	<div class="front-gallery-container" >
 	{% if folder is defined  and folder =='tattoo' %}
 		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbook-link">
-			<img src="assets\Images\lienflashbook.avif" alt="flashbook" class="flashbook" id="flashbook">
-		</a>
-			<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbookSide-link">
-				<img src="assets\Images\lienflashbook.avif" alt="flashbook-side" class="flashbook" id="flashbookSide">
-			</a>
+			<img src="assets\Images\lienflashbook.avif" alt="flashbook" class="flashbook flashbook-link" id="flashbook">
+		</a>		
 		<div class="grid" id="grid">
 {% for image in images %}
     {% set imagePathBig = "/assets/Images/" ~ folder ~ "/" ~ image %}
     {% set imagePathMedium = "/assets/Images/" ~ folder ~ "/half/" ~ image %}
-    {% set imagePathSmall = "/assets/Images/" ~ folder ~ "/half/fourth/" ~ image %}
+    {% set imagePathSmall = "/assets/Images/" ~ folder ~ "/fourth/" ~ image %}
 
-    <img srcset="{{ imagePathBig }} 1800w, {{ imagePathMedium }} 800w, {{ imagePathSmall }} 600w" alt="{{ image }}" class="grid-image fade-in" >
+    <img srcset="{{ imagePathBig }} 1800w, 
+	{{ imagePathMedium }} 1000w, 
+	{{ imagePathSmall }} 400w" 
+	sizes = "30vw"
+	alt= "{{ image }}" 
+	class="grid-image fade-in pointer" >
 {% endfor %}
 		{% else %}
 		<div class="masonryContainer" id="masonryContainer">
@@ -36,12 +38,13 @@
 	{% block javascripts %}
 		{{ parent() }}
 			<script src="assets/scripts/imageClick.js"></script>
-		{% if folder is defined  and folder =='tattoo'%}
-			<script src="assets/scripts/tattoo.js"></script>
-{% elseif folder is defined and folder == 'illustration' %}
+	{% if folder is defined and folder == 'illustration' %}
 			<script src="assets/scripts/illustration_masonry.js" type="module"></script>
-
+			{% else %}
+				<script>
+				getImages("grid-image")
+				handleImageClick()
+				</script>
 		{% endif %}
 	{% endblock %}
-
 {% endblock %}

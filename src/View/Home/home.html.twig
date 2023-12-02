@@ -1,18 +1,32 @@
 {% extends 'Modules/layout.html.twig' %}
 {% block body %}
-	<div class="homepage">
-		<img src="/assets/Images/Home/accueil.avif" alt="Bienvenue à Kikiland" id="bienvenue-kikiland">
-		<div id="navbar">
-			<img class="bouton" src="\assets\Images\boutons\tattoo\bouton.avif" id="tattoo" onclick="changeImageAndRedirect('tattoo')">
-			<img class="bouton" src="\assets\Images\boutons\illustration\bouton.avif" id="illustration" onclick="changeImageAndRedirect('illustration')">
-			<img class="bouton" src="\assets\Images\boutons\objets\bouton.avif" id="objets" onclick="changeImageAndRedirect('objets')">
-		</div>
-
-		<a href="http://philibertetienne.com/map.html" class="bombe-icone" target="_blank" ><img src="\assets\Images\Home\anim_exempleclicbombe.gif"></a>
-	</div>
-	{% include 'Modules/_footer.html.twig' %}
-
-	{% block javascripts %}
-		<script src="\assets\scripts\button.js"></script>
-	{% endblock %}
+  <div class="homepage" aria-label="Menu principal">
+    <img srcset="/assets/Images/Home/accueil.avif 1800w, /assets/Images/Home/half/accueil.avif 1000w, /assets/Images/Home/fourth/accueil.avif 600w " alt="Bienvenue à Kikiland" class="bienvenue-kikiland" sizes="50vw" />
+    <nav >
+      <ul class="navbar">
+        <li class="bouton-container">
+          <a href="/tattoo" aria-label="Tattoo"><img class="bouton" srcset="\assets\Images\boutons\tattoo\bouton.avif 1800w, \assets\Images\boutons\tattoo\half\bouton.avif 1000w, \assets\Images\boutons\tattoo\fourth\bouton.avif 600w" id="tattoo" onclick="changeImageAndRedirect('tattoo')" alt="Tattoo" sizes="30vw" /></a>
+        </li>
+        <li class="bouton-container">
+          <a href="/illustration" aria-label="illustration">
+            <img class="bouton" srcset="\assets\Images\boutons\illustration\bouton.avif 1800w, 
+                \assets\Images\boutons\illustration\half\bouton.avif 1000w, 
+                \assets\Images\boutons\illustration\fourth\bouton.avif 600w" id="illustration" onclick="changeImageAndRedirect('illustration')" alt="Illustration" sizes="30vw" />
+          </a>
+        </li>
+        <li class="bouton-container">
+          <a href="/objets" aria-label="bouton">
+            <img class="bouton" srcset="\assets\Images\boutons\objets\bouton.avif 1800w, 
+                \assets\Images\boutons\objets\half\bouton.avif 1000w, 
+                \assets\Images\boutons\objets\fourth\bouton.avif 600w" id="objets" onclick="changeImageAndRedirect('objets')" alt="Objets" sizes="30vw" />
+          </a>
+        </li>
+        <li class="bouton-container"><div class="testback"></div></li>
+      </ul>
+    </n>
+    <a href="http://philibertetienne.com/map.html" class="bombe-icone" target="_blank" aria-label="Jeu Bomberman"><img src="\assets\Images\Home\anim_exempleclicbombe.gif" alt="Jeu Bomberman" /></a>
+  </div>
+  {% block javascripts %}
+    <script src="\assets\scripts\button.js"></script>
+  {% endblock %}
 {% endblock %}

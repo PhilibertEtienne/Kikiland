@@ -1,7 +1,7 @@
 import * as util from "./util.js";
 const slider = document.getElementById("slider");
 const sliderPage = document.getElementById("slider-page");
-let slideDirection = 1;
+let slideDirection;
 let firstLoad = true;
 //Fetch img path from Twig
 var jsonData = document.getElementById("Images").getAttribute("data-images");
@@ -10,13 +10,16 @@ let imageArray = JSON.parse(jsonData);
 let slideOnEachSide = util.getCSSValue("slideOnEachSide");
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
 
-// SLider display
+// Slider display
 function displayImages() {
   slideOnEachSide = util.getCSSValue("slideOnEachSide");
   util.removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("img");
-    imgFromArray.src = "/assets/Images/objets/" + imageArray[i];
+    var basePath = "/assets/Images/objets/";
+    imgFromArray.loading = "lazy"
+    imgFromArray.srcset = `${basePath}half/${imageArray[i]} 1800w, ${basePath}fourth/${imageArray[i]} 1000w, ${basePath}eighth/${imageArray[i]} 600w`;
+    imgFromArray.sizes = "(max-width:1200px) 33vw, (max-width:640px) 66vw";
     imgFromArray.classList.add("slider-image");
     imgFromArray.style.margin = `${scrollAmountVW}vw`;
     imgFromArray.style.display = "inline-block";
@@ -114,14 +117,21 @@ function displayImages() {
   slider.appendChild(imgGoingOut);
 
   if (slideDirection === 1 && slideOnEachSide > 0) {
-    imgGoingOut.src =
-      "/assets/images/objets/" + imageArray[imageArray.length - 1];
+    imgGoingOut.srcset = `${basePath}half/${
+      imageArray[imageArray.length - 1]
+    } 1800w, ${basePath}fourth/${
+      imageArray[imageArray.length - 1]
+    } 1000w, ${basePath}eighth/${imageArray[imageArray.length - 1]} 600w`;
     imgGoingOut.style.position = "absolute";
     imgGoingOut.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideLeftToNone 0.3s ease-in forwards";
-  } else if (slideDirection === 1 && slideOnEachSide > 0) {
-    imgGoingOut.src =
-      "/assets/images/objets/" + imageArray[2 * slideOnEachSide + 1];
+  } else if (slideDirection === -1 && slideOnEachSide > 0) {
+    imgGoingOut.srcset = `${basePath}half/${
+      imageArray[2 * slideOnEachSide + 1]
+    } 1800w, ${basePath}fourth/${
+      imageArray[2 * slideOnEachSide + 1]
+    } 1000w, ${basePath}eighth/${imageArray[2 * slideOnEachSide + 1]} 600w`;
+
     imgGoingOut.style.position = "absolute";
     imgGoingOut.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideRightToNone 0.3s ease-in forwards";

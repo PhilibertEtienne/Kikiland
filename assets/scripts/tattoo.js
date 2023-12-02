@@ -1,6 +1,6 @@
-const container = document.getElementById("front-gallery-container");
-const flashbook = document.getElementById("flashbook-link");
-const flashbookSide = document.getElementById("flashbookSide-link");
+const container = document.getElementsByClassName("front-gallery-container");
+const flashbook = document.getElementsByClassName("flashbook-link");
+const flashbookSide = document.getElementsByClassName("flashbookSide-link");
 const grid = document.getElementById("grid");
 
 //Handle image Fullscreen on click
