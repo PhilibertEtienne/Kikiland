@@ -1,3 +1,43 @@
-{% extends 'Modules/_photoGallery.html.twig' %}
+{% extends 'Modules/layout.html.twig' %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" type="text/css" href="/assets/css/fullScreen.css">
+{% endblock %}
 
-{% set folder = 'tattoo' %}
+{% block content %}
+	<section class="front-gallery-container" >
+		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" class="flashbook-link">
+			<picture>
+				<source
+				srcset="assets\Images\lienflashbook.avif" type="image/avif" />
+				<img src="assets\Images\lienflashbook.png"alt="flashbook" class="flashbook" >
+			</picture>
+		</a>		
+		<div class="grid" id="grid">
+{% for image in images %}
+    {% set imagePath = "/assets/Images/tattoo/" %}
+    {% set imagePathBig = imagePath ~ image.filename %}
+    {% set imagePathJpg = imagePath ~ "/jpg/" ~ image.filename %}
+    {% set imagePathMedium = imagePath ~ "/half/" ~ image.filename %}
+    {% set imagePathSmall = imagePath ~ "/fourth/" ~ image.filename %} 
+    <picture class="fade-in pointer grid-image">
+		<source srcset="{{ imagePathBig }}.avif 1800w, 
+			{{ imagePathMedium }}.avif 1000w, 
+			{{ imagePathSmall }}.avif 400w" 
+			sizes = "30vw"
+			type = "image/avif"
+			 />
+			<img src="{{ imagePathJpg }}.jpg" alt= "{{ image.filename }}">
+	</picture>
+{% endfor %}
+	</div>
+    <input type = "hidden" id="images" data-images="{{ images|json_encode }}"/>
+	{% block javascripts %}
+		{{ parent() }}
+			<script src="assets/scripts/imageClick.js"></script>
+				<script>
+				getImages("fade-in")
+				handleImageClick()
+				</script>
+	{% endblock %}
+{% endblock %}

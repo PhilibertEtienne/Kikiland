@@ -18,6 +18,9 @@
   <div id="Images" data-images="{{ images|json_encode }}"></div>
   {% block javascripts %}
     <script src="assets\scripts\slider.js" type="module"></script>
-    <script src="assets\scripts\imageClick.js"></script>
+    <script src="assets\scripts\imageClick.js">  
+  getImages("fade-in");
+  handleImageClick();
+  </script>
   {% endblock %}
 {% endblock %}

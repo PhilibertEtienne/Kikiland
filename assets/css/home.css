@@ -1,0 +1,117 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.bienvenue-kikiland {
+  max-width: 90%;
+  margin-bottom: 2rem;
+  @media (min-width: 720px) {
+    max-width: 60%;
+    margin-bottom: 5rem;
+  }
+}
+
+.home-nav ul {
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  height: 8rem;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 720px) {
+    flex-direction: column;
+    height: 18rem;
+    width: 80vw;
+  }
+  & li {
+    height: 8rem;
+    width: 25%;
+    &:nth-child(2) {
+      width: 35%;
+      @media (max-width: 720px) {
+        width: 45%;
+      }
+    }
+    @media (max-width: 720px) {
+      width: 35%;
+    }
+    & a {
+      height: 100%;
+      cursor: pointer;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: block;
+      @media (min-width: 720px) {
+        margin-bottom: 10vh;
+        max-height: 6rem;
+      }
+    }
+  }
+
+  & li:nth-child(1) .bouton {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/tattoo/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/tattoo/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/tattoo/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/tattoo/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/tattoo/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/tattoo/bouton.png")
+    );
+    &:hover {
+      background-image: image-set(
+        url("/assets/Images/boutons/tattoo/bouton_clic.avif") type("image/avif") 2x,
+        url("/assets/Images/boutons/tattoo/half/bouton_clic.avif") type("image/avif") 1x,
+        url("/assets/Images/boutons/tattoo/bouton_clic.png")
+      );
+    }
+  }
+
+  & li:nth-child(2) .bouton {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.png")
+    );
+    &:hover {
+      background-image: image-set(
+        url("/assets/Images/boutons/illustration/bouton_clic.avif") type("image/avif") 2x,
+        url("/assets/Images/boutons/illustration/half/bouton_clic.avif") type("image/avif") 1x,
+        url("/assets/Images/boutons/illustration/bouton_clic.png")
+      );
+    }
+  }
+  & li:nth-child(3) .bouton {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/objets/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/objets/bouton.png")
+    );
+    &:hover {
+      background-image: image-set(
+        url("/assets/Images/boutons/objets/bouton_clic.avif") type("image/avif") 2x,
+        url("/assets/Images/boutons/objets/half/bouton_clic.avif") type("image/avif") 1x,
+        url("/assets/Images/boutons/objets/bouton_clic.png")
+      );
+    }
+  }
+}

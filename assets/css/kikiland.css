@@ -2,7 +2,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-size: 1rem;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -23,6 +22,7 @@ body {
   margin: 0 auto;
   background-color: var(--baseColor);
   overflow-x: hidden;
+  position: relative;
 }
 
 ul {
@@ -31,151 +31,45 @@ ul {
   margin: 0;
 }
 
-.bienvenue-kikiland {
-  max-width: 60%;
-  margin-bottom: 4rem;
-  @media (min-width: 720px) {
-    max-width: 50%;
-    max-height: 48rem;
-  }
-}
-
-.homepage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.bouton,
-.testback, .testback::before {
- height: 4em;
-  @media (min-width: 720px) {
-    margin-bottom: 10vh;
-    max-height: 6em;
-  }
-  height: 100%;
-  max-width: 100%;
-  height: auto;
-  cursor: pointer;
-  object-fit: contain;
-}
-
-.testback {
-  background: aqua url("/assets/Images/boutons/tattoo/bouton.avif");
-  background-size: cover;
-  transition: 0.5s;
-  width: 50%;
-  height: 100vh;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  max-width: 50%;
-  height: 8rem;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 720px) {
-    flex-direction: column;
-  }
-}
-
-.header-logo {
-  height: 100%;
-  max-width: 30%;
+picture {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.header-menu_img {
-  height: 100%;
-  padding: 0.5em;
-  max-width: 100%;
-  min-height: 3rem;
-}
-
-.header-logo_img {
-  height: 80%;
-  min-height: 3rem;
-  margin-left: 1rem;
-  object-fit: contain;
-  @media (width < 768px) {
-    margin-left: 0;
-  }
-}
-
-.header-menu_option {
-  max-width: 70%;
-  height: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.header-menu {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  align-items: center;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  position: fixed;
-  width: 100vw;
-  height: 12vh;
-  padding: 0.5em;
-  top: 0;
-  z-index: 9999;
-  background-color: #ffffff;
-}
-
-.header > img {
-  cursor: pointer;
-  object-fit: contain;
-}
-
-.footer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 10vh;
   grid-row: 10vh;
-  @media (max-width: 900px) {
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    height: 16vh;
-  }
-}
-
-.footer_option {
-  min-height: 3rem;
-  min-width: 0;
-  align-self: center;
-  justify-self: center;
-  & img {
-    height: 60%;
-    padding: 0.5rem;
-    @media (max-width: 900px) {
-      height: 80%;
-      padding: 0;
+  & ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 720px) {
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      height: 16vh;
+      padding-top: 2rem;
+    }
+    & a {
+      width: 100%;
+      height: 100%;
+      & img {
+        height: 3rem;
+        min-height: 2rem;
+        min-width: 0;
+        align-self: center;
+        justify-self: center;
+      }
     }
   }
 }
 
 .contact {
   height: 50%;
-  @media (max-width: 900px) {
+  @media (max-width: 720px) {
     height: 80%;
   }
 }
@@ -256,27 +150,32 @@ a {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 35%));
-  grid-gap: 0.5rem;
+  grid-gap: 1rem;
   justify-content: center;
   margin-bottom: 5em;
-}
-
-.grid .grid-item:nth-child(2n + 1) img,
-.grid .grid-item:nth-child(2n + 1),
-.grid img:nth-child(2n + 1) {
-  aspect-ratio: 4/4;
-  grid-row: span 4;
-}
-.grid .grid-item:nth-child(2n + 2) img,
-.grid .grid-item:nth-child(2n + 2),
-.grid img:nth-child(2n + 2) {
-  aspect-ratio: 4/5;
-  grid-row: span 5;
-}
-
-.grid-item {
-  display: block;
-  position: relative;
+  & picture {
+    overflow: hidden;
+    & img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .grid-image {
+    display: block;
+    position: relative;
+  }
+  .grid-image:nth-child(2n + 1) img,
+  .grid-image:nth-child(2n + 1),
+  img:nth-child(2n + 1) {
+    aspect-ratio: 4/4;
+    grid-row: span 4;
+  }
+  .grid-image:nth-child(2n + 2) img,
+  .grid-image:nth-child(2n + 2),
+  img:nth-child(2n + 2) {
+    aspect-ratio: 4/5;
+    grid-row: span 5;
+  }
 }
 
 .fade-in {

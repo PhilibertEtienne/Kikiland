@@ -4,7 +4,7 @@ const flashbookSide = document.getElementsByClassName("flashbookSide-link");
 const grid = document.getElementById("grid");
 
 //Handle image Fullscreen on click
-getImages("grid-image");
+getImages("fade-in");
 handleImageClick();
 
 function changeCssOnScroll() {
