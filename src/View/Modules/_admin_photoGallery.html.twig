@@ -19,7 +19,7 @@
 	{% block content %}
 		<div class="grid">
 			{% for image in images %}
-				<div class="grid-item">
+				<div class="grid-image">
 					<img src="/assets/Images/{{ folder }}/{{ image }}" alt="{{ image }}" class="grid-image" loading="lazy">
 					<form action="" method="POST" class="image-form">
 						<input type="hidden" name="filename" value="{{ image }}">

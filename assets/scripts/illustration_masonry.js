@@ -15,7 +15,7 @@ function generateMasonry() {
   cols = util.getCSSValue("cols");
   colsCollection = {};
   // Create number of columns
-  for (let i = 1; i <= cols ; i++) {
+  for (let i = 1; i <= cols; i++) {
     colsCollection[`col${i}`] = document.createElement("div");
     colsCollection[`col${i}`].classList.add("column");
   }
@@ -24,14 +24,29 @@ function generateMasonry() {
     if (!imageArray.length || !imageArray[i]) break;
     const itemContainer = document.createElement("div");
     itemContainer.classList.add("item");
-    const item = document.createElement("img");
+    const item = document.createElement("picture");
     item.classList.add("fade-in");
     item.classList.add("pointer");
-    item.srcset = imagePath + imageArray[i] +" 2400w,"+ imagePath + "half/" + imageArray[i] +" 1200w,"+ imagePath + "fourth/" + imageArray[i] +" 800w";
-    item.sizes = "(max-width:768px)30vw,50vw"
-    let fileName = imageArray[i].split('/').pop();
-    fileName = fileName.split('.')[0]; 
-    item.alt = fileName
+    const source = document.createElement("source");
+    const img = document.createElement("img");
+    item.appendChild(source);
+    item.appendChild(img);
+    source.srcset =
+      imagePath +
+      imageArray[i].filename +
+      ".avif 2400w," +
+      imagePath +
+      "half/" +
+      imageArray[i].filename +
+      ".avif 1200w," +
+      imagePath +
+      "fourth/" +
+      imageArray[i].filename +
+      ".avif 800w";
+    source.sizes = "(max-width:768px)30vw,50vw";
+    source.type = "image/avif";
+    img.src = imagePath + "jpg/" + imageArray[i].filename + ".jpg";
+    item.alt = imageArray[i].filename;
     itemContainer.appendChild(item);
     colsCollection[`col${i + 1}`].appendChild(itemContainer);
 
@@ -44,7 +59,7 @@ function generateMasonry() {
   Object.values(colsCollection).forEach((column) => {
     row.appendChild(column);
   });
-  getImages("item");
+  getImages("fade-in");
   handleImageClick();
 }
 

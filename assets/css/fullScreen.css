@@ -18,8 +18,8 @@
   transform: translate(-50%, -50%);
   width: auto;
   height: auto;
+  min-width: 50%;
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  border-radius: 40px;
 }

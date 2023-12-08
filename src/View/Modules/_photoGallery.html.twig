@@ -1,40 +1,45 @@
 {% extends 'Modules/layout.html.twig' %}
 {% block head %}
 	{{ parent() }}
-	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/illustration.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/fullScreen.css">
 {% endblock %}
 
 {% block content %}
 
-	<div class="front-gallery-container" >
-	{% if folder is defined  and folder =='tattoo' %}
-		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" id="flashbook-link">
-			<img src="assets\Images\lienflashbook.avif" alt="flashbook" class="flashbook flashbook-link" id="flashbook">
+	<section class="front-gallery-container" >
+	{% if folder is defined  and folder == "tattoo" %}
+		<a href="assets/Images/flashbooktest_150dpi.pdf" target="_blank" class="flashbook-link">
+			<picture>
+				<source
+				srcset="assets\Images\lienflashbook.avif" type="image/avif" />
+				<img src="assets\Images\lienflashbook.png"alt="flashbook" class="flashbook" >
+			</picture>
 		</a>		
 		<div class="grid" id="grid">
 {% for image in images %}
-    {% set imagePathBig = "/assets/Images/" ~ folder ~ "/" ~ image %}
-    {% set imagePathMedium = "/assets/Images/" ~ folder ~ "/half/" ~ image %}
-    {% set imagePathSmall = "/assets/Images/" ~ folder ~ "/fourth/" ~ image %}
-
-    <img srcset="{{ imagePathBig }} 1800w, 
-	{{ imagePathMedium }} 1000w, 
-	{{ imagePathSmall }} 400w" 
-	sizes = "30vw"
-	alt= "{{ image }}" 
-	class="grid-image fade-in pointer" >
+    {% set imagePathBig = "/assets/Images/" ~ folder ~ "/" ~ image.filename %}
+    {% set imagePathJpg = "/assets/Images/" ~ folder ~ "/jpg/" ~ image.filename %}
+    {% set imagePathMedium = "/assets/Images/" ~ folder ~ "/half/" ~ image.filename %}
+    {% set imagePathSmall = "/assets/Images/" ~ folder ~ "/fourth/" ~ image.filename %} 
+    <picture class="fade-in pointer grid-image">
+		<source srcset="{{ imagePathBig }}.avif 1800w, 
+			{{ imagePathMedium }}.avif 1000w, 
+			{{ imagePathSmall }}.avif 400w" 
+			sizes = "30vw"
+			type = "image/avif"
+			 />
+			<img src="{{ imagePathJpg }}.jpg" alt= "{{ image.filename }}">
+	</picture>
 {% endfor %}
 		{% else %}
 		<div class="masonryContainer" id="masonryContainer">
 		<div class="row" id="row-illustration">
 			</div>
 			</div>
-		{% endif %}
+		{% endif %}		
 	</div>
     <div id="images" data-images="{{ images|json_encode }}"></div>
-
 	{% block javascripts %}
 		{{ parent() }}
 			<script src="assets/scripts/imageClick.js"></script>
@@ -42,7 +47,7 @@
 			<script src="assets/scripts/illustration_masonry.js" type="module"></script>
 			{% else %}
 				<script>
-				getImages("grid-image")
+				getImages("fade-in")
 				handleImageClick()
 				</script>
 		{% endif %}

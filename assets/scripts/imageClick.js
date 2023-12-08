@@ -13,19 +13,20 @@ function handleImageClick() {
 }
 
 function openFullscreen(event) {
-  const image = event.target;
-  const slider = document.getElementById("slider");
+  const image = event.currentTarget;
+  console.log(image)
   // Create a fullscreen container element
   const fullscreenContainer = document.createElement("div");
   fullscreenContainer.classList.add("fullscreen-container");
+  const fullscreenImage = image.cloneNode(true);
+  fullscreenImage.querySelector("img").classList.add("fullscreen-image");
+  fullscreenImage.querySelector("source").sizes="60vw";
+  fullscreenImage.classList.remove("fade-in");
+  fullscreenImage.classList.remove("grid-image");
+  fullscreenImage.classList.remove("pointer");
 
-  // Create an image element inside the fullscreen container
-  const fullscreenImage = document.createElement("img");
-  fullscreenImage.classList.add("fullscreen-image");
-  fullscreenImage.srcset = image.srcset;
   fullscreenContainer.appendChild(fullscreenImage);
 
-  // Append the fullscreen container to the body
   document.body.appendChild(fullscreenContainer);
 
   // Toggle fullscreen class on click to exit fullscreen

@@ -1,38 +1,40 @@
 {% set baseImagePath = 'assets/Images/header-navbar-footer/' %}
 
 {% block footer %}
-  <nav class="footer" id="footer">
-    <a class="footer_option" href="/contact">
-    <img 
-    srcset="
-    {{ baseImagePath }}{{ url == '/contact' ? '/contact/footer_contact-selec.avif' : '/contact/footer_contact.avif' }} 1800w, 
-    {{ baseImagePath }}{{ url == '/contact' ? '/contact/half/footer_contact-selec.avif' : '/contact/half/footer_contact.avif' }} 1000w, 
-    {{ baseImagePath }}{{ url == '/contact' ? '/contact/fourth/footer_contact-selec.avif' : '/contact/fourth/footer_contact.avif' }} 600w" 
-    alt="contact" 
-    id="contact" 
-    sizes="25vw"
-    />
-    </a>
-    <div class="footer_option">
-      <a href="https://www.instagram.com/leventquirale/"><img srcset="{{ baseImagePath ~ 'footer_icone_instagram.avif' }} 1800w,
-      {{ baseImagePath ~ '/half/footer_icone_instagram.avif' }} 1000w,
-      {{ baseImagePath ~ '/fourth/footer_icone_instagram.avif' }} 800w"
-      alt="logo Instagram" 
-      class="footer_img" 
-      sizes="20vw"
-      />
-      </a>
-    </div>
-    <div class="footer_option">
-      <a href="/mentions-legales">
-      <img srcset="
-      {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/mentions_legales-soul.avif' : '/mentions-legales/mentions_legales.avif') }} 1800w,
-      {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/half/mentions_legales-soul.avif' : '/mentions-legales/half/mentions_legales.avif') }} 1000w,
-      {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/fourth/mentions_legales-soul.avif' : '/mentions-legales/fourth/mentions_legales.avif') }} 600w," 
-      alt="mentions légales" 
-      sizes ="20vw"
-      />
-      </a>
-    </div>
-  </nav>
+  <footer>
+    <ul>
+      <li>
+        <a href="/contact">
+          <picture>
+            <source srcset="
+        {{ baseImagePath }}{{ url == '/contact' ? '/contact/footer_contact-selec.avif' : '/contact/footer_contact.avif' }} 1800w,
+        {{ baseImagePath }}{{ url == '/contact' ? '/contact/half/footer_contact-selec.avif' : '/contact/half/footer_contact.avif' }} 1000w,
+        {{ baseImagePath }}{{ url == '/contact' ? '/contact/fourth/footer_contact-selec.avif' : '/contact/fourth/footer_contact.avif' }} 600w" type="image/avif" sizes="25vw" />
+            <img src="{{ baseImagePath }}{{ url == '/contact' ? '/contact/footer_contact-selec.png' : '/contact/footer_contact.png' }}" alt="contact" />
+          </picture>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/leventquirale/">
+          <picture>
+            <source srcset="{{ baseImagePath }}footer_icone_instagram.avif 1800w,
+        {{ baseImagePath ~ '/half/footer_icone_instagram.avif' }} 1000w,
+        {{ baseImagePath ~ '/fourth/footer_icone_instagram.avif' }} 800w" class="footer_img" sizes="20vw" type="image/avif" />
+            <img src="{{ baseImagePath }}footer_icone_instagram.png" alt="logo Instagram" />
+          </picture>
+        </a>
+      </li>
+      <li>
+        <a href="/mentions-legales">
+          <picture>
+            <source srcset="
+        {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/mentions_legales-soul.avif' : '/mentions-legales/mentions_legales.avif') }} 1800w,
+        {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/half/mentions_legales-soul.avif' : '/mentions-legales/half/mentions_legales.avif') }} 1000w,
+        {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/fourth/mentions_legales-soul.avif' : '/mentions-legales/fourth/mentions_legales.avif') }} 600w," sizes="20vw" type="image/avif" />
+            <img src=" {{ baseImagePath ~ (url == '/mentions-legales' ? '/mentions-legales/mentions_legales-soul.jpg' : '/mentions-legales/mentions_legales.jpg') }}" alt="mentions légales" />
+          </picture>
+        </a>
+      </li>
+    </ul>
+  </footer>
 {% endblock %}
