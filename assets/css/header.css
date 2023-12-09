@@ -25,7 +25,7 @@ header {
       min-height: 3rem;
       margin-left: 1rem;
       display: flex;
-      object-fit: cover;
+      object-fit: contain;
       @media (width < 768px) {
         margin-left: 0;
       }
@@ -36,6 +36,7 @@ header {
     flex-direction: row;
     height: 100%;
     align-items: center;
+    margin-left: 2rem;
     & li {
       height: 100%;
       display: flex;

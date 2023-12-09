@@ -22,7 +22,7 @@ function displayImages() {
     imgFromArray.appendChild(imgImg);
     var basePath = "/assets/Images/objets/";
     imgFromArray.loading = "lazy"
-    imgSource.srcset = `${basePath}half/${imageArray[i].filename}.avif 1800w, ${basePath}fourth/${imageArray[i]}.avif 1000w, ${basePath}eighth/${imageArray[i].filename}.avif 600w`;
+    imgSource.srcset = `${basePath}half/${imageArray[i].filename}.avif 1800w, ${basePath}fourth/${imageArray[i].filename}.avif 600w, ${basePath}eighth/${imageArray[i].filename}.avif 200w`;
     imgSource.sizes = "(max-width:1200px) 33vw, (max-width:640px) 66vw";
     imgSource.type="image/avif"
     imgImg.src=`${basePath}/${imageArray[i].filename}.jpg`
