@@ -3,12 +3,16 @@
   font-size: 0.9rem;
 }
 
+body {
+  width: 100vw;
+}
+
 .mentions-legales-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 12vh;
-  width: 70vh;
+  margin: 12vh 0 16vh 0;
+  width: 60vw;
 }
 
 h1 {

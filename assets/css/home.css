@@ -1,3 +1,7 @@
+:root {
+  --clicspeed: 0.5s;
+}
+
 .homepage {
   display: flex;
   flex-direction: column;
@@ -68,9 +72,14 @@
       url("/assets/Images/boutons/tattoo/bouton.png")
     );
     &:hover {
+      animation: animationTatto var(--clicspeed);
+    }
+    &:active {
       background-image: image-set(
-        url("/assets/Images/boutons/tattoo/bouton_clic.avif") type("image/avif") 2x,
-        url("/assets/Images/boutons/tattoo/half/bouton_clic.avif") type("image/avif") 1x,
+        url("/assets/Images/boutons/tattoo/bouton_clic.avif") type("image/avif")
+          2x,
+        url("/assets/Images/boutons/tattoo/half/bouton_clic.avif")
+          type("image/avif") 1x,
         url("/assets/Images/boutons/tattoo/bouton_clic.png")
       );
     }
@@ -78,19 +87,28 @@
 
   & li:nth-child(2) .bouton {
     background-image: -webkit-image-set(
-      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif") 2x,
-      url("/assets/Images/boutons/illustration/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif")
+        type("image/avif") 1x,
       url("/assets/Images/boutons/illustration/bouton.png")
     );
     background-image: image-set(
-      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif") 2x,
-      url("/assets/Images/boutons/illustration/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif")
+        type("image/avif") 1x,
       url("/assets/Images/boutons/illustration/bouton.png")
     );
     &:hover {
+      animation: animationIllustration var(--clicspeed);
+    }
+    &:active {
       background-image: image-set(
-        url("/assets/Images/boutons/illustration/bouton_clic.avif") type("image/avif") 2x,
-        url("/assets/Images/boutons/illustration/half/bouton_clic.avif") type("image/avif") 1x,
+        url("/assets/Images/boutons/illustration/bouton_clic.avif")
+          type("image/avif") 2x,
+        url("/assets/Images/boutons/illustration/half/bouton_clic.avif")
+          type("image/avif") 1x,
         url("/assets/Images/boutons/illustration/bouton_clic.png")
       );
     }
@@ -98,20 +116,153 @@
   & li:nth-child(3) .bouton {
     background-image: -webkit-image-set(
       url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
-      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif")
+        1x,
       url("/assets/Images/boutons/objets/bouton.png")
     );
     background-image: image-set(
       url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
-      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif") 1x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif")
+        1x,
       url("/assets/Images/boutons/objets/bouton.png")
     );
     &:hover {
+      animation: animationObjet var(--clicspeed);
+    }
+    &:active {
       background-image: image-set(
-        url("/assets/Images/boutons/objets/bouton_clic.avif") type("image/avif") 2x,
-        url("/assets/Images/boutons/objets/half/bouton_clic.avif") type("image/avif") 1x,
+        url("/assets/Images/boutons/objets/bouton_clic.avif") type("image/avif")
+          2x,
+        url("/assets/Images/boutons/objets/half/bouton_clic.avif")
+          type("image/avif") 1x,
         url("/assets/Images/boutons/objets/bouton_clic.png")
       );
     }
+  }
+}
+
+/* Animations boutons */
+
+@keyframes animationTatto {
+  0% {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/tattoo/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/tattoo/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/tattoo/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/tattoo/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/tattoo/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/tattoo/bouton.png")
+    );
+  }
+  50% {
+    background-image: image-set(
+      url("/assets/Images/boutons/tattoo/bouton_clic.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/tattoo/half/bouton_clic.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/tattoo/bouton_clic.png")
+    );
+  }
+  100% {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/tattoo/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/tattoo/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/tattoo/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/tattoo/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/tattoo/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/tattoo/bouton.png")
+    );
+  }
+}
+
+@keyframes animationIllustration {
+  0% {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.png")
+    );
+  }
+  50% {
+    background-image: image-set(
+      url("/assets/Images/boutons/illustration/bouton_clic.avif")
+        type("image/avif") 2x,
+      url("/assets/Images/boutons/illustration/half/bouton_clic.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton_clic.png")
+    );
+  }
+  100% {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/illustration/bouton.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/illustration/half/bouton.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/illustration/bouton.png")
+    );
+  }
+}
+
+@keyframes animationObjet {
+  0% {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/objets/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/objets/bouton.png")
+    );
+  }
+  50% {
+    background-image: image-set(
+      url("/assets/Images/boutons/objets/bouton_clic.avif") type("image/avif")
+        2x,
+      url("/assets/Images/boutons/objets/half/bouton_clic.avif")
+        type("image/avif") 1x,
+      url("/assets/Images/boutons/objets/bouton_clic.png")
+    );
+  }
+  100% {
+    background-image: -webkit-image-set(
+      url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/objets/bouton.png")
+    );
+    background-image: image-set(
+      url("/assets/Images/boutons/objets/bouton.avif") type("image/avif") 2x,
+      url("/assets/Images/boutons/objets/half/bouton.avif") type("image/avif")
+        1x,
+      url("/assets/Images/boutons/objets/bouton.png")
+    );
   }
 }
