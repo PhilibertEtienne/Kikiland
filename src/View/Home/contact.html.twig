@@ -4,7 +4,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/css/contact.css" />
 {% endblock %}
 {% block content %}
-  <div class="contact-form">
+  <section class="contact-form">
     {# Selection buttons #}
     {% include 'Modules/_form_selection_button.html.twig' %}
     {# Errors handling #}
@@ -24,7 +24,7 @@
     <div class="rdv-form__form halfSDelay inactive">
       {% include 'Modules/_form_contact.html.twig' %}
     </div>
-  </div>
+  </section>
   {% block javascripts %}
     <script src="assets\scripts\form.js"></script>
   {% endblock %}

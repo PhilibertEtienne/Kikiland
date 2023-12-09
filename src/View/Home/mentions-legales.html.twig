@@ -1,19 +1,11 @@
 {% extends 'Modules/layout.html.twig' %}
 {% block head %}
   {{ parent() }}
-  	<link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+  	{# <link rel="stylesheet" type="text/css" href="/assets/css/admin.css"> #}
   <link rel="stylesheet" type="text/css" href="/assets/css/mentions-legales.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet">{% endblock %}
 {% block content %}
-  <div class="mentions-legales-container">
+  <section class="mentions-legales-container">
    <h1> «</h1><h1> 1. Présentation du site</h1>
 
       <p>En vertu de l’article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique,<br> il est précisé aux utilisateurs du site kikiland.club l’identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
@@ -103,4 +95,5 @@
     <h1>11. Lexique.</h1><p>Utilisateur : Internaute se connectant, utilisant le site susnommé</p>
 
     <p>Informations personnelles : « les informations qui permettent, sous quelque forme que ce soit, directement ou non, l’identification des personnes physiques auxquelles elles s’appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).<h1> »</h1></p>
+    </div>
 {% endblock %}

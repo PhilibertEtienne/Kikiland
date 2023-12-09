@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   width: 60%;
-  height: 100%;
+  height: 100vh;
 }
 
 .contact-form__contenu {

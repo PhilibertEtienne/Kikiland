@@ -24,7 +24,7 @@ class ImageService
             $filename = pathinfo($file, PATHINFO_FILENAME);
             $extension = pathinfo($file, PATHINFO_EXTENSION);
     
-            // Create an object with filename and available extensions
+            // Create an object with fiSZlename and available extensions
             $imageObject = [
                 'filename' => $filename,
                 'extensions' => [$extension],
