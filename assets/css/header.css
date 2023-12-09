@@ -36,7 +36,7 @@ header {
     flex-direction: row;
     height: 100%;
     align-items: center;
-    margin-left: 3rem;
+    margin-left: 1rem;
     & li {
       height: 100%;
       display: flex;
