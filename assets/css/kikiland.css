@@ -74,7 +74,7 @@ footer {
         display: block;
         object-fit: contain;
         @media (max-width: 720px) {
-          height: 3vh;
+          height: 4vh;
         }
       }
     }
