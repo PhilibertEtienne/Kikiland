@@ -12,10 +12,10 @@
 }
 
 .bienvenue-kikiland {
-  max-width: 90%;
+    width: 90vw;
   margin-bottom: 2rem;
   @media (min-width: 720px) {
-    max-width: 60%;
+    max-width: 40%;
     margin-bottom: 5rem;
   }
 }
@@ -35,17 +35,17 @@
   & li {
     height: 8rem;
     width: 35%;
-    &:nth-child(2) {
+    /* &:nth-child(2) {
       width: 45%;
       @media (max-width: 720px) {
         width: 55%;
       }
-    }
+    } */
     @media (max-width: 720px) {
-      width: 35%;
+      width: 100%;
     }
     & a {
-      height: 100%;
+      height: 80%;
       cursor: pointer;
       background-size: contain;
       background-repeat: no-repeat;
