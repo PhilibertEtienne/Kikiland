@@ -14,6 +14,7 @@ body::-webkit-scrollbar {
   justify-content: center;
   width: 60%;
   height: 100vh;
+  padding-top: 12vh;
 }
 
 .contact-form__contenu {
@@ -28,6 +29,10 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
+  & p {
+    background-color: #7676ed;
+    padding: 2rem;
+  }
 }
 
 .contact-form__rowBox {
@@ -119,11 +124,6 @@ textarea {
 .rdv-step2,
 .rdv-step3 {
   opacity: 0;
-}
-
-h3 {
-  background-color: #7676ed;
-  padding: 2rem;
 }
 
 /* Rdv form */

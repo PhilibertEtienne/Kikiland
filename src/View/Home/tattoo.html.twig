@@ -31,7 +31,7 @@
 	</picture>
 {% endfor %}
 	</div>
-    <input type = "hidden" id="images" data-images="{{ images|json_encode }}"/>
+    <input type = "hidden" id="Images" data-images="{{ images|json_encode }}"/>
 	{% block javascripts %}
 		{{ parent() }}
 			<script src="assets/scripts/imageClick.js"></script>
