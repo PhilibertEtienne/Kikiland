@@ -116,7 +116,7 @@ function browse(
   fullPrev.onclick = (event) => {
     event.stopPropagation();
     if (currentFilePosition === 0) {
-      currentFilePosition = imageArray.length -1;
+      currentFilePosition = imageArray.length - 1;
     } else {
       currentFilePosition -= 1;
     }
@@ -140,4 +140,20 @@ function browse(
     fullScreenPictureSource.type = "image/avif";
     fullScreenPictureImg.src = `${commonPath}/${imageArray[currentFilePosition].filename}.jpg`;
   };
+
+  window.addEventListener("wheel", function (e) {
+    if (fullscreen) {
+      firstLoad = false;
+      if (e.deltaY < 0) {
+        fullNext.click();
+      } else {
+        fullPrev.click();
+      }
+    }
+  });
+  window.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+        closeFullscreen();
+    }
+});
 }
