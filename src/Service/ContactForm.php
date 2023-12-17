@@ -18,7 +18,6 @@ class ContactForm
 
     public function handleFormInput()
     {
-
         $firstname = $_POST['firstname'];
         $pronouns = $_POST['pronouns'];
         $email = $_POST['email'];
@@ -27,8 +26,6 @@ class ContactForm
         $message = $_POST['message'];
 
         $errors = [];
-
-
 
         // Common form input handling 
         if (!preg_match("/^[a-zA-Z ]*$/", $_POST["firstname"])) {

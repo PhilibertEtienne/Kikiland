@@ -1,11 +1,10 @@
 import * as util from "./util.js";
 const slider = document.getElementById("slider");
-const sliderPage = document.getElementById("slider-page");
 let slideDirection;
 let firstLoad = true;
 //Fetch img path from Twig
-var jsonData = document.getElementById("Images").getAttribute("data-images");
-let imageArray = JSON.parse(jsonData);
+// var jsonData = document.getElementById("Images").getAttribute("data-images");
+// let imageArray = JSON.parse(jsonData);
 //Slider media queries logic
 let slideOnEachSide = util.getCSSValue("slideOnEachSide");
 let scrollAmountVW = (2 * slideOnEachSide + 1) / 100;
@@ -16,16 +15,17 @@ function displayImages() {
   util.removeAllChildNodes(slider);
   for (let i = 0; i < 2 * slideOnEachSide + 1; i++) {
     var imgFromArray = document.createElement("picture");
+    imgFromArray.classList.add("slide")
     var imgSource = document.createElement("source");
     var imgImg = document.createElement("img");
     imgFromArray.appendChild(imgSource);
     imgFromArray.appendChild(imgImg);
     var basePath = "/assets/Images/objets/";
-    imgFromArray.loading = "lazy"
+    imgFromArray.loading = "lazy";
     imgSource.srcset = `${basePath}half/${imageArray[i].filename}.avif 1800w, ${basePath}fourth/${imageArray[i].filename}.avif 600w, ${basePath}eighth/${imageArray[i].filename}.avif 200w`;
     imgSource.sizes = "(max-width:1200px) 33vw, (max-width:640px) 66vw";
-    imgSource.type="image/avif"
-    imgImg.src=`${basePath}/${imageArray[i].filename}.jpg`
+    imgSource.type = "image/avif";
+    imgImg.src = `${basePath}/${imageArray[i].filename}.jpg`;
     imgImg.classList.add("slider-image");
     imgImg.style.margin = `${scrollAmountVW}vw`;
     imgImg.style.display = "inline-block";
@@ -39,7 +39,7 @@ function displayImages() {
         if (!firstLoad) {
           if (slideOnEachSide != 0) {
             imgFromArray.style.animation =
-              "imageSlideRightToMid 0.3s ease-in forwards";
+              " imageSlideRightToMid 0.3s ease-in forwards";
           } else {
             imgFromArray.style.animation =
               "imageSlideAloneLeftToMid 0.3s ease-in forwards";
@@ -119,30 +119,43 @@ function displayImages() {
   }
 
   // animate first and last slide getting out
-  var imgGoingOut = document.createElement("img");
+  let imgGoingOut = document.createElement("picture");
+  imgGoingOut.classList.add("test");
+  let imgOutSource = document.createElement("source");
+  let imgOutImg = document.createElement("img");
+
+  imgGoingOut.appendChild(imgOutSource);
+  imgGoingOut.appendChild(imgOutImg);
   slider.appendChild(imgGoingOut);
 
   if (slideDirection === 1 && slideOnEachSide > 0) {
-    imgGoingOut.srcset = `${basePath}half/${
-      imageArray[imageArray.length - 1]
-    } 1800w, ${basePath}fourth/${
-      imageArray[imageArray.length - 1]
-    } 1000w, ${basePath}eighth/${imageArray[imageArray.length - 1]} 600w`;
-    imgGoingOut.style.position = "absolute";
-    imgGoingOut.classList.add("slider-image-dissapear");
+    imgOutSource.srcset = `${basePath}half/${
+      imageArray[imageArray.length - 1].filename
+    }.avif 1800w, ${basePath}fourth/${
+      imageArray[imageArray.length - 1].filename
+    }.avif 1000w, ${basePath}eighth/${
+      imageArray[imageArray.length - 1].filename
+    }.avif 600w`;
+    imgOutSource.type = "image/avif";
+    imgOutSource.sizes = "(max-width:1200px) 20vw, (max-width:640px) 33vw";
+    imgOutImg.style.position = "absolute";
+    imgOutImg.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideLeftToNone 0.3s ease-in forwards";
   } else if (slideDirection === -1 && slideOnEachSide > 0) {
-    imgGoingOut.srcset = `${basePath}half/${
-      imageArray[2 * slideOnEachSide + 1]
-    } 1800w, ${basePath}fourth/${
-      imageArray[2 * slideOnEachSide + 1]
-    } 1000w, ${basePath}eighth/${imageArray[2 * slideOnEachSide + 1]} 600w`;
-
-    imgGoingOut.style.position = "absolute";
-    imgGoingOut.classList.add("slider-image-dissapear");
+    imgOutSource.srcset = `${basePath}half/${
+      imageArray[2 * slideOnEachSide + 1].filename
+    }.avif 1800w, ${basePath}fourth/${
+      imageArray[2 * slideOnEachSide + 1].filename
+    }.avif 1000w, ${basePath}eighth/${
+      imageArray[2 * slideOnEachSide + 1].filename
+    }.avif 600w`;
+    imgOutSource.type = "image/avif";
+    imgOutSource.sizes = "(max-width:1200px) 20vw, (max-width:640px) 33vw";
+    imgOutImg.style.position = "absolute";
+    imgOutImg.classList.add("slider-image-dissapear");
     imgGoingOut.style.animation = "imageSlideRightToNone 0.3s ease-in forwards";
   }
-  getImages("slider-image");
+  getImages("slide");
   handleImageClick();
 }
 
@@ -155,7 +168,7 @@ nextbutton.onclick = () => {
   imageArray.push(imageArray.shift());
   slideDirection = 1;
   displayImages();
-};  
+};
 
 prevbutton.onclick = () => {
   firstLoad = false;
@@ -164,7 +177,7 @@ prevbutton.onclick = () => {
   displayImages();
 };
 
-// Script launch order  
+// Script launch order
 document.addEventListener("DOMContentLoaded", function () {
   displayImages();
 });

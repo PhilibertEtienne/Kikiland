@@ -3,6 +3,8 @@
   padding: 0px;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  font-family: system-ui, sans-serif;
+  font-weight: 500;
 }
 
 :root {
@@ -17,7 +19,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Nunito", sans-serif;
   color: var(--fontColor);
   margin: 0 auto;
   background-color: var(--baseColor);
@@ -73,9 +74,7 @@ footer {
       & img {
         display: block;
         object-fit: contain;
-        @media (max-width: 720px) {
-          height: 4vh;
-        }
+        min-height: 4vh;
       }
     }
   }

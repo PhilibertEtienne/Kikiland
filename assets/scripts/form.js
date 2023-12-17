@@ -12,6 +12,7 @@ cbxButtons.forEach((button) => {
   let checkbox = button.querySelector("input[type='radio']");
   button.addEventListener("change", () => {
     ContactForm.classList.add("moveUp");
+    ContactForm.style.paddingTop="12vh";
     if (checkbox.checked) {
       currentForm = button.id;
       button.classList.add("selected");

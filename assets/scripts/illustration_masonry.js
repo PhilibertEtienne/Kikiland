@@ -1,7 +1,7 @@
 import * as util from "./util.js";
-var jsonData = document.getElementById("images").getAttribute("data-images");
-let imageArray = JSON.parse(jsonData);
 const masonry = document.getElementById("masonryContainer");
+var jsonData = document.getElementById("Images").getAttribute("data-images");
+let imageArray = JSON.parse(jsonData);
 const row = document.querySelector(".row");
 const imagePath = "/assets/Images/illustration/";
 // Number of columns
@@ -10,6 +10,8 @@ let cols = 3;
 let colsCollection = {};
 
 function generateMasonry() {
+
+
   util.removeAllChildNodes(row);
   imageArray = JSON.parse(jsonData);
   cols = util.getCSSValue("cols");

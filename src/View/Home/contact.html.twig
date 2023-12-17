@@ -5,8 +5,6 @@
 {% endblock %}
 {% block content %}
   <section class="contact-form">
-    {# Selection buttons #}
-    {% include 'Modules/_form_selection_button.html.twig' %}
     {# Errors handling #}
     {% if errors is not empty %}
       <div class="errors">
@@ -18,14 +16,7 @@
       </div>
     {% endif %}
     {# coucouform #}
+    <H1 class="intro">Pour un tatouage, un coucou, une question, tu peux me contacter 💃</H1>
     {% include 'Modules/_form_coucou.html.twig' %}
-    {# rdv form #}
-    {% include 'Modules/_animation_rdv-form.html.twig' %}
-    <div class="rdv-form__form halfSDelay inactive">
-      {% include 'Modules/_form_contact.html.twig' %}
-    </div>
   </section>
-  {% block javascripts %}
-    <script src="assets\scripts\form.js"></script>
-  {% endblock %}
 {% endblock %}
